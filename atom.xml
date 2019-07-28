@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
-  <updated>2019-07-26T18:29:39.957Z</updated>
+  <updated>2019-07-28T14:28:56.392Z</updated>
   <id>https://sogoagain.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>하나의 테스트 메서드에 여러 테스트 케이스 수행하기</title>
-    <link href="https://sogoagain.github.io/2019/06/17/%ED%95%98%EB%82%98%EC%9D%98-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%A9%94%EC%84%9C%EB%93%9C%EC%97%90-%EC%97%AC%EB%9F%AC-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%88%98%ED%96%89%ED%95%98%EA%B8%B0/"/>
-    <id>https://sogoagain.github.io/2019/06/17/하나의-테스트-메서드에-여러-테스트-케이스-수행하기/</id>
+    <title>JUnit5, @ParameterizedTest 사용 예</title>
+    <link href="https://sogoagain.github.io/2019/06/17/JUnit5-ParameterizedTest-%EC%82%AC%EC%9A%A9-%EC%98%88/"/>
+    <id>https://sogoagain.github.io/2019/06/17/JUnit5-ParameterizedTest-사용-예/</id>
     <published>2019-06-16T18:25:04.000Z</published>
-    <updated>2019-07-26T18:29:39.957Z</updated>
+    <updated>2019-07-28T14:28:56.392Z</updated>
     
     <content type="html"><![CDATA[<h2 id="JUnit5에서-ParameterizedTest를-사용하여-여러번의-테스트-케이스-수행하기"><a href="#JUnit5에서-ParameterizedTest를-사용하여-여러번의-테스트-케이스-수행하기" class="headerlink" title="JUnit5에서 ParameterizedTest를 사용하여 여러번의 테스트 케이스 수행하기"></a>JUnit5에서 ParameterizedTest를 사용하여 여러번의 테스트 케이스 수행하기</h2><ul><li><p>테스트 메서드에 입력값만 전달할 경우</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource</span>(strings = &#123;</span><br><span class="line">        <span class="string">"123"</span>,</span><br><span class="line">        <span class="string">"1 - 2"</span>,</span><br><span class="line">        <span class="string">"1 + 2 + 3"</span>,</span><br><span class="line">        <span class="string">"2 + 3 * 4 / 2"</span>,</span><br><span class="line">        <span class="string">"1343 + 231 * 2 / 4"</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">void</span> 올바른_형식의_수식으로_다항식_생성_테스트(String expression) &#123;</span><br><span class="line">Polynomial polynomial = Polynomial.createPolynomialWithExpression(expression);</span><br><span class="line"></span><br><span class="line">assertThat(polynomial).isInstanceOf(Polynomial.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>테스트 메서드에 입력값 뿐만 아니라 결과값도 전달할 필요가 있을 때</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@CsvSource</span>(&#123;</span><br><span class="line">        <span class="string">"'1 - 2', -1"</span>,</span><br><span class="line">        <span class="string">"'1 + 2 + 3', 6"</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">void</span> 다항식_연산_수행_테스트(String expression, <span class="keyword">int</span> expectedResult) &#123;</span><br><span class="line">Polynomial polynomial = Polynomial.createPolynomialWithExpression(expression);</span><br><span class="line"></span><br><span class="line">assertThat(polynomial.calculate()).isEqualTo(expectedResult);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     

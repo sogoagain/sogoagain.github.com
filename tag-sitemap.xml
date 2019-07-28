@@ -3,22 +3,22 @@
 
 
     <url>
-        <loc>https://sogoagain.github.io/tags/git/</loc>
-        <lastmod>2019-07-26T18:57:46.925Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://sogoagain.github.io/tags/TDD/</loc>
-        <lastmod>2019-07-26T18:29:39.957Z</lastmod>
+        <lastmod>2019-07-28T14:28:56.392Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://sogoagain.github.io/tags/junit/</loc>
-        <lastmod>2019-07-26T18:29:39.957Z</lastmod>
+        <lastmod>2019-07-28T14:28:56.392Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/git/</loc>
+        <lastmod>2019-07-26T18:57:46.925Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
