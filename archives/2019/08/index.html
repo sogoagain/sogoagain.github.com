@@ -22,7 +22,7 @@
     <meta name="description" content="Programming Blog">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="canonical" href="https://sogoagain.github.io/categories/도구tip/">
+    <link rel="canonical" href="https://sogoagain.github.io/archives/2019/08/">
     <title>Sogoagain | 기술 블로그</title>
     <style type="text/css">
     @font-face {
@@ -358,130 +358,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/12/가볍게-정리하는-git-기본/">
+        <a class="abstract-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">
             
-                <span>가볍게 정리하는 git 기본</span>
+                <span>HTTP 메시지 - HTTP Requests</span>
         </a>
         <div class="abstract-content">
-            Git 기본 내용 정리Git과 Github를 사용하고 있지만 단순히 commit, pull/push, branch 정도의 기능만 사용하고 있었을 뿐 아니라 Git GUI 도구를 활용했기에 명령줄 환경에서 git을 잘 다루지 못하였다. Git의 여러 기능을 명령줄 환경에서 능숙하게 사용하여 버전관리 및 협업을 제대로 하고 싶은 바람이 마음속 깊숙이 자리 잡고 있었다. 미루고 미루다 이번에 기회가 되어 Git의 내용을 정리해보는 시간을 가졌다.
-명령어 중심으로 정리를 한 것이라 Git을 처음 사용하시는 분들은 포스팅에 참고한 아래...
+            HTTP 요청웹에서 서버와 클라이언트 간 데이터를 주고받기 위해 HTTP 통신 규약을 사용한다. 오늘은 그중 클라이언트가 서버로 요청을 보내 어떤 행위가 일어나게끔 하는 HTTP 메시지 중 하나인 HTTP 요청 메시지에 대해 알아보기로 한다.
+HTTP Requests
+예시request1234567POST /user/create HTTP/1.1HOST: localhost:8080Connection-Length: 59Content-Type: application/x-www-form-urlencodedAccept: */*userId...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="git">git</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="WEB">WEB</a>
     
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">
-            
-                <span>IntelliJ에서 Docker로 Web App 배포하기</span>
-        </a>
-        <div class="abstract-content">
-            WAR artifact 빌드
-Project Settings(⌘;) &gt; Artifacts 메뉴 진입
-
-(+) 버튼 &gt; Web Application: Archive &gt; For ‘[Project Name]:war exploded’ 클릭
-
-생성된 Artifacts의 속성 설정 후 Apply
-
-Output Layout에서 ‘.war’ 파일의 파일명이 Context Root 명이 되므로 원하는 Context Root가 있을 경우 .war 파일명을 변경합니다..war의 기본 파일명은 [Project Name]_war.war...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="IntelliJ">IntelliJ</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">
-            
-                <span>SourceTree &#39;Permission denied (publickey)&#39; 에러</span>
-        </a>
-        <div class="abstract-content">
-            상황SourceTree에서 원격저장소에 접근(푸쉬/풀/클론 등)을 할 때 ‘ ‘Permission denied (publickey)’ 에러 발생
-원인PC SSH Agent에 key가 등록되어 있지 않았을 때 발생
-확인 방법WindowsPutty실행 후 등록된 key 리스트 확인
-On GitBash, OSX or Linux1$ ssh-add -l
-
-등록된 key가 없을 때 해결법WindowsPutty실행 후 ‘Add Key’ 버튼을 이용해 키 추가
-On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="SourceTree">SourceTree</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="SSH">SSH</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="git">git</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2017/01/29/나의-vimrc/">
-            
-                <span>나의 vimrc</span>
-        </a>
-        <div class="abstract-content">
-            나의 Vimrc 설정1234567891011121314151617181920212223242526272829303132333435363738set nocompatiblefiletype offset rtp+=~/.vim/bundle/Vundle.vimcall vundle#begin()Plugin 'VundleVim/Vundle.vim'Plugin 'tpope/vim-fugitive'Plugin 'tpope/vim-sensible'			         " vim 세팅을 표준으로 설정하는 플러그인Plugin 'scrooloose/n...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/01/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="vim">vim</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="HTTP">HTTP</a>
     
 </div>
             

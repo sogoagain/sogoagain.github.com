@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://sogoagain.github.io/tags/HTTP/</loc>
+        <lastmod>2019-08-03T14:30:03.356Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/WEB/</loc>
+        <lastmod>2019-08-03T14:30:03.356Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/tags/TDD/</loc>
         <lastmod>2019-07-28T14:28:56.392Z</lastmod>
         <changefreq>weekly</changefreq>
