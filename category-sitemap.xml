@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://sogoagain.github.io/categories/Kotlin/</loc>
+        <lastmod>2019-08-20T13:52:31.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/categories/WEB/</loc>
         <lastmod>2019-08-03T14:30:03.356Z</lastmod>
         <changefreq>weekly</changefreq>

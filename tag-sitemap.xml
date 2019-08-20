@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://sogoagain.github.io/tags/null%EC%B2%98%EB%A6%AC/</loc>
+        <lastmod>2019-08-20T13:52:31.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/Kotlin/</loc>
+        <lastmod>2019-08-20T13:52:31.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/tags/HTTP/</loc>
         <lastmod>2019-08-03T14:30:03.356Z</lastmod>
         <changefreq>weekly</changefreq>
