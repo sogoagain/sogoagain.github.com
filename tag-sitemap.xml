@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://sogoagain.github.io/tags/java/</loc>
+        <lastmod>2019-09-25T16:46:11.916Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/tags/null%EC%B2%98%EB%A6%AC/</loc>
         <lastmod>2019-08-21T14:56:55.067Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -54,13 +61,6 @@
     <url>
         <loc>https://sogoagain.github.io/tags/etc/</loc>
         <lastmod>2019-07-26T18:17:27.216Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/tags/java/</loc>
-        <lastmod>2019-07-26T18:16:02.470Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
