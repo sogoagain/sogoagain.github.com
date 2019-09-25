@@ -282,11 +282,13 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags="java">java</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="OOP">OOP</a>
+    
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">951</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                        <span>Word count: <span class="post-count word-count">952</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -443,7 +445,7 @@ height:50vh;
 <h3 id="Getter를-제거한-리팩토링-사례"><a href="#Getter를-제거한-리팩토링-사례" class="headerlink" title="Getter를 제거한 리팩토링 사례"></a>Getter를 제거한 리팩토링 사례</h3><p>실제로 나는 리팩토링 할 곳을 찾을 때 중점적으로 보는 것 중 하나가 Getter와 Setter가 사용되는 곳이다.</p>
 <p>사내 시스템에 데이터를 Excel 형식으로 추출하여 다운받을 수 있는 기능이 있다. 기존에는 Excel로 추출할 수 있는 도메인 각각에 대응되는 Excel 파일 작성 로직이 존재하였다. 즉 A라는 데이터를 추출하기 위한 로직 하나, B라는 데이터를 추출하기 위한 로직 하나 등등 여러 개의 Excel 파일 작성 로직이 존재하였다.</p>
 <p>Excel 파일 작성 로직은 도메인 모델의 getter를 호출하여 Excel 파일을 만들고 있었다. 나는 이 로직들을 보고 Getter를 없애자는 목표로 리팩토링을 수행하였다.</p>
-<p>먼저 Excel 파일 작성에 필요한 데이터를 나타내는 ExcelData라는 객체를 새로 만들고 Excel로 추출할 수 있는 객체들 내부에서 데이터를 조합하여 ExcelData를 반환토록 하였다. (Getter의 제거)<br>그리고 Excel로 추출할 수 있는 객체들을 공통된 인터페이스로 묶었다. (다형성)<br>그 결과 도메인 별로 1:1 매핑되어 존재하던 Excel 파일 작성 로직을 단 하나로 간추릴 수 있었다.</p>
+<p>먼저 Excel 파일 작성에 필요한 데이터를 나타내는 ExcelData라는 객체를 새로 만들고 Excel로 추출할 수 있는 객체들 내부에서 데이터를 조합하여 ExcelData를 반환토록 하였다. (Getter의 제거)<br>그리고 Excel로 추출할 수 있는 객체들을 공통된 인터페이스로 묶었다. (추상화/다형성)<br>그 결과 도메인 별로 1:1 매핑되어 존재하던 Excel 파일 작성 로직을 단 하나로 간추릴 수 있었다.</p>
 <h2 id="Tell-Don’t-Ask"><a href="#Tell-Don’t-Ask" class="headerlink" title="Tell, Don’t Ask"></a>Tell, Don’t Ask</h2><p>객체지향 캡슐화와 관련되어 유명한 규칙 중 하나가 ‘Tell, Don’t Ask’다. 객체에게 ‘넌 뭘 갖고 있니?’라고 묻지 말고 ‘이것 좀 해줘’라고 말하라는 규칙이다.<br>객체가 갖고 있는 데이터를 읽는 순간 우리는 객체지향이 아닌 절차지향을 만나게 된다. 객체에 대해서 파고들지 말고 객체를 믿고 객체에게 묻는 것이 객체지향의 출발점이다.</p>
 
     </article>
@@ -453,7 +455,7 @@ height:50vh;
             <p>Author：<a href="https://sogoagain.github.io">sogoagain</a>
             </p><p>Link：<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/</a>
             </p><p>Publish date：<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">September 25th 2019, 11:27:05 pm</a>
-            </p><p>Update date：<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">September 26th 2019, 1:48:54 am</a>
+            </p><p>Update date：<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">September 26th 2019, 2:02:47 am</a>
             </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
         </div>
     
