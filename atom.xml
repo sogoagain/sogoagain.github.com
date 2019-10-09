@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Sogoagain Blog</title>
+  <title>기술을 기술하다</title>
   
-  <subtitle>기술 블로그</subtitle>
+  <subtitle>sogoagain의 기술 블로그</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
