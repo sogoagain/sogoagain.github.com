@@ -8,6 +8,46 @@
     </url>
 
     <url>
+        <loc>https://sogoagain.github.io/2019/10/22/%EC%9D%98%EC%8B%9D%EC%A0%81%EC%9D%B8-%EC%97%B0%EC%8A%B5%EC%97%90-%EA%B8%B0%EB%B0%98%ED%95%9C-%EB%82%98%EC%9D%98-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%95%99%EC%8A%B5/</loc>
+        <lastmod>2019-10-21T16:07:56.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/2019/10/22/%E1%84%8B%E1%85%B4%E1%84%89%E1%85%B5%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B5%E1%86%AB-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8%E1%84%8B%E1%85%A6-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%82%E1%85%A1%E1%84%8B%E1%85%B4-%E1%84%8B%E1%85%A1%E1%87%81%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8B%E1%85%B4-%E1%84%92%E1%85%A1%E1%86%A8%E1%84%89%E1%85%B3%E1%86%B8/</loc>
+        <lastmod>2019-10-21T16:07:56.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/2019/10/20/%E1%84%8B%E1%85%B4%E1%84%89%E1%85%B5%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B5%E1%86%AB-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8%E1%84%8B%E1%85%A6-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%82%E1%85%A1%E1%84%8B%E1%85%B4-%E1%84%92%E1%85%A1%E1%86%A8%E1%84%89%E1%85%B3%E1%86%B8-%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8/</loc>
+        <lastmod>2019-10-21T15:42:49.324Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/2017/01/06/%EB%A5%B4%EB%B8%94%EB%9E%91%EC%9D%98-%EB%B2%95%EC%B9%99/</loc>
+        <lastmod>2019-10-20T14:05:32.047Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/2019/06/07/%EB%AC%B8%ED%99%94%EC%99%80-%EA%B8%B0%EC%88%A0/</loc>
+        <lastmod>2019-10-20T14:05:32.042Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/2019/09/25/AWS%EB%8F%84-Setter%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4/</loc>
         <lastmod>2019-09-27T13:01:06.246Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,14 +82,6 @@
     <url>
         <loc>https://sogoagain.github.io/2019/06/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-git-%EA%B8%B0%EB%B3%B8/</loc>
         <lastmod>2019-07-26T18:57:46.925Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/2019/06/07/%EB%AC%B8%ED%99%94%EC%99%80-%EA%B8%B0%EC%88%A0/</loc>
-        <lastmod>2019-07-26T18:17:27.216Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -122,14 +154,6 @@
     <url>
         <loc>https://sogoagain.github.io/2017/01/29/%EB%82%98%EC%9D%98-vimrc/</loc>
         <lastmod>2019-07-26T17:26:35.109Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/2017/01/06/%EB%A5%B4%EB%B8%94%EB%9E%91%EC%9D%98-%EB%B2%95%EC%B9%99/</loc>
-        <lastmod>2019-07-26T17:23:33.658Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
