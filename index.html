@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="sogoagain">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="sogoagain">
+    
+    <meta name="keywords" content="sogoagain,기술을 기술하다,기술,Java,Spring,Software">
+    
+    <meta name="description" content="sogoagain's Technology Blog">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="canonical" href="https://sogoagain.github.io/">
+    <title>기술을 기술하다</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-134204435-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</head>
+
+    
+        <body class="home-body">
+    
+    
+<header class="header index-header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href="/">기술을 기술하다</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            기술을 기술하다
+            <!-- 文章页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                sogoagain의 기술 블로그
+            
+            <!-- 文章页  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;">
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">
+            
+                <span>의식적인 연습에 기반한 나의 앞으로의 학습</span>
+        </a>
+        <div class="abstract-content">
+            무언가 문제가 생긴 나의 학습 방법2019년 목표: 매일 5분 학습하기학생 신분을 벗어나 사회인으로 하루하루 살아가던 어느날, 뒤 돌아보니 나의 상태는 그대로인 것 같은데 시간은 훌쩍 지나가 버린 것 같은 느낌이 들었다. 이에 대해 위기감이 느껴진 나는 2019년 1월 1일, 새해를 맞이하여 ‘매일 학습하기’를 2019년의 목표로 삼았다. 정확히는 ‘매일 5분 이상 학습하기’ 였다. 목표로한 학습 시간이 5분으로 매우 짧은데, 이렇게 짧은 시간을 목표로 설정한 이유는 ‘학습의 양’보다 ‘학습의 지속’에 초점을 맞췄기 때문이다....
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="독서">독서</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="etc">etc</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="학습">학습</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">
+            
+                <span>AWS도 Setter를 사용하지 않는다</span>
+        </a>
+        <div class="abstract-content">
+            AWS도 Setter를 사용하지 않는다.AWS SDK 버전을 ‘1.11.x’에서 ‘2.x’로최근 회사 프로젝트의 AWS SDK(Java) 버전을 ‘1.11.x’에서 ‘2.x’으로 올리는 작업을 진행하였다.사내 시스템에 다량의 Email을 발송하는 기능이 있는데 실행 시간이 오래 걸렸기 때문에 개선이 필요하였다.
+메일 발송 기능은 AWS SES 서비스를 사용하고 있었고 실행 시간을 단축하고자 메일 발송 로직 전체를 비동기로 변경하려고 알아보던 중 AWS SDK 버전이 2.x로 들어서면서 Nonblocking I/O를 지원하는 것...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="java">java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="OOP">OOP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">
+            
+                <span>코틀린(Kotlin)에서의 null 안전 처리</span>
+        </a>
+        <div class="abstract-content">
+            코틀린 타입 시스템에서의 null 코틀린의 타입은 기본적으로 null 불가능(non-nullable)이다. 코틀린의 타입 시스템은 코드에서 NPE(NullPointerException)가 발생하지 않도록 설계되었다. 아래의 코틀린 Reference를 살펴보면 NPE가 발생하는 경우가 한정 되어 있다는 것을 확인할 수 있다.
+
+Kotlin Reference - Null Safety
+
+명시적 null 타입 코틀린 시스템에서 기본적으로 null이 불가능하도록 강제하고 있지만, 자바와의 상호 운용성 등의 이유로 코틀린에서도 null이...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Kotlin">Kotlin</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="null처리">null처리</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">
+            
+                <span>HTTP 메시지 - HTTP Requests</span>
+        </a>
+        <div class="abstract-content">
+            HTTP 요청웹에서 서버와 클라이언트 간 데이터를 주고받기 위해 HTTP 통신 규약을 사용한다. 오늘은 그중 클라이언트가 서버로 요청을 보내 어떤 행위가 일어나게끔 하는 HTTP 메시지 중 하나인 HTTP 요청 메시지에 대해 알아보기로 한다.
+HTTP Requests
+예시request1234567POST /user/create HTTP/1.1HOST: localhost:8080Connection-Length: 59Content-Type: application/x-www-form-urlencodedAccept: */*userId...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="WEB">WEB</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="HTTP">HTTP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">
+            
+                <span>JUnit5, @ParameterizedTest 사용 예</span>
+        </a>
+        <div class="abstract-content">
+            JUnit5에서 ParameterizedTest를 사용하여 여러번의 테스트 케이스 수행하기
+테스트 메서드에 입력값만 전달할 경우
+12345678910111213@ParameterizedTest@ValueSource(strings = &#123;        "123",        "1 - 2",        "1 + 2 + 3",        "2 + 3 * 4 / 2",        "1343 + 231 * 2 / 4",&#125;)void 올바른_형식의_수식으로_다항식_생성_테스트(String expression) &#1...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="junit">junit</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TDD">TDD</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/12/가볍게-정리하는-git-기본/">
+            
+                <span>가볍게 정리하는 git 기본</span>
+        </a>
+        <div class="abstract-content">
+            Git 기본 내용 정리Git과 Github를 사용하고 있지만 단순히 commit, pull/push, branch 정도의 기능만 사용하고 있었을 뿐 아니라 Git GUI 도구를 활용했기에 명령줄 환경에서 git을 잘 다루지 못하였다. Git의 여러 기능을 명령줄 환경에서 능숙하게 사용하여 버전관리 및 협업을 제대로 하고 싶은 바람이 마음속 깊숙이 자리 잡고 있었다. 미루고 미루다 이번에 기회가 되어 Git의 내용을 정리해보는 시간을 가졌다.
+명령어 중심으로 정리를 한 것이라 Git을 처음 사용하시는 분들은 포스팅에 참고한 아래...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="git">git</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/07/문화와-기술/">
+            
+                <span>문화와 기술</span>
+        </a>
+        <div class="abstract-content">
+            문화와 기술최근 읽고 있는 ‘임백준의 대살개문’에서 다음과 같은 문구를 접하게 되었다.
+
+문화는 흙이고 기술은 꽃이다. - 임백준의 대살개문 中
+
+책 제목 자체가 ‘대한민국을 살리는 개발자 문화’의 약자다.기술의 꽃이 필 수 있도록 좋은 개발 문화를 만드는데 일조를 하고 싶다.그렇기에, 나와 내 주변으로부터 시작해 어제보다 한 걸음 더 앞서 있을 수 있도록 노력할 것이다.
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="독서">독서</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="etc">etc</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="개발문화">개발문화</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">
+            
+                <span>Algorithm 문제 Java Code Snippet</span>
+        </a>
+        <div class="abstract-content">
+            알고리즘 문제 풀이 시 자주 사용 되는 Code Snippet 정리한동안 풀었던 알고리즘 문제들의 소스 코드를 스스로 리뷰해보는 시간을 가졌다.알고리즘 문제를 풀 때면 비슷한 코드 조각들을 작성하게 되는데, 그때그때 찾아보거나 생각해서 작성하려니 시간 소요가 생각보다 커지게 되었다. 이와 같은 이유로 이제껏 작성한 코드에서 자주 사용되는 조각들을 추출하여 정리해보았다.
+정리해보니 자료구조의 사용과 관련된 코드들이 많았다. 앞으로 Collection과 람다를 깊게 공부하여 더 좋은 방법이 있으면 바로바로 업데이트할 생각이다.
+H...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="java">java</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">
+            
+                <span>IntelliJ에서 Docker로 Web App 배포하기</span>
+        </a>
+        <div class="abstract-content">
+            WAR artifact 빌드
+Project Settings(⌘;) &gt; Artifacts 메뉴 진입
+
+(+) 버튼 &gt; Web Application: Archive &gt; For ‘[Project Name]:war exploded’ 클릭
+
+생성된 Artifacts의 속성 설정 후 Apply
+
+Output Layout에서 ‘.war’ 파일의 파일명이 Context Root 명이 되므로 원하는 Context Root가 있을 경우 .war 파일명을 변경합니다..war의 기본 파일명은 [Project Name]_war.war...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="IntelliJ">IntelliJ</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/02/22/ORA-12505-오류-해결/">
+            
+                <span>ORA-12505 오류 해결</span>
+        </a>
+        <div class="abstract-content">
+            ORA-12505 오류 발생과 해결
+오류 내용: ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+업무 중 타 시스템의 Oracle DB와 연동하는 작업을 진행 하였습니다. 이전까지 진행했던 Oracle DB 연결 작업의 절차를 따라 진행 하였음에도 ORA-12505 오류가 발생하며 연결에 차질이 생겼습니다. 이 문제를 해결하며 알게된 SID와 Service Name에 대해서 정리해 보았습니다.
+연결에 차질이 생긴 원인은 SID를...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DB">DB</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Oracle">Oracle</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+    </nav>
+    
+</main>
+            <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src="/avatar/sogoagain.png">
+    <div class="profile-name">sogoagain</div>
+    
+    <div class="profile-signature">
+        continuous improvement
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:imyong0@gmail.com" class="iconfont-archer email" title="email" rel="external nofollow noopener noreferrer" target="_blank"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/sogoagain" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    
+        <div class="about-me">
+            <a href="/about">ABOUT ME</a>
+        </div>
+    
+</div>
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:imyong0@gmail.com" class="iconfont-archer email" title="email" rel="external nofollow noopener noreferrer" target="_blank"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/sogoagain" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank" rel="external nofollow noopener noreferrer">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 20
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">코틀린(Kotlin)에서의 null 안전 처리</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">JUnit5, @ParameterizedTest 사용 예</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/가볍게-정리하는-git-기본/">가볍게 정리하는 git 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/문화와-기술/">문화와 기술</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">IntelliJ에서 Docker로 Web App 배포하기</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-오류-해결/">ORA-12505 오류 해결</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D에서-Observer패턴을-이용한-연산량-감소/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/가볍게-정리하는-DB-기본-내용/">가볍게 정리하는 DB 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/가볍게-구분하는-개체-객체-인스턴스/">가볍게 구분하는 개체, 객체, 인스턴스</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">SourceTree 'Permission denied (publickey)' 에러</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar를-이용한-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/나의-vimrc/">나의 vimrc</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-에서-대입-연산자를-오버로딩-하는-괜찮은-방법/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/르블랑의-법칙/">르블랑의 법칙</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/가상함수와-가상상속/">가상함수와 가상상속</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/애자일-소프트웨어-개발/">애자일 소프트웨어 개발</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
+    
+        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
+    
+        <span class="sidebar-tag-name" data-tags="SourceTree"><span class="iconfont-archer">&#xe606;</span>SourceTree</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSH"><span class="iconfont-archer">&#xe606;</span>SSH</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity3D"><span class="iconfont-archer">&#xe606;</span>Unity3D</span>
+    
+        <span class="sidebar-tag-name" data-tags="Design Pattern"><span class="iconfont-archer">&#xe606;</span>Design Pattern</span>
+    
+        <span class="sidebar-tag-name" data-tags="C#"><span class="iconfont-archer">&#xe606;</span>C#</span>
+    
+        <span class="sidebar-tag-name" data-tags="OOP"><span class="iconfont-archer">&#xe606;</span>OOP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Software engineering"><span class="iconfont-archer">&#xe606;</span>Software engineering</span>
+    
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
+    
+        <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
+    
+        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
+    
+        <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
+    
+        <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
+    
+        <span class="sidebar-tag-name" data-tags="null처리"><span class="iconfont-archer">&#xe606;</span>null처리</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer architecture"><span class="iconfont-archer">&#xe606;</span>Computer architecture</span>
+    
+        <span class="sidebar-tag-name" data-tags="SimpleScalar"><span class="iconfont-archer">&#xe606;</span>SimpleScalar</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache memory"><span class="iconfont-archer">&#xe606;</span>Cache memory</span>
+    
+        <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
+        <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
+    
+        <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
+    
+        <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
+    
+        <span class="sidebar-category-name" data-categories="독서"><span class="iconfont-archer">&#xe60a;</span>독서</span>
+    
+        <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
+    
+        <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
+    
+        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "sogoagain"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <!-- CNZZ  -->
+    
+    
+    <!-- async load share.js -->
+     
+    </body>
+</html>
+
+

@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="sogoagain">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="sogoagain">
+    
+    <meta name="keywords" content="sogoagain,기술을 기술하다,기술,Java,Spring,Software">
+    
+    <meta name="description" content="sogoagain's Technology Blog">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="canonical" href="https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">
+    <title>의식적인 연습에 기반한 나의 앞으로의 학습 · 기술을 기술하다</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-134204435-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">기술을 기술하다</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">기술을 기술하다</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            의식적인 연습에 기반한 나의 앞으로의 학습
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                1만 시간의 재발견: 노력은 왜 우리를 배신하는가
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="독서">독서</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="etc">etc</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="학습">학습</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.8k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/10/22</span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;">
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="무언가-문제가-생긴-나의-학습-방법"><a href="#무언가-문제가-생긴-나의-학습-방법" class="headerlink" title="무언가 문제가 생긴 나의 학습 방법"></a>무언가 문제가 생긴 나의 학습 방법</h2><h3 id="2019년-목표-매일-5분-학습하기"><a href="#2019년-목표-매일-5분-학습하기" class="headerlink" title="2019년 목표: 매일 5분 학습하기"></a>2019년 목표: 매일 5분 학습하기</h3><p>학생 신분을 벗어나 사회인으로 하루하루 살아가던 어느날, 뒤 돌아보니 나의 상태는 그대로인 것 같은데 시간은 훌쩍 지나가 버린 것 같은 느낌이 들었다. 이에 대해 위기감이 느껴진 나는 2019년 1월 1일, 새해를 맞이하여 ‘매일 학습하기’를 2019년의 목표로 삼았다. 정확히는 ‘매일 <strong>5분</strong> 이상 학습하기’ 였다. 목표로한 학습 시간이 5분으로 매우 짧은데, 이렇게 짧은 시간을 목표로 설정한 이유는 ‘학습의 양’보다 <strong>‘학습의 지속’</strong>에 초점을 맞췄기 때문이다. 뿐만 아니라 5분 학습을 위해 시간을 투자하면 자연스레 30분, 1시간, 2시간 학습을 이어나갈 것이라 생각하였다.</p>
+<h3 id="정말로-5분씩만…"><a href="#정말로-5분씩만…" class="headerlink" title="정말로 5분씩만…"></a>정말로 5분씩만…</h3><p>5분만이라도 학습을 하기 위해 의자에 앉으면 자연스레 학습 시간이 길어질 것이란 생각은 나의 큰 착각이었다. 최근 나의 학습 내역들을 보면 정말로 5분만 학습을 하고 있었다. 물론, 5분만 해도 어제보다 나은 내가 되겠지만 목표치에는 한없이 모자란 학습량이다. 무언가 문제가 생긴 것 같았다. 이대로는 내가 되고 싶은 미래 내 모습에 발 끝도 못 따라갈 것만 같았다.</p>
+<h3 id="해결책을-찾아야-해"><a href="#해결책을-찾아야-해" class="headerlink" title="해결책을 찾아야 해"></a>해결책을 찾아야 해</h3><p>나는 단지 책상에 앉아서 학습을 해야한다는 목표만을 세웠을 뿐 어떻게 학습을 해야할 지에 대해서는 큰 고민을 하지 않았다. 그래서 이런 문제가 발생한 것 같았다. 5분 학습 사태를 해결하기 위해 어떻게 해야하는지 고민을 하다가 존경하는 개발자 중 한분인 ‘박재성 교수님’께서 추천한 도서인 <strong>‘1만 시간의 재발견: 노력은 왜 우리를 배신하는가?’</strong>가 떠올랐다. 박재성 교수님의 TDD 발표, 유튜브 스프링 부트 강의를 보면 ‘의식적인 연습’에 대한 이야기를 자주 하신다. 때문에 ‘의식적인 연습’이 컴포트 존을 벗어나려는 노력 인 것을 어렴풋이 알고 있었다.</p>
+<blockquote>
+<p>나는 2019년 초에 박재성님의 okky 세미나 영상으로 TDD를 처음 접하였다. 영상에 감명을 받은 나는 TDD 스터디에 들어갔고, 스터디원들의 도움으로 크게 성장하였다. 함께 했던 스터디원들에게 감사한 마음이 많이 든다. 뿐만 아니라 박재성님의 유튜브 강의로 스프링 부트를 처음 접하였고 .NET을 운영하던 내가 지금은 스프링 기반으로 개발을 하고 있다.</p>
+<p>정말 인생에 많은 영향과 영감을 받았고 또 받고 있다. 또한 NEXTSTEP 오프라인 TDD를 수강 하였다.  (아직 완료 못한 마지막 과제가 남아 있는데 빠른 시일 내에 완료해야겠다.)</p>
+</blockquote>
+<p>현재 5분이라는 컴포트 존에 사로잡힌 내게 필요한 것이 ‘의식적인 연습’이라는 생각이 들었고 곧장 책을 읽게 되었다. 이 책이 현재 상황을 해결할 수 있는 실마리를 제공해 줄 것만 같았기 때문이다. 그리고 그 예상은 정확히 맞아 떨어졌다.</p>
+<h2 id="1만-시간의-재발견-노력은-왜-우리를-배신하는가"><a href="#1만-시간의-재발견-노력은-왜-우리를-배신하는가" class="headerlink" title="1만 시간의 재발견: 노력은 왜 우리를 배신하는가?"></a>1만 시간의 재발견: 노력은 왜 우리를 배신하는가?</h2><p>책 내용을 요약하며 앞으로의 나의 학습 방향을 예시로 작성 해보고자 한다. 글을 쓰는 시점에서는 책을 읽은지 얼마 되지 않아 책 내용들을 인지하고 있지만 시간이 흐른 뒤 이 내용들을 잊고 살아갈 확률이 높은 미래의 나를 위해서라도 요약을 해야할 것 같다.</p>
+<h3 id="타고난-재능은-없고-노력-만이-답이다"><a href="#타고난-재능은-없고-노력-만이-답이다" class="headerlink" title="타고난 재능은 없고 노력 만이 답이다."></a>타고난 재능은 없고 노력 만이 답이다.</h3><p>이 책의 저자는 30년 이상 특정 분야(운동선수, 연주자, 체스 기사 등)의 전문가들을 연구 하였는데 ‘선천적인 재능’이 그들을 세계적인 전문가로 만든 것이 아님을 밝혀냈다. 예를 들면 체스 기사가 되기 위해서는 높은 IQ를 가진 사람이 유리할 것이라 일반적으로 생각하는데 이러한 생각이 틀렸다는 것이다. 실제 책에서 인용한 체스 연구를 보면 높은 IQ를 가진 사람이 체스를 배우는 초기에는 이점을 가지고 있을지 모르지만 시간이 지날수록 IQ 보다는 노력의 양과 질이 더 중요했다고 한다.</p>
+<p>또한, 사람은 적응의 동물이다. 의식적인 훈련, 의식적인 연습을 통해 원하는 방향으로 뇌를 변화시키는 것이 가능하다고 한다. 성인의 뇌는 더이상 세포들이 분열하지 않기 때문에 변화하지 않다고 생각할 수 있다. 그러나, 성인의 뇌는 신경조직망을 다양한 방법으로 재배열하여 변화에 적응해 나간다.</p>
+<h3 id="어떻게-노력해야-하는가"><a href="#어떻게-노력해야-하는가" class="headerlink" title="어떻게 노력해야 하는가?"></a>어떻게 노력해야 하는가?</h3><p>그럼, 무조건 노력만 해서 전문가가 될 수 있을까? 이 책의 제목처럼 어떤 분야에 1만 시간을 투자하면 그 분야의 뛰어난 전문가가 될 수 있을까? 즉 <strong>‘단순한 연습(naive practice)’</strong>로 전문가가 될 수 있을까? 그렇지 않다. 노력에도 전략이 필요하며 <strong>전략적인 노력을 꾸준히</strong> 해야 뛰어난 전문가가 될 수 있다고 이야기 한다. 이 책에서는 그 방법으로 <strong>‘의식적인 연습’</strong> 을 제안한다.</p>
+<h3 id="목적의식-있는-연습-Purposeful-Practice"><a href="#목적의식-있는-연습-Purposeful-Practice" class="headerlink" title="목적의식 있는 연습 (Purposeful Practice)"></a>목적의식 있는 연습 (Purposeful Practice)</h3><p>‘의식적인 연습’을 설명하기 전에 ‘목적의식 있는 연습’을 먼저 알아보자. ‘목적의식 있는 연습’은 ‘의식적인 연습’으로 가기 전 단계다.<br>‘목적의식 있는 연습’ 특징은 다음과 같다. 예시로 든 사례들은 코틀린을 학습하기 위해 내가 생각하고 있는 목적의식 있는 연습 계획이다.</p>
+<ol>
+<li>명확하고 구체적인 목표를 가지고 있다. <blockquote>
+<p>전반적인 목표(수행능력 향상) + 구체적인 목표 + 계획</p>
+<p>예) 코틀린에 익숙해지기 위해 코틀린으로 간단한 계산기 console application을 10월 30일 까지 구현한다.</p>
+</blockquote>
+</li>
+<li>집중이 필요하다.<blockquote>
+<p>동기부여를 유지할 방법도 파악해야 한다.</p>
+<p>예) 코틀린을 주제로 회사에서 발표를 한다. 기존에 자바로 작성했던 TDD 연습 프로젝트를 코틀린으로 구현해보며 자바와 코틀린의 차이점을 분석해 보거나 코틀린에서 제공하는 문법들을 활용하여 더 깔끔한 코드를 작성해본다. 코틀린으로 스프링 부트 환경의 application을 구현하는 것이 최종 목표다.</p>
+</blockquote>
+</li>
+<li>피드백이 필요하다.<blockquote>
+<p>정확히 어디가 어떻게 부족한지 알게 해주는 피드백이 필요하다. 또한 피드백은 진척 정도를 추적 관찰할 수단이 된다.</p>
+<p>예) 피드백은 사람에게 받으면 좋으나 현재 환경에서는 어려움이 있기에 도서를 통해 best practice와 나의 소스코드를 비교해본다. (이펙티브 자바), 코틀린으로 작성된 코드를 리뷰하는 스터디에 참여한다.</p>
+</blockquote>
+</li>
+<li>컴포트 존에서 벗어나야 한다.<blockquote>
+<p>이전에는 하지 못했던 것을 시도하는 것이다. 컴포트 존에서 너무 많이 벗어나면 안된다. 스위트 스폿(sweet spot)에서 가장 빠르게 성장한다.</p>
+<p>예) 기존의 자바처럼 코드를 작성하는 것이 아닌 코틀린 reference를 참고하며 새로운 문법들을 계속해서 시도해 나간다. console application으로 연습이 되었으면 스프링 환경에서 코틀린으로 토이 프로젝트를 진행한다.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="의식적인-연습-Deliberate-Practice"><a href="#의식적인-연습-Deliberate-Practice" class="headerlink" title="의식적인 연습 (Deliberate Practice)"></a>의식적인 연습 (Deliberate Practice)</h3><p>‘의식적인 연습’은 최종적으로 우리가 따라야 하는 연습의 방법이다. ‘목적의식 있는 연습’은 개인의 잠재력에 도달하는 것에 방향이 맞춰져 있는데 <strong>‘의식적인 연습’은 잠재력을 개발하고 만들어 내어 이전에는 불가능 했던 것을 가능</strong>하도록 하는데 목적이 있다. 그렇다면 ‘의식적인 연습’이란 무엇일까? ‘의식적인 연습’을 이해하는 데 가장 중요한 것은 <strong>‘심적 표상(mental representations)’</strong>이다. 의식적인 연습의 최종적인 목표는 심적 표상을 개발하는 것이기 때문이다.</p>
+<h3 id="심적-표상"><a href="#심적-표상" class="headerlink" title="심적 표상"></a>심적 표상</h3><p>심적 표상이란 어떤 물건, 행위 등에 대해 마음속에 떠오르는 것이다. 간단한 예로 ‘강아지’라는 단어를 들었을 때 개개인 마다 떠오르는 생각이 다를 것이다. 어떤 사람은 강아지에 대해 굉장히 구체적인 묘사를 떠올릴 수도 있고 어떤 사람은 강아지에게서 느껴지는 귀여운 감정이 떠오를 수 있다.</p>
+<p>심적 표상은 행위도 대상이 될 수 있다. 책에서는 체스를 예로 드는데, 체스 마스터들은 체스판을 보았을 때 체스말 하나하나를 분석하는 것이 아니라 체스판 전체를 하나의 패턴을 본다고 한다. 이렇게 패턴으로 인식하면 어떻게 수를 두어야 유리한지 바로 떠올릴 수 있다고 한다.</p>
+<p>내가 이해한 만큼 심적 표상을 설명해 보겠다. 특정 요구사항을 구현해야하는 상황에서 개발자마다 떠오르는 생각이 다를 것이다. 예를 들면 요구사항에 맞는 도메인 객체는 어떤 것들을 추출하고 이것들을 어떻게 협력하게 할 것 인지, 어떤 컨벤션을 지키는 코드가 깔끔한 코드인지, 어떤 디자인 패턴을 쓸 것인지 등의 생각들이 각자가 갖고 있는 심적 표상이다.</p>
+<p>심적 표상이 중요한 이유는 단기기억으로 정보를 처리하는 것보다 훨씬 신속하고 효울적으로 반응하기 때문이다. 예를 들어 레거시 코드를 리팩토링 한다고 가정해보자. 리팩토링에 대한 심적 표상의 양과 질이 떨어지면 우리는 우리가 가지고 있는 지식(자료, 도서) 등을 이용하여 리팩토링을 진행해야 한다. 리팩토링 책을 보며 비슷한 사례를 찾고 이를 적용해보고 좋지 않은 방법이면 다시 원복하고 또 새로운 사례를 찾는 행위를 반복해나가야 한다. 하지만, 리팩토링에 대한 심적 표상이 굉장히 구체적인 전문가는 레거시 코드를 보는 순간 코드 전체를 패턴으로 인지하여 개선해야할 부분을 빠르고 정확하게 찾으며 깔끔하게 리팩토링을 진행한다.</p>
+<p>즉, 전문가의 눈에는 우리가 보았을 때 아무런 규칙이 없는 것처럼 보이거나 의미없는 나열들로 보이는 것을 의미있는 하나의 패턴으로 인식하는 능력이 있다. 이 능력은 고도로 개발된 심적 표상에서 나온다.</p>
+<h3 id="심적-표상을-통한-피드백"><a href="#심적-표상을-통한-피드백" class="headerlink" title="심적 표상을 통한 피드백"></a>심적 표상을 통한 피드백</h3><p>앞서 살펴본 ‘목적의식 있는 연습’의 특징에서 ‘피드백’이 필요하다는 특징이 있다. 피드백이 있어야 자신의 잘못된 것을 바로 잡고 컴포트 존을 벗어나 더 나은 방향으로 나아갈 수 있기 때문이다. 피드백은 외부에서만 받을 수 있다고 생각할 수 있다. 하지만, 심적 표상이 고도로 발달된 전문가들은 자신들의 심적 표상을 이용해 스스로에게 피드백을 제공한다.</p>
+<p>소프트웨어 개발 행위로 내가 이해한 만큼 예를 들어 보겠다. 심적 표상이 매우 섬세하고 상세하게 발달된 전문가는 소프트웨어 개발 과정 동안 자신의 심적 표상으로 자기 스스로에게 피드백을 제공한다. 코드를 작성할 때 어떤 규칙들을 지켜야 하는지, 객체지향적인 코드가 어떤 모습인지, 현재 개발중인 단계가 전체 개발 프로세스 중 어디에 위치해 있는지, 지금 개발중인 단계보다 더 나아지려면 어떻게 해야하는 지 등 자신이 생각하는 이상적인 프로그램의 모습, 개발 과정이 패턴 형식으로 자연스레 떠오르는 것이다. 이를 통해 자신의 개발과정에서 이상적인 패턴과 멀어지면 수정하고 이상적인 패턴에 도달하기 위해 노력한다.</p>
+<p>즉, 심적 표상은 자신에게 피드백을 제공해준 다는 점에서 ‘의식적인 연습’에서 필수적인 요소다. 앞에서 ‘의식적인 연습’의 최종적인 목표가 심적 표상을 개발하는 것이라고 하였는데 지금와서 심적 표상이 ‘의식적인 연습’에 필수적인 요소라니… 무언가 말이 안맞는 것 같지만 이게 사실이다. 심적 표상과 ‘의식적인 연습’은 선순환 관계에 있고 이런 선순환 관계 속에서 개인은 계속해서 발전하는 것이다.</p>
+<h3 id="의식적인-연습-7가지-원칙"><a href="#의식적인-연습-7가지-원칙" class="headerlink" title="의식적인 연습 7가지 원칙"></a>의식적인 연습 7가지 원칙</h3><p>의식적인 연습에 조금 더 다가가기 위해 7가지 원칙을 살펴보며 나의 학습 방향에 대한 예시를 함께 들도록 하겠다.</p>
+<ol>
+<li>효과적인 훈련 기법이 존재하는 기술을 연마하는 방법이다.</li>
+<li>컴포트 존을 벗어난 지점에서 진행되며 현재 능력을 살짝 넘어서는 작업을 지속적으로 시도해야 한다.</li>
+<li>명확하고 구체적인 목표를 가지고 진행된다.</li>
+<li>신중하고 계획적이다.</li>
+<li>피드백과 피드백에 따른 행동 변경을 수반한다.</li>
+<li>효과적인 심적 표상을 만들어내는 한편으로 거기에 의존한다.</li>
+<li>기존에 습득한 기술의 특정 부분을 집중적으로 개선함으로써 이를 한층 발전 시키거나 수정하는 과정이 수반된다.</li>
+</ol>
+<p>위 원칙들은 엄격한 의미에서의 ‘의식적인 연습’에서 발견되는 원칙이다. 엄격한 의미의 ‘의식적인 연습’에서는 이미 고도로 발달된 훈련 기법이 존재하고 이를 지도해주는 교사나 코치가 필요하는 등 실제 자신이 몸담고 있는 분야에 적용하기 힘든 내용들이 있다. 그러나, 엄격한 의미에서의 ‘의식적인 연습’이 불가능한 영역이라고 해도 위 원칙들을 일종의 안내서로 활용하여 ‘의식적인 연습’을 해나갈 수 있다.</p>
+<h3 id="나의-‘의식적인-연습’을-위한-준비"><a href="#나의-‘의식적인-연습’을-위한-준비" class="headerlink" title="나의 ‘의식적인 연습’을 위한 준비"></a>나의 ‘의식적인 연습’을 위한 준비</h3><ol>
+<li><p>지침서가 될 레퍼런스 찾기</p>
+<blockquote>
+<p>예를 들면 학습 하고자 하는 내용에 대한 질 좋은 포스팅을 제공하는 블로그를 찾고 해당 블로그에서 소개하는 기술들을 실제 프로젝트에 적용 시켜볼 것이다. 즉, 블로그가 나의 지침서이자 피드백 요소가 되는 것이다.</p>
+<p>뿐만 오픈소스, 공식 문서 등을 지침서로 삼고 지침서에서 제공하는 내용들이 심적 표상으로 다가올 수 있도록 연습할 계획이다.</p>
+</blockquote>
+</li>
+</ol>
+<ol start="2">
+<li><p>연습 시간 할애하기</p>
+<blockquote>
+<p>앞에서 학습할 대상에 대한 지침서를 찾았다면 지침서 중 일부를 습득하는 것을 구체적인 목표로 잡고 일정 시간 몰입하여 연습할 계획이다. 심적 표상이 어느정도 구체화 될 때 까지 연습하며 구체화가 되었다면 발표, 블로그 포스팅 등을 통해 내가 이해한 만큼 설명을 해볼 것이다. 설명을 하던 중 막히는 부분이 있으면 이를 피드백으로 삼고 심적 표상을 더욱 구체화 하도록 하겠다.</p>
+<p>오후에 시간을 할애하면 방해요소가 많기 때문에 출근 전인 오전에 최소 한시간 연습하는 시간을 갖도록 할 것이다.</p>
+</blockquote>
+</li>
+</ol>
+<ol start="3">
+<li><p>피드백 받을 수 있는 환경에 참여하기</p>
+<blockquote>
+<p>회사, 스터디, 강의 등 피드백을 받을 수 있는 기회를 최대한 찾고 피드백을 받도록 노력할 것이다.</p>
+</blockquote>
+</li>
+</ol>
+<ol start="4">
+<li><p>요구사항 개발 전 심적 표상을 미리 만드는 연습</p>
+<blockquote>
+<p>프로그램을 작성 하기 전에 심적 표상을 미리 만들고 이후 작업들을 미리 만든 심적 표상을 통해 모니터링 하며 평가하고 수정하는 습관을 들일 것이다.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="엄청-힘들-것-같은데"><a href="#엄청-힘들-것-같은데" class="headerlink" title="엄청 힘들 것 같은데?"></a>엄청 힘들 것 같은데?</h3><p>책의 저자는 이 ‘의식적인 연습’이 굉장히 힘들고 어려운 과정이라고 말한다. 실제로 특정 분야의 전문가에게도 의식적인 연습을 실천하는 것이 매우 힘든 일이라고 한다. 하지만, 그러한 노력이 있었기에 전문가가 된 것이다. 나는 이 책을 접하기 전까지 특정 분야에서 뛰어난 성과를 내는 사람은 그럴만한 재능이 있어서 그러한 일들을 해내는 것이란 생각을 은연중에 하고 있었다. 하지만 이 책에서 전문가들이 자신들의 위치에 오르기 까지 엄청난 노력이 하고 있었다는 사실을 접하면서 나의 기존 생각에 대해 반성하게 되었다. 재능이라는 단어로 그들의 노력을 어쩌면 깍아 내린 것 같았기 때문이다. 뿐만 아니라 의식적인 연습을 실천하면 전문가가 될 수 있다는 사실은 나에게 희망적인 요소로 다가왔다. 힘들겠지만 내가 되고싶은 전문가의 모습에 도달할 수 있는 방법을 찾은 것 같기 때문이다. 지금의 마음가짐은 위에서 계획한 대로 실천하는 것이지만 시간이 흘르면 어느샌가 다시 5분 학습에 굴레에 빠지게 될 가능성이 높다. 그때면 이 블로그 글을 피드백 삼아 지속적으로 ‘의식적인 연습’을 실천하는 개발자가 되도록 해야겠다.</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://sogoagain.github.io">sogoagain</a>
+            </p><p>Link：<a href="https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/</a>
+            </p><p>Publish date：<a href="https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">October 22nd 2019, 12:43:11 am</a>
+            </p><p>Update date：<a href="https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">October 22nd 2019, 1:16:37 am</a>
+            </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/09/25/AWS도-Setter를-사용하지-않는다/" title="AWS도 Setter를 사용하지 않는다">
+                    <div class="prevTitle">AWS도 Setter를 사용하지 않는다</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "https://sogoagain.github.io/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "의식적인 연습에 기반한 나의 앞으로의 학습"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://sogoagain.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:imyong0@gmail.com" class="iconfont-archer email" title="email" rel="external nofollow noopener noreferrer" target="_blank"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/sogoagain" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank" rel="external nofollow noopener noreferrer">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style="top:50vh;">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#무언가-문제가-생긴-나의-학습-방법"><span class="toc-number">1.</span> <span class="toc-text">무언가 문제가 생긴 나의 학습 방법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019년-목표-매일-5분-학습하기"><span class="toc-number">1.1.</span> <span class="toc-text">2019년 목표: 매일 5분 학습하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#정말로-5분씩만…"><span class="toc-number">1.2.</span> <span class="toc-text">정말로 5분씩만…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#해결책을-찾아야-해"><span class="toc-number">1.3.</span> <span class="toc-text">해결책을 찾아야 해</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1만-시간의-재발견-노력은-왜-우리를-배신하는가"><span class="toc-number">2.</span> <span class="toc-text">1만 시간의 재발견: 노력은 왜 우리를 배신하는가?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#타고난-재능은-없고-노력-만이-답이다"><span class="toc-number">2.1.</span> <span class="toc-text">타고난 재능은 없고 노력 만이 답이다.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#어떻게-노력해야-하는가"><span class="toc-number">2.2.</span> <span class="toc-text">어떻게 노력해야 하는가?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#목적의식-있는-연습-Purposeful-Practice"><span class="toc-number">2.3.</span> <span class="toc-text">목적의식 있는 연습 (Purposeful Practice)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#의식적인-연습-Deliberate-Practice"><span class="toc-number">2.4.</span> <span class="toc-text">의식적인 연습 (Deliberate Practice)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#심적-표상"><span class="toc-number">2.5.</span> <span class="toc-text">심적 표상</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#심적-표상을-통한-피드백"><span class="toc-number">2.6.</span> <span class="toc-text">심적 표상을 통한 피드백</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#의식적인-연습-7가지-원칙"><span class="toc-number">2.7.</span> <span class="toc-text">의식적인 연습 7가지 원칙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#나의-‘의식적인-연습’을-위한-준비"><span class="toc-number">2.8.</span> <span class="toc-text">나의 ‘의식적인 연습’을 위한 준비</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#엄청-힘들-것-같은데"><span class="toc-number">2.9.</span> <span class="toc-text">엄청 힘들 것 같은데?</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 20
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">코틀린(Kotlin)에서의 null 안전 처리</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">JUnit5, @ParameterizedTest 사용 예</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/가볍게-정리하는-git-기본/">가볍게 정리하는 git 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/문화와-기술/">문화와 기술</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">IntelliJ에서 Docker로 Web App 배포하기</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-오류-해결/">ORA-12505 오류 해결</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D에서-Observer패턴을-이용한-연산량-감소/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/가볍게-정리하는-DB-기본-내용/">가볍게 정리하는 DB 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/가볍게-구분하는-개체-객체-인스턴스/">가볍게 구분하는 개체, 객체, 인스턴스</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">SourceTree 'Permission denied (publickey)' 에러</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar를-이용한-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/나의-vimrc/">나의 vimrc</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-에서-대입-연산자를-오버로딩-하는-괜찮은-방법/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/르블랑의-법칙/">르블랑의 법칙</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/가상함수와-가상상속/">가상함수와 가상상속</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/애자일-소프트웨어-개발/">애자일 소프트웨어 개발</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
+    
+        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
+    
+        <span class="sidebar-tag-name" data-tags="SourceTree"><span class="iconfont-archer">&#xe606;</span>SourceTree</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSH"><span class="iconfont-archer">&#xe606;</span>SSH</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity3D"><span class="iconfont-archer">&#xe606;</span>Unity3D</span>
+    
+        <span class="sidebar-tag-name" data-tags="Design Pattern"><span class="iconfont-archer">&#xe606;</span>Design Pattern</span>
+    
+        <span class="sidebar-tag-name" data-tags="C#"><span class="iconfont-archer">&#xe606;</span>C#</span>
+    
+        <span class="sidebar-tag-name" data-tags="OOP"><span class="iconfont-archer">&#xe606;</span>OOP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Software engineering"><span class="iconfont-archer">&#xe606;</span>Software engineering</span>
+    
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
+    
+        <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
+    
+        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
+    
+        <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
+    
+        <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
+    
+        <span class="sidebar-tag-name" data-tags="null처리"><span class="iconfont-archer">&#xe606;</span>null처리</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer architecture"><span class="iconfont-archer">&#xe606;</span>Computer architecture</span>
+    
+        <span class="sidebar-tag-name" data-tags="SimpleScalar"><span class="iconfont-archer">&#xe606;</span>SimpleScalar</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache memory"><span class="iconfont-archer">&#xe606;</span>Cache memory</span>
+    
+        <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
+        <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
+    
+        <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
+    
+        <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
+    
+        <span class="sidebar-category-name" data-categories="독서"><span class="iconfont-archer">&#xe60a;</span>독서</span>
+    
+        <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
+    
+        <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
+    
+        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "sogoagain"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <!-- CNZZ  -->
+    
+    
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
