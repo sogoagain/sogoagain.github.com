@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
-  <updated>2019-10-21T16:33:39.728Z</updated>
+  <updated>2019-12-05T15:57:03.145Z</updated>
   <id>https://sogoagain.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</title>
+    <link href="https://sogoagain.github.io/2019/12/06/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-%EC%BA%90%EC%8B%B1%EB%90%9C-%EB%A9%94%EC%84%9C%EB%93%9C%EB%8A%94-%EB%B3%80%EA%B2%BD-%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C-Immutable-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EB%B0%98%ED%99%98%ED%86%A0%EB%A1%9D-%ED%95%98%EC%9E%90/"/>
+    <id>https://sogoagain.github.io/2019/12/06/실수노트-캐싱된-메서드는-변경-불가능한-Immutable-객체를-반환토록-하자/</id>
+    <published>2019-12-05T15:38:23.000Z</published>
+    <updated>2019-12-05T15:57:03.145Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="상황"><a href="#상황" class="headerlink" title="상황"></a>상황</h2><p>호출될 때마다 같은 값을 반환할 것으로 기대되는 Service의 한 메서드를 캐싱 처리 하였다. 캐싱 처리한 메서드는 카테고리 데이터를 DB에서 가져와 리스트 형태로 반환하는 메서드였다. 카테고리 데이터가 자주 바뀌지 않아 긴시간 동안 같은 결과값을 반환하는데 매번 DB를 조회하는 것은 리소스를 낭비하는 것이기에 캐싱 처리를 하였다.</p><p>그런데, 배포를 하고보니 데이터 출력이 이상했다. 특정 화면에서 카테고리를 조회할 때 새로운 카테고리가 생기고 조회를 계속 할수록 새롭게 생긴 카테고리는 중복되어 출력되었다. 여기서 끝이 아니라, 중복되어 생긴 카테고리는 오류가 발생하는 화면에서만 보이는 것이 아니라 카테고리를 조회하는 곳이면 어디서든 출력되고 있었다.</p><p>예를들면 [‘태블릿’, ‘휴대전화’] 2개 카테고리만 출력되어야 하는데 [‘태블릿, ‘휴대전화’, ‘이벤트’, ‘이벤트’, ‘이벤트’, ‘이벤트’]와 같이 출력되는 오류가 발생하였다.</p><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>캐싱된 메서드는 Service단 메서드로써 아래와 같이 Repository에서 모든 데이터를 가져와 List 형식으로 반환한다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(<span class="string">"categories"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Category&gt; <span class="title">getAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> categoryRepository.findAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>대부분의 경우 Controller단에서는 위 getAll() 메서드로 반환된 List를 변경없이 사용하여 Client단으로 내려주었는데 이 경우에는 문제가 발생하지 않았다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">""</span>)</span><br><span class="line"><span class="keyword">public</span> Header&lt;List&lt;Category&gt;&gt; readAll() &#123;</span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; categories = categoryService.getAll();</span><br><span class="line">    <span class="keyword">return</span> Header.OK(categories);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>호출될 때 마다 특정 카테고리가 중복으로 생기는 페이지에서 호출하는 api를 따라가보니 아래와 같이 Controller가 작성되어 있었다. getAll()메서드로 반환된 List에 데이터를 추가하여 Client단으로 내려주고 있었다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">""</span>)</span><br><span class="line"><span class="keyword">public</span> Header&lt;List&lt;Category&gt;&gt; readAllWithEventCategory() &#123;</span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; categories = categoryService.getAll();</span><br><span class="line">    <span class="keyword">final</span> Category eventCategory = Category.createEventCategory();</span><br><span class="line">    categories.add(eventCategory);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Header.OK(categories);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>문제의 원인은 이곳에 있었다. 이전까지는 CategoryService의 getAll()을 호출하게 되면 그때 마다 db에 접근하여 새롭게 List를 만들어 반환하였다. 그렇기 때문에 List에 담긴 데이터 정보는 동일하겠지만 각 호출시 반환받은 List는 서로 다른 객체였다. 그러나 CategoryService의 getAll()을 캐싱처리 하면서 한 번 호출된 결과를 메모리 상에 가지고 있다가 다음번 호출 때 메모리 상에 저장해둔 List 객체를 반환하게 되었다. 즉 캐싱처리를 하면서 CategoryService의 getAll()을 호출하는 곳이면 메모리 상에 같은 주소를 가리키는 같은 List 객체를 반환받게 되었다.</p><p>이를 확인하고자 아래의 간단한 테스트 코드를 작성하였다. 메서드를 캐싱처리 하였을 때 아래의 테스트 코드는 정상적으로 통과했지만 캐싱처리를 하지 않았을 때는 통과하지 못했다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CategoryServiceTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryService categoryService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryRepository categoryRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@DisplayName</span>(<span class="string">"캐싱된 getAll()로 반환받은 리스트 객체는 동일하다."</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">getAll_WithCaching_isSame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> List&lt;Category&gt; firstList = categoryService.getAll();</span><br><span class="line">        <span class="keyword">final</span> List&lt;Category&gt; secondList = categoryService.getAll();</span><br><span class="line"></span><br><span class="line">        assertThat(firstList).isEqualTo(secondList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>이렇게 CategoryService의 getAll() 메서드를 호출하는 곳에서는 동일한 List 객체를 반환받다 보니 어느 한곳에서라도 반환받은 List에 데이터를 추가하거나 삭제 혹은 변경해버리면 그 여파가 getAll() 메서드를 호출하는 모든 곳으로 전파되버린다. 이 또한 아래의 테스트 코드로 검증할 수 있다. getAll() 메서드를 캐싱하지 않으면 아래의 테스트 케이스는 실패한다. 즉, getAll()을 호출할 때마다 새로운 리스트가 만들어져 반환되기 때문에 firstList와 secondList의 데이터 갯수가 다르다. 그러나 getAll() 메서드를 캐싱처리하면 테스트 케이스는 통과한다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"캐싱된 getAll()로 반환받은 리스트에 데이터를 추가하면 이후 호출된 결과에도 데이터가 추가된 리스트가 반환된다."</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getAll_AddingCategoryToList_AddedListIsReturned</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Category tempCategory = Category.builder().id(-<span class="number">1L</span>).type(<span class="string">"TEMP"</span>).title(<span class="string">"임시"</span>).build();</span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; firstList = categoryService.getAll();</span><br><span class="line">    firstList.add(tempCategory);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; secondList = categoryService.getAll();</span><br><span class="line"></span><br><span class="line">    assertThat(firstList.size()).isEqualTo(secondList.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>즉, 내가 겪은 상황의 경우 Controller의 readAllWithEventCategory() 요청이 호출될 때 마다 ‘eventCategory’라는 임시 객체를 메모리 상에 캐싱된 리스트 객체에 추가해버리니 호출 횟수만큼 List에는 ‘eventCategory’가 중복되어 추가되었고 CategoryService의 getAll()를 호출하는 모든 곳에서 문제가 발생하였다.</p><h2 id="해결책"><a href="#해결책" class="headerlink" title="해결책"></a>해결책</h2><p>캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환하도록 정의한다. List의 경우에 아래 코드와 같이 Collections.unmodifiableList 메서드를 통해 데이터 추가/삭제/변경이 제한되는 List로 만들어 반환토록 한다. </p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(<span class="string">"categories"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Category&gt; <span class="title">getAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Collections.unmodifiableList(categoryRepository.findAll());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>UnmodifiableCollection의 경우 add, remove 메서드와 같이 저장된 데이터를 변경하고자 하면 ‘UnsupportedOperationException’를 발생시키기 때문에 이를 사용하는 곳에선 데이터 변경이 불가능하다. 따라서 위에서 오류를 발생시킨 Controller의 경우에 코드를 아래와 같이 수정해야한다. categoryService.getAll()로 반환받은 리스트를 바탕으로 categoriesWithEvent 리스트를 새롭게 생성한다. 그리고 List의 데이터 추가 삭제는 새롭게 생성한 categoriesWithEvent에서 이루어 지도록 한다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">""</span>)</span><br><span class="line"><span class="keyword">public</span> Header&lt;List&lt;Category&gt;&gt; readAllWithEventCategory() &#123;</span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; categories = categoryService.getAll();</span><br><span class="line">    <span class="keyword">final</span> Category eventCategory = Category.createEventCategory();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> List&lt;Category&gt; categoriesWithEvent = <span class="keyword">new</span> ArrayList&lt;&gt;(categories);</span><br><span class="line">    categoriesWithEvent.add(eventCategory);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Header.OK(categories);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="실천방안"><a href="#실천방안" class="headerlink" title="실천방안"></a>실천방안</h2><p>메서드 캐싱은 항상 같은 결과값을 반환하는 것으로 기대되는 곳에서만 사용하도록 하며 캐싱된 메서드에서는 변경 불가능한 객체(Immutable)를 반환하도록 정의한다. 또한 캐싱된 메서드의 반환값에 대해서 변경이 필요하다면 꼭 필요한 변경인지, 변경을 우회할 수 있는 더 좋은 방법은 없는지 고민해본다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;상황&quot;&gt;&lt;a href=&quot;#상황&quot; class=&quot;headerlink&quot; title=&quot;상황&quot;&gt;&lt;/a&gt;상황&lt;/h2&gt;&lt;p&gt;호출될 때마다 같은 값을 반환할 것으로 기대되는 Service의 한 메서드를 캐싱 처리 하였다. 캐싱 처리한 메서드는 카테고리
+      
+    
+    </summary>
+    
+      <category term="실수노트" scheme="https://sogoagain.github.io/categories/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8/"/>
+    
+    
+      <category term="Spring" scheme="https://sogoagain.github.io/tags/Spring/"/>
+    
+      <category term="Immutable" scheme="https://sogoagain.github.io/tags/Immutable/"/>
+    
+      <category term="실수노트" scheme="https://sogoagain.github.io/tags/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8/"/>
+    
+      <category term="Cache" scheme="https://sogoagain.github.io/tags/Cache/"/>
+    
+  </entry>
   
   <entry>
     <title>의식적인 연습에 기반한 나의 앞으로의 학습</title>
@@ -202,9 +233,9 @@
     
       <category term="독서" scheme="https://sogoagain.github.io/tags/%EB%8F%85%EC%84%9C/"/>
     
-      <category term="etc" scheme="https://sogoagain.github.io/tags/etc/"/>
-    
       <category term="개발문화" scheme="https://sogoagain.github.io/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/"/>
+    
+      <category term="etc" scheme="https://sogoagain.github.io/tags/etc/"/>
     
   </entry>
   
@@ -501,11 +532,11 @@
       <category term="독서" scheme="https://sogoagain.github.io/categories/%EB%8F%85%EC%84%9C/"/>
     
     
-      <category term="클린코드" scheme="https://sogoagain.github.io/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/"/>
-    
       <category term="독서" scheme="https://sogoagain.github.io/tags/%EB%8F%85%EC%84%9C/"/>
     
       <category term="etc" scheme="https://sogoagain.github.io/tags/etc/"/>
+    
+      <category term="클린코드" scheme="https://sogoagain.github.io/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/"/>
     
   </entry>
   
@@ -533,32 +564,6 @@
       <category term="C++" scheme="https://sogoagain.github.io/tags/C/"/>
     
       <category term="OOP" scheme="https://sogoagain.github.io/tags/OOP/"/>
-    
-      <category term="Software engineering" scheme="https://sogoagain.github.io/tags/Software-engineering/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>애자일 소프트웨어 개발</title>
-    <link href="https://sogoagain.github.io/2017/01/05/%EC%95%A0%EC%9E%90%EC%9D%BC-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C/"/>
-    <id>https://sogoagain.github.io/2017/01/05/애자일-소프트웨어-개발/</id>
-    <published>2017-01-04T16:41:18.000Z</published>
-    <updated>2019-07-26T17:14:27.098Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><ul><li>신속하고 변화에 유연하며 적응적인(adaptive) 소프트웨어 개발을 목표로 하는 다양한 경량 개발 방법론 전체를 일컫는 총칭으로, 반복(iteration)이라 불리는 단기 단위를 채용함으로 위험을 최소화하는 개발방법이다.</li></ul><h2 id="배경"><a href="#배경" class="headerlink" title="배경"></a>배경</h2><h3 id="소프트웨어-위기와-대응-방안"><a href="#소프트웨어-위기와-대응-방안" class="headerlink" title="소프트웨어 위기와 대응 방안"></a>소프트웨어 위기와 대응 방안</h3><ul><li>과거에서 현재로 올수록 시스템의 대규모화에 의해서 컴퓨터 계산 용량과 문제의 복잡성이 급격히 증가하게 되었고 이에 따라 소프트웨어의 신뢰성 저하, 개발비의 증대, 계획의 지연 등의 현상이 현저하게 발생되었다. 또한, 개발 계획의 수행을 매우 어렵게 만드는 상황이 빈번하게 발생하게 되었다.</li><li>소프트웨어 위기를 극복하기 위해 90년대 후반까지의 소프트웨어 공학과 개발방법론은 장기간에 걸쳐 많은 사람들을 투입하고 충분한 비용을 투입하여 진행하는 다른 공학의 프로세스와 비슷한 맥락에서 진행되었다. 이때의 전통적인 개발 프로세스들은 폭포수 모델과 계획 기반 개발 기법들을 따랐다. 그러나 계획 기반 개발은 너무 계획에 치중을 하다 보니 개발 방법 자체가 형식에만 신경을 쓰고 얽매이게 되었다. 소프트웨어는 유동적이고 개방적이며 요구사항의 변경에 따른 작업량을 예측하기 힘들다. 따라서 고전적인 소프트웨어 공학이나 관리 기법만으로는 소프트웨어 위기에 대해 대처할 수 없게 되었다.</li></ul><h3 id="객체-지향-프로그래밍"><a href="#객체-지향-프로그래밍" class="headerlink" title="객체 지향 프로그래밍"></a>객체 지향 프로그래밍</h3><ul><li>전통적인 개발 프로세스에 대응하여 소프트웨어 위기에 대해 대처하는 기술적인 해결책으로 객체지향이 있다. 객체지향 기술은 그동안의 개발 문제를 적절 하게 대처해 주었다. 그러나 객체지향은 전통적인 개발 프로세스에 적합하지 않기 때문에 그에 맞는 개발 프로세스가 필요했다. 애자일 개발 프로세스가 이러한 필요에 따라 만들어졌다. 그렇기 때문에 애자일 개발 프로세스의 상당수는 객체 지향 기술을 기반으로 한다.</li></ul><h2 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h2><h3 id="애자일-개발-방법론"><a href="#애자일-개발-방법론" class="headerlink" title="애자일 개발 방법론"></a>애자일 개발 방법론</h3><ul><li>소프트웨어 개발 방법의 하나로, 개발 대상을 다수의 작은 기능으로 분할하여 하나의 기능을 하나의 반복 주기 내에 개발하는 개발 방법을 말한다. 하나의 반복 기간은 프로젝트마다 다르지만 일반적으로 1주에서 4주 정도인 경우가 많다. 이 반복 주기를 계속해 나가며 하나씩 기능을 추가 개발하는 것이다. 각각의 반복은 소규모 소프트웨어 개발 프로젝트와 비슷하며, 각 반복은 지금까지 개발된 성과물에 하나의 작은 기능을 추가하는 역할을 한다. 계획, 요구분석, 설계, 구현 (코딩), 테스트 및 문서화 등 소프트웨어 프로젝트에 필요한 모든 공정이 하나의 반복 내에서 모두 실시된다. 각 반복이 끝날 때마다 기능이 추가된 새로운 소프트웨어(빌드, build)를 출시하는 것을 목표로 하며, 각 반복이 끝나면 프로젝트 팀은 프로젝트의 우선 순위를 재평가하여 다음 반복을 실시한다.</li><li>애자일 개발 프로세스는 제한된 시간과 비용 안에서 정보는 불완전하고 예측 불가능하다는 전제를 가진다. 그리고 그 전제 아래에서 합리적인 답을 내도록 하는 것이 애자일 개발 프로세스이다.</li></ul><h3 id="애자일-개발방법론-특징"><a href="#애자일-개발방법론-특징" class="headerlink" title="애자일 개발방법론 특징"></a>애자일 개발방법론 특징</h3><ul><li>짧은 기간 단위의 반복 절차를 통해 리스크를 줄이며 개발 주기(계획, 개발, 출시)가 여러번 반복된다. 고객의 피드백에 민첩하게 반응한다. 문서를 통한 의사소통 및 인수인계를 지양하여 문서작업을 최소한으로 줄이고 프로그래밍에 집중한다. 고전적인 개발방법론인 폭포수 모형의 반대개념이다. 일정한 주기를 가지고 끊임없이 프로토타입을 작성하며 상시적으로 요구를 추가, 수정하는 과정을 통해 적응적인(adaptive) 소프트웨어 개발을 한다.</li></ul><h3 id="기존-개발-방법과-애자일-개발-방법의-차이"><a href="#기존-개발-방법과-애자일-개발-방법의-차이" class="headerlink" title="기존 개발 방법과 애자일 개발 방법의 차이"></a>기존 개발 방법과 애자일 개발 방법의 차이</h3><ul><li>기존의 문서 기반 개발 방법과는 달리 프로젝트 관계자 사이에서 필요할 때 직접 얼굴을 맞대고 즉각적으로 의사소통하는 것을 강조한다. 일반적으로 애자일 개발팀은 소프트웨어 개발에 필요한 모든 참가자가 한 곳의 작업장에서 일한다. 즉, 소프트웨어 개발자와 필요한 소프트웨어를 정의하는 고객, 테스터, 사용자 인터페이스 설계자, 기술문서 기록자 등을 모두 포함한다. 또한 결함을 조기에 식별하기 위해 테스트를 강화하고, 개발 초기부터 테스트를 수행하며, 자동화된 테스트 및 배포 환경을 구축함으로써 지속적인 시스템 통합을 수행하고자 한다.</li></ul><h3 id="애자일-개발-프로세스"><a href="#애자일-개발-프로세스" class="headerlink" title="애자일 개발 프로세스"></a>애자일 개발 프로세스</h3><ul><li>동적 시스템 개발 방법(DSDM), 익스트림 프로그래밍(Extreme Programming, XP), 스크럼, 크리스털 패밀리, Feature-Driven Development, Adaptive Software Development(ASD), 익스트림 모델링 등이 있다.</li><li>애자일 개발 프로세스들은 각자 다른 특징과 적용 범위가 있으며, 서로 조합도 가능하다. 여러 방법중에서 자신의 프로젝트에 맞는 부분을 취사 선택하여 조합하고, 또 독자적인 방법을 만들어 냄으로써 큰 효과를 올리고 있다.</li></ul><h3 id="애자일-개발-적용-대상"><a href="#애자일-개발-적용-대상" class="headerlink" title="애자일 개발 적용 대상"></a>애자일 개발 적용 대상</h3><ol><li>첫 번째는 목표 달성을 위한 프로세스를 가지지 않고, 임기응변적인 소프트웨어 개발로 인해 혼란에 빠져있는 조직이다. 애자일 개발 프로세스는 쉽게 도입 할 수 있으며, 들어가는 비용과 위험도 낮다.</li><li>두 번째는 이미 전통적인 소프트웨어 프로세스를 도입하고 있지만, 제대로 동작하지 않는(또는 프로세스 실시를 위한 오버헤드가 너무 커서 오히려 업무에 부담을 주고 있는) 조직이다.</li></ol><h3 id="애자일-선언문과-애자일-연합"><a href="#애자일-선언문과-애자일-연합" class="headerlink" title="애자일 선언문과 애자일 연합"></a>애자일 선언문과 애자일 연합</h3><ul><li><p>2001년 켄트 벡(Kent Beck)을 포함한 이 분야의 저명한 소프트웨어 개발자 17명이 미국 유타의 스노우버드(snow bird) 리조트에서 모여, 애자일 소프트웨어 개발 선언을 발표하였다.</p><ol><li>절차와 도구보다는 상호작용 (개성과 화합)</li><li>종합적인 문서보다는 소프트웨어 자체</li><li>계약과 협상보다는 고객과의 협력</li><li>계획 준수보다는 변화에 대한 대응</li></ol></li><li><p>애자일 개발 프로세스의 제창자들은 애자일 연합이라는 자유로운 조직을 만들고, 애자일 개발 프로세스의 보급에 힘쓰고 있다.</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;개요&quot;&gt;&lt;a href=&quot;#개요&quot; class=&quot;headerlink&quot; title=&quot;개요&quot;&gt;&lt;/a&gt;개요&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;신속하고 변화에 유연하며 적응적인(adaptive) 소프트웨어 개발을 목표로 하는 다양한 경량 개발 방법론 전체를 
-      
-    
-    </summary>
-    
-      <category term="소프트웨어공학" scheme="https://sogoagain.github.io/categories/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99/"/>
-    
     
       <category term="Software engineering" scheme="https://sogoagain.github.io/tags/Software-engineering/"/>
     
