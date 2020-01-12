@@ -3,15 +3,43 @@
 
 
     <url>
+        <loc>https://sogoagain.github.io/tags/%EC%95%A0%EC%9E%90%EC%9D%BC/</loc>
+        <lastmod>2020-01-12T17:32:25.173Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/%EB%8F%85%EC%84%9C/</loc>
+        <lastmod>2020-01-12T17:32:25.173Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/Software-engineering/</loc>
+        <lastmod>2020-01-12T17:32:25.173Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/tags/%EC%83%9D%EA%B0%81/</loc>
-        <lastmod>2020-01-11T18:04:50.232Z</lastmod>
+        <lastmod>2020-01-12T17:32:25.173Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/%ED%95%99%EC%8A%B5/</loc>
+        <lastmod>2020-01-12T15:36:11.891Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://sogoagain.github.io/tags/%ED%9A%8C%EA%B3%A0/</loc>
-        <lastmod>2020-01-11T18:04:50.232Z</lastmod>
+        <lastmod>2020-01-12T14:32:04.966Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -45,22 +73,8 @@
     </url>
 
     <url>
-        <loc>https://sogoagain.github.io/tags/%ED%95%99%EC%8A%B5/</loc>
-        <lastmod>2019-10-21T16:33:39.728Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://sogoagain.github.io/tags/etc/</loc>
-        <lastmod>2019-10-21T16:33:39.728Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/tags/%EB%8F%85%EC%84%9C/</loc>
-        <lastmod>2019-10-21T16:33:39.728Z</lastmod>
+        <lastmod>2019-10-20T14:05:32.047Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -236,13 +250,6 @@
     <url>
         <loc>https://sogoagain.github.io/tags/C/</loc>
         <lastmod>2019-07-26T17:22:58.412Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/tags/Software-engineering/</loc>
-        <lastmod>2019-07-26T17:14:33.256Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
