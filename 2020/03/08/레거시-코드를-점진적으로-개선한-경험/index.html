@@ -22,8 +22,8 @@
     <meta name="description" content="sogoagain's Technology Blog">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="canonical" href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">
-    <title>레거시 코드를 클린 코드로 점진적으로 개선한 경험 · 기술을 기술하다</title>
+    <link rel="canonical" href="https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">
+    <title>레거시 코드를 점진적으로 개선한 경험 · 기술을 기술하다</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -229,7 +229,7 @@
                 <a href="/">기술을 기술하다</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">레거시 코드를 클린 코드로 점진적으로 개선한 경험</a>
+                <a href="#" class="post-name">레거시 코드를 점진적으로 개선한 경험</a>
             </div>
     </div>
     
@@ -259,7 +259,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            레거시 코드를 클린 코드로 점진적으로 개선한 경험
+            레거시 코드를 점진적으로 개선한 경험
             <!-- 404 -->
             
         </h1>
@@ -439,11 +439,11 @@ height:50vh;
 <ol>
 <li><strong>2019년 10월 분석 결과</strong></li>
 </ol>
-<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_1.png" alt="SonarQube 분석 결과 1"></p>
+<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_1.png" alt="SonarQube 분석 결과 1"></p>
 <ol start="2">
 <li><strong>2020년 02월 분석 결과</strong></li>
 </ol>
-<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_2.png" alt="SonarQube 분석 결과 2"></p>
+<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_2.png" alt="SonarQube 분석 결과 2"></p>
 <p>결과를 보시다시피 프로젝트의 규모는 31% 증가하여 ‘Small’에서 ‘Medium’으로 변경되었습니다. 미완성된 기능들을 개발했을뿐더러 새로운 요구사항이 지속해서 생겨나 규모가 커지게 되었죠. 그에 반해 ‘Bugs’는 사라졌고, 취약점도 38개가 줄어들어 기존보다 68% 감소하였습니다. 또한 코드 악취는 459개가 줄어들어 기존보다 87% 감소하였습니다. 그뿐만 아니라 테스트 커버리지는 0%에서 19.6%로 증가하였습니다. 테스트 코드는 새로운 기능을 개발할 때는 필수로 작성하고 있으며 틈틈이 기존 기능들에 대해서도 지속해서 작성하고 있습니다. 코드 중복도 1.5%에서 0.5%로 줄어들었네요.</p>
 <p>요약하자면 프로젝트 규모는 기존보다 커졌지만, 코드 품질은 좋아졌습니다. 이 같은 결과는 새로운 코드들의 품질만 신경 써서 이루어진 것이 아닌 기존 코드들을 지속해서 가다듬었기에 가능했습니다. 돌이켜 보면 개선해온 과정이 항상 즐겁지만은 않았습니다. 때론 지루하고, 때론 흥미롭고, 때론 답답하고, 때론 고통스러웠고, 때론 상쾌했습니다. 확실한 것은 개인적인 성장에 큰 도움이 되었다는 것입니다. 이제, 제가 어떻게 코드들을 개선 시켰는지 간단히 소개해드리겠습니다. 모든 내용을 제가 설명하기에는 글이 너무나 길어질 것 같아 각 항목에 제가 참고한 글들을 링크해 두겠습니다. 좋은 글들을 작성해주신 모든 분께 감사의 인사를 드립니다.</p>
 <h2 id="스프링-레거시-코드를-개선하는데-실천한-13가지-방법"><a href="#스프링-레거시-코드를-개선하는데-실천한-13가지-방법" class="headerlink" title="스프링 레거시 코드를 개선하는데 실천한 13가지 방법"></a>스프링 레거시 코드를 개선하는데 실천한 13가지 방법</h2><p>이제, 제가 프로젝트의 코드를 개선하는데 사용한 13가지 방법을 소개할 것인데요, 그 전에 프로젝트의 환경을 간단히 말씀드리면 좋겠네요. Spring4 기반의 웹 프로젝트로 SQL Mapper로 Mybatis를 사용하는 환경입니다. 이 글이 최신 SpringBoot2, JPA, Querydsl 등을 업무상 사용하지 못하는 분들께도 큰 도움이 되었으면 좋겠습니다.</p>
@@ -570,9 +570,9 @@ height:50vh;
     
         <div class="license-wrapper">
             <p>Author：<a href="https://sogoagain.github.io">sogoagain</a>
-            </p><p>Link：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/</a>
-            </p><p>Publish date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">March 8th 2020, 2:00:00 am</a>
-            </p><p>Update date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">March 8th 2020, 2:25:45 am</a>
+            </p><p>Link：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/</a>
+            </p><p>Publish date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">March 8th 2020, 2:00:00 am</a>
+            </p><p>Update date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">March 8th 2020, 2:44:13 am</a>
             </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
         </div>
     
@@ -602,8 +602,8 @@ height:50vh;
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
         
         var disqus_config = function () {
-        this.page.url = "https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "레거시 코드를 클린 코드로 점진적으로 개선한 경험"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://sogoagain.github.io/2020/03/08/레거시-코드를-점진적으로-개선한-경험/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "레거시 코드를 점진적으로 개선한 경험"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
         (function () { // DON'T EDIT BELOW THIS LINE
@@ -1003,8 +1003,6 @@ height:50vh;
     
     
     
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 24
@@ -1023,7 +1021,7 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">레거시 코드를 클린 코드로 점진적으로 개선한 경험</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">레거시 코드를 점진적으로 개선한 경험</a>
         </li>
     
     
@@ -1168,27 +1166,27 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="생각"><span class="iconfont-archer">&#xe606;</span>생각</span>
     
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="OOP"><span class="iconfont-archer">&#xe606;</span>OOP</span>
+    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
         <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
     
-        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
-    
-        <span class="sidebar-tag-name" data-tags="OOP"><span class="iconfont-archer">&#xe606;</span>OOP</span>
-    
         <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
     
         <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
     
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
-    
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
-    
         <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
     
         <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
     
         <span class="sidebar-tag-name" data-tags="Computer architecture"><span class="iconfont-archer">&#xe606;</span>Computer architecture</span>
     
@@ -1208,21 +1206,23 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="C#"><span class="iconfont-archer">&#xe606;</span>C#</span>
     
-        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
-    
-        <span class="sidebar-tag-name" data-tags="Software engineering"><span class="iconfont-archer">&#xe606;</span>Software engineering</span>
-    
         <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
     
         <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
     
         <span class="sidebar-tag-name" data-tags="Spring"><span class="iconfont-archer">&#xe606;</span>Spring</span>
     
+        <span class="sidebar-tag-name" data-tags="Software engineering"><span class="iconfont-archer">&#xe606;</span>Software engineering</span>
+    
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
         <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
+    
+        <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
     
         <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
     
-        <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
+        <span class="sidebar-tag-name" data-tags="애자일"><span class="iconfont-archer">&#xe606;</span>애자일</span>
     
         <span class="sidebar-tag-name" data-tags="실수노트"><span class="iconfont-archer">&#xe606;</span>실수노트</span>
     
@@ -1231,8 +1231,6 @@ height:50vh;
         <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
     
         <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
-    
-        <span class="sidebar-tag-name" data-tags="애자일"><span class="iconfont-archer">&#xe606;</span>애자일</span>
     
         <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
     
@@ -1273,27 +1271,27 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="생각"><span class="iconfont-archer">&#xe60a;</span>생각</span>
     
-        <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
-    
-        <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
-    
         <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
     
         <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
     
-        <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
+        <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
     
-        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+        <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
     
         <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
     
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
         <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+    
+        <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
     
         <span class="sidebar-category-name" data-categories="독서"><span class="iconfont-archer">&#xe60a;</span>독서</span>
     
         <span class="sidebar-category-name" data-categories="실수노트"><span class="iconfont-archer">&#xe60a;</span>실수노트</span>
-    
-        <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
     
         <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
     
