@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="sogoagain">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="sogoagain">
+    
+    <meta name="keywords" content="sogoagain,기술을 기술하다,기술,Java,Spring,Software">
+    
+    <meta name="description" content="sogoagain's Technology Blog">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="canonical" href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">
+    <title>레거시 코드를 클린 코드로 점진적으로 개선한 경험 · 기술을 기술하다</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-134204435-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">기술을 기술하다</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">레거시 코드를 클린 코드로 점진적으로 개선한 경험</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">기술을 기술하다</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            레거시 코드를 클린 코드로 점진적으로 개선한 경험
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                스프링 레거시 코드를 개선하는데 실천한 13가지 방법
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="java">java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="OOP">OOP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TDD">TDD</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="객체지향">객체지향</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="클린코드">클린코드</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Spring">Spring</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.2k</span>Reading time: <span class="post-count reading-time">13 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/08</span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;">
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="프로젝트를-이어받다"><a href="#프로젝트를-이어받다" class="headerlink" title="프로젝트를 이어받다."></a>프로젝트를 이어받다.</h2><p>저는 작년(2019년) 6월 말에 새로운 회사로 이직하였습니다. 첫 번째로 받은 업무는 새롭게 개발 중이던 관리자용 시스템을 이어받아 완성 시키는 것이었습니다. 기존에 개발자 한 분께서 맡아 개발해왔지만, 관리자용 시스템이라 우선순위가 다른 프로젝트들보다 낮아 꽤 오랜 기간 미완성 상태로 남겨졌던 프로젝트였습니다. 그러나, 이미 기존 시스템 기반으로 어느 정도 구현이 된 상태였고 실제 배포되어 일부 기능들은 업무 담당자들이 사용하고 있었습니다. 그렇기에 해당 프로젝트는 이미 작성된 코드량이 꽤 되었죠. 이 글에서는 제가 이어받은 프로젝트에 기능을 추가하며 완성하는 동시에 기존 코드들을 함께 개선한 경험을 공유하고자 합니다.</p>
+<h2 id="레거시-코드란"><a href="#레거시-코드란" class="headerlink" title="레거시 코드란?"></a>레거시 코드란?</h2><p>앞서 말씀드렸다시피 제가 이어받은 프로젝트에는 이미 꽤 많은 양의 코드가 작성되어 있었습니다. 레거시 코드를 다양하게 정의할 수 있지만, 이 글에서는 아래의 이유로 기존에 작성된 코드들을 레거시 코드라고 칭하겠습니다. 2, 3번의 이유는 뒤에 소개해드릴 소스코드 정적 분석 툴인 SonarQube의 분석 결과로 확인할 수 있습니다.</p>
+<ol>
+<li>다른 사람이 “처음” 작성한 코드다.</li>
+<li>테스트 코드가 없었다.</li>
+<li>JAVA의 Best Practice가 지켜지지 않았다. (‘LocalDate’ 대신 ‘Date’ 사용 등)</li>
+</ol>
+<p>저는 이 글에서 기존의 코드를 레거시 코드라 일컫고 있지만 1번의 이유로 기존 코드가 나쁜 코드라던가 코드를 작성한 분께 탓을 돌리든지 하는 생각은 하지 않습니다. 같이 업무를 하는 입장에서 기존에 코드를 작성하신 분은 굉장한 실력자십니다. 1번 이유에 ‘처음’이라는 단어를 강조하고 있는데요. 정보가 없는 상태에서 요구사항을 만족하는 기능을 ‘처음’ 만들어 내는 것 자체가 굉장한 성과라고 생각하기 때문입니다. 제가 읽었던 책들 중 ‘프로그래머의 길, 멘토에게 묻다’라는 책에서 오픈소스를 읽는 것이 도움 된다는 내용을 소개하며 아래의 문장을 언급하고 있습니다.</p>
+<blockquote>
+<p>소스가 별로 훌륭해 보이지 않아서 다소간 실망할 수도 있겠지만, <strong>그 코드를 작성한 사람들은 도움 받을 커뮤니티 같은 것도 없이 모든 것을 새로 만들어 내야 하는 처지였음을 잊지 말아야 한다.</strong> 소스를 보다가 버그를 발견했다면, 수정 패치를 만들어서 제작자에게 보내 보라.</p>
+<ul>
+<li>데이브 후버 외 1명, 『프로그래머의 길, 멘토에게 묻다』, 강중빈 옮김, 인사이트(2010), p72-73.</li>
+</ul>
+</blockquote>
+<p>책에서는 레거시 코드를 대하는 태도에 대해서도 말하고 있는 것 같습니다. 레거시 코드를 만난다고 실망에 그칠 것이 아닌 적극적으로 개선 시키는 태도가 필요하다고 말이죠.</p>
+<h2 id="클린코드를-향해-가다"><a href="#클린코드를-향해-가다" class="headerlink" title="클린코드를 향해 가다."></a>클린코드를 향해 가다.</h2><p>SonarQube 환경을 제 노트북인 로컬 환경에 구축하다 보니 관리 미흡으로 프로젝트 초기 분석 결과가 지워졌습니다. 그렇지만 프로젝트가 진행되던 중반쯤인 10월경의 자료가 있어 현재의 분석 결과와 비교하여 보여드리겠습니다.</p>
+<ol>
+<li><strong>2019년 10월 분석 결과</strong></li>
+</ol>
+<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_1.png" alt="SonarQube 분석 결과 1"></p>
+<ol start="2">
+<li><strong>2020년 02월 분석 결과</strong></li>
+</ol>
+<p><img src="/images/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%EC%8B%9C%ED%82%A8-%EA%B2%BD%ED%97%98/sonarqube_2.png" alt="SonarQube 분석 결과 2"></p>
+<p>결과를 보시다시피 프로젝트의 규모는 31% 증가하여 ‘Small’에서 ‘Medium’으로 변경되었습니다. 미완성된 기능들을 개발했을뿐더러 새로운 요구사항이 지속해서 생겨나 규모가 커지게 되었죠. 그에 반해 ‘Bugs’는 사라졌고, 취약점도 38개가 줄어들어 기존보다 68% 감소하였습니다. 또한 코드 악취는 459개가 줄어들어 기존보다 87% 감소하였습니다. 그뿐만 아니라 테스트 커버리지는 0%에서 19.6%로 증가하였습니다. 테스트 코드는 새로운 기능을 개발할 때는 필수로 작성하고 있으며 틈틈이 기존 기능들에 대해서도 지속해서 작성하고 있습니다. 코드 중복도 1.5%에서 0.5%로 줄어들었네요.</p>
+<p>요약하자면 프로젝트 규모는 기존보다 커졌지만, 코드 품질은 좋아졌습니다. 이 같은 결과는 새로운 코드들의 품질만 신경 써서 이루어진 것이 아닌 기존 코드들을 지속해서 가다듬었기에 가능했습니다. 돌이켜 보면 개선해온 과정이 항상 즐겁지만은 않았습니다. 때론 지루하고, 때론 흥미롭고, 때론 답답하고, 때론 고통스러웠고, 때론 상쾌했습니다. 확실한 것은 개인적인 성장에 큰 도움이 되었다는 것입니다. 이제, 제가 어떻게 코드들을 개선 시켰는지 간단히 소개해드리겠습니다. 모든 내용을 제가 설명하기에는 글이 너무나 길어질 것 같아 각 항목에 제가 참고한 글들을 링크해 두겠습니다. 좋은 글들을 작성해주신 모든 분께 감사의 인사를 드립니다.</p>
+<h2 id="스프링-레거시-코드를-개선하는데-실천한-13가지-방법"><a href="#스프링-레거시-코드를-개선하는데-실천한-13가지-방법" class="headerlink" title="스프링 레거시 코드를 개선하는데 실천한 13가지 방법"></a>스프링 레거시 코드를 개선하는데 실천한 13가지 방법</h2><p>이제, 제가 프로젝트의 코드를 개선하는데 사용한 13가지 방법을 소개할 것인데요, 그 전에 프로젝트의 환경을 간단히 말씀드리면 좋겠네요. Spring4 기반의 웹 프로젝트로 SQL Mapper로 Mybatis를 사용하는 환경입니다. 이 글이 최신 SpringBoot2, JPA, Querydsl 등을 업무상 사용하지 못하는 분들께도 큰 도움이 되었으면 좋겠습니다.</p>
+<h3 id="1-테스트-코드-작성"><a href="#1-테스트-코드-작성" class="headerlink" title="1. 테스트 코드 작성"></a>1. 테스트 코드 작성</h3><p>기존 코드에는 테스트 코드가 없었습니다. 특히, 코드 리팩토링을 진행할 때 테스트 코드가 필수라고 생각되어 최대한 작성하려고 노력하였습니다. 그리고 신규 추가되는 기능들에는 필수적으로 테스트 코드를 작성했습니다. 처음에는 의무적으로 테스트 코드를 작성하였는데요. 작성하다 보니 테스트 코드의 순기능에 대해 많이 공감하게 되었습니다. 프로그램을 재시작(톰캣 재시작 등)하지 않고 피드백을 받을 수 있다 보니 훨씬 안정적으로 코드를 작성할 수 있었습니다. 또한, 테스트 코드를 이리저리 돌려보며 프레임워크나 라이브러리의 내부 동작 원리에 대한 이해도도 높아졌습니다. 이제는 신규 라이브러리를 사용하게 될 때면 테스트 코드를 통해 테스트를 먼저 해보는 습관도 생긴 것 같네요. 물론, 아직 작성해야 할 테스트 코드가 많이 남았습니다.</p>
+<blockquote>
+<p>참고: <a href="http://kwangshin.pe.kr/blog/2018/06/26/software-development-productivity-difficulties-and-challanges/" rel="external nofollow noopener noreferrer" target="_blank">소프트웨어 개발의 생산성, 그 어려움과 도전…</a></p>
+<p>참고: <a href="https://www.slideshare.net/SpringCentral/testing-with-spring-framework-4x" rel="external nofollow noopener noreferrer" target="_blank">Testing with Spring Framework 4.x</a></p>
+<p>참고: <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#unit-testing" rel="external nofollow noopener noreferrer" target="_blank">Spring 공식 문서 - Testing</a></p>
+<p>참고: <a href="https://thswave.github.io/java/2015/03/02/spring-mvc-test.html" rel="external nofollow noopener noreferrer" target="_blank">How to Spring MVC Unit Test 스프링 MVC 단위 테스트</a></p>
+<p>참고: <a href="https://dreambringer.tistory.com/14" rel="external nofollow noopener noreferrer" target="_blank">spring mvc 에서 unit test 구현 (Controller, Service, DAO)</a></p>
+<p>참고: <a href="https://igorski.co/java/junit/mixing-junit-4-and-junit-5-tests/" rel="external nofollow noopener noreferrer" target="_blank">Mixing JUnit 4 and JUnit 5 tests</a></p>
+</blockquote>
+<p>이전까지 SpringBoot 환경에서만 테스트 코드를 작성해보다가 Spring4 환경에서 작성하려니 테스트 코드의 환경을 설정하는 것에서부터 어려움이 많았고 그만큼 시행착오도 많았습니다. 이제 테스트 코드의 형태가 안정되었는데요. 기회가 된다면 Spring4와 같은 레거시 환경에서 테스트 코드를 작성하는 방법도 공유할 생각입니다.</p>
+<h3 id="2-단순히-값을-나타내는-객체가-아닌-역할을-갖는-객체로-변경"><a href="#2-단순히-값을-나타내는-객체가-아닌-역할을-갖는-객체로-변경" class="headerlink" title="2. 단순히 값을 나타내는 객체가 아닌 역할을 갖는 객체로 변경"></a>2. 단순히 값을 나타내는 객체가 아닌 역할을 갖는 객체로 변경</h3><p>이전 코드들에서는 객체 중심의 코드가 아닌 데이터 중심의 코드가 많았습니다. 특히 객체들이 특별한 역할 없이 getter와 setter로 이루어진 경우가 많았죠. 객체들이 수행해야 할 것들이 객체 외부에서 getter와 setter를 통해 이루어지고 있었던 것입니다. 그래서 저는 다음의 활동을 통해 리팩토링을 해나갔습니다.</p>
+<ol>
+<li><p>단순히 값을 나타내는 VO 객체를 제거하였습니다.</p>
+</li>
+<li><p>객체 외부에 존재하는 로직을 객체 내부로 옮겼습니다.</p>
+</li>
+<li><p>model 객체에 대한 테스트를 작성하였습니다.</p>
+</li>
+<li><p>비슷한 역할을 갖고 있으면 interface를 통해 적극적으로 추상화를 하였습니다.</p>
+</li>
+<li><p>setter를 제거하였습니다.</p>
+<blockquote>
+<p>참고: <a href="https://jojoldu.tistory.com/407" rel="external nofollow noopener noreferrer" target="_blank">@Reuqest Body에서는 Setter가 필요없다?</a></p>
+</blockquote>
+</li>
+<li><p>getter의 사용을 최소화 하였습니다.</p>
+</li>
+</ol>
+<p>관련해서는 제가 작성했던 글인 ‘<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>‘를 참고하면 좋을 것 같습니다.</p>
+<h3 id="3-static-클래스를-Bean과-Component로-변경"><a href="#3-static-클래스를-Bean과-Component로-변경" class="headerlink" title="3. static 클래스를 Bean과 Component로 변경"></a>3. static 클래스를 Bean과 Component로 변경</h3><p>기존 코드에 static 메서드만 존재하는 static 클래스가 많았습니다. 그런데, static 함수나 클래스는 사용하는 곳에서 의존성을 외부로 드러내지 않고 내부로 감추게 됩니다. 이는 마치 전역 변수, 전역 함수를 사용하는 것과 같은 문제가 발생하게 되죠. 변경의 여파를 파악하기 힘들어지며 복잡성이 증가합니다. 그래서 저는 static 클래스들을 Spring에서 지원하는 Bean과 Component로 변경하였습니다.</p>
+<blockquote>
+<p>참고: <a href="http://kwon37xi.egloos.com/4844149" rel="external nofollow noopener noreferrer" target="_blank">언제 static 함수 모음 Class를 만들어야 할까?</a></p>
+<p>참고: <a href="https://docs.microsoft.com/ko-kr/archive/blogs/nickmalik/are-helper-classes-evil" rel="external nofollow noopener noreferrer" target="_blank">Are Helper Classes Evil?</a></p>
+<p>참고: <a href="https://docs.microsoft.com/ko-kr/archive/blogs/nickmalik/killing-the-helper-class-part-two" rel="external nofollow noopener noreferrer" target="_blank">Killing the Helper class, part two</a></p>
+</blockquote>
+<h3 id="4-Controller-Service-Model의-계층-구조를-명확히"><a href="#4-Controller-Service-Model의-계층-구조를-명확히" class="headerlink" title="4. Controller, Service, Model의 계층 구조를 명확히"></a>4. Controller, Service, Model의 계층 구조를 명확히</h3><p>기존 코드에서 Controller에 비즈니스 로직이 있거나, Model에 있어야 할 로직이 Service에 있거나 하는 사항이 발견되었습니다. 저는 이러한 점들을 해결하기 위해 ‘3계층 구조(3 Tier)’에 근거하여 각각의 역할을 나름대로 정의하여 프로젝트를 진행하였습니다.</p>
+<ol>
+<li><p>Controller는 Presentation 계층으로서 입력값 검증, Application 계층에서 필요한 객체를 준비, 결괏값을 요청한 곳에 반환하는 역할로 규정하였습니다.</p>
+<blockquote>
+<p>참고: <a href="https://www.baeldung.com/spring-boot-bean-validation" rel="external nofollow noopener noreferrer" target="_blank">Validation in Spring Boot</a></p>
+</blockquote>
+</li>
+<li><p>Service는 Application 계층으로서 정보를 처리하고 원하는 결과를 만들어내는 역할로 객체들이 협력하는 장소라고 규정하였습니다.</p>
+</li>
+<li><p>Model은 domain의 비즈니스 로직을 구현하는 역할로 규정하였습니다.</p>
+</li>
+</ol>
+<h3 id="5-Java의-Best-Practice-적용"><a href="#5-Java의-Best-Practice-적용" class="headerlink" title="5. Java의 Best Practice 적용"></a>5. Java의 Best Practice 적용</h3><p>기존 코드는 Java의 Best Practice와 거리가 먼 코드들이 있었습니다. 특히 ‘LocalDate, LocalDateTime’ 대신 ‘Date’와 ‘Calander’를 사용하여 시간 관련된 로직을 처리하고 있었죠. 이 밖에도 ‘정적 팩토리 메서드’와 같은 Effective Java에 나오는 실천 사항들이 지켜지지 않고 있었습니다. 뿐만 아니라 디자인 패턴의 활용도도 낮았습니다. 그래서 아래의 개선 활동을 하였습니다.</p>
+<ol>
+<li>‘Date’, ‘Calander’를 ‘LocalDate’, ‘LocalDateTime’을 사용하도록 변경하였습니다.</li>
+<li>Effective Java에 나오는 실천 사항을 지키며 점진적으로 개선하였습니다.</li>
+<li>팩토리 패턴, 전략 패턴 등 디자인 패턴을 활용 하였습니다.</li>
+</ol>
+<h3 id="6-Spring의-Best-Practice-적용"><a href="#6-Spring의-Best-Practice-적용" class="headerlink" title="6. Spring의 Best Practice 적용"></a>6. Spring의 Best Practice 적용</h3><p>기존 코드에서는 Spring을 사용할 때 Best Practice와는 거리가 먼 코드들이 몇몇 있었습니다. DI를 활용할 때 Field Injection을 활용하거나 Service에 불필요하게 1:1 매핑된 인터페이스가 존재하였죠. 그래서 이를 개선하였습니다.</p>
+<ol>
+<li><p>Field Injection을 Constructor Injection으로 변경</p>
+<blockquote>
+<p>참고: <a href="https://www.vojtechruzicka.com/field-dependency-injection-considered-harmful/" rel="external nofollow noopener noreferrer" target="_blank">Field Dependency Injection Considered Harmful</a></p>
+<p>참고: <a href="https://zorba91.tistory.com/238" rel="external nofollow noopener noreferrer" target="_blank">[Spring]필드 주입(Field Injection) 대신 생성자 주입(Constructor Injection)을 사용해야 하는 이유</a> </p>
+</blockquote>
+</li>
+<li><p>불필요하게 Service와 1:1 매핑된 interface 제거하고 필요한 interface를 추출</p>
+<blockquote>
+<p>참고: <a href="https://www.slipp.net/questions/19" rel="external nofollow noopener noreferrer" target="_blank">Business Layer에 Interface를 만들어야 할까?</a></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="7-Annotation-전략"><a href="#7-Annotation-전략" class="headerlink" title="7. Annotation 전략"></a>7. Annotation 전략</h3><p>기존 코드에서 Lombok을 사용하고 있었습니다. 그런데, 대부분의 객체에 @Data와 @AllArgsConstructor 등의 사용을 자제해야 하는 Annotaion들이 작성되어 있었습니다. 그래서 @Data대신 @Getter만을 사용하도록 하는 등의 변경하였습니다. 최대한 변경의 여파가 크지 않도록 필요한 것들만 보수적으로 Annotaion을 적용하였죠. 그뿐만 아니라 객체들의 역할에 따라 어느 정도 Annotaion들이 일관성을 띠게 되어 나름대로 Annotaion 전략도 수립하였죠.</p>
+<blockquote>
+<p>참고: <a href="https://popit.kr/실무에서-lombok-사용법/" rel="external nofollow noopener noreferrer" target="_blank">실무에서 Lombok 사용법</a></p>
+<p>참고: <a href="https://kwonnam.pe.kr/wiki/java/lombok/pitfall" rel="external nofollow noopener noreferrer" target="_blank">Lombok 사용상 주의점(Pitfall)</a></p>
+</blockquote>
+<h3 id="8-Exception-전략"><a href="#8-Exception-전략" class="headerlink" title="8. Exception 전략"></a>8. Exception 전략</h3><p>기존 코드에서도 ControllerAdvice를 이용하여 에러를 처리하고 있었습니다만, API 요청을 처리하던 중에 발생한 오류인지 페이지 요청을 처리하던 중에 발생한 오류인지 구분하지 않고 처리를 하고 있었습니다. 또한, 오류에 대한 상세 내용이 명확히 정의되어 있지 않아 개선하였습니다. 참고 글들을 참고해 나름의 Exception 전략을 세우고 Error 응답에 대해서는 통일된 형식의 응답을 반환하도록 개선했습니다.</p>
+<blockquote>
+<p>참고: <a href="https://cheese10yun.github.io/spring-guide-exception/" rel="external nofollow noopener noreferrer" target="_blank">Spring Guide - Exception 전략</a></p>
+<p>참고: <a href="https://www.slipp.net/questions/600" rel="external nofollow noopener noreferrer" target="_blank">Spring에서 @ControllerAdvice를 활용한 Exception 처리</a></p>
+<p>참고: <a href="https://stackoverflow.com/questions/43325685/spring-different-exception-handler-for-restcontroller-and-controller" rel="external nofollow noopener noreferrer" target="_blank">Spring: Different exception handler for RestController and Controller</a></p>
+</blockquote>
+<h3 id="9-Logging-정책"><a href="#9-Logging-정책" class="headerlink" title="9. Logging 정책"></a>9. Logging 정책</h3><p>기존 코드는 서로 다른 Controller마다 메서드에서 비슷한 유형의 로깅 관련 코드가 중복되어 존재하였습니다. Controller 도입부에는 넘어온 파라미터를 로깅하고 처리가 끝났을 때는 반환하는 값을 로깅하고 있었죠. 저는 Spring의 큰 장점인 AOP를 활용하여 Controller 단의 로깅을 공통으로 처리하도록 개선하였습니다.</p>
+<blockquote>
+<p>참고: <a href="https://jeong-pro.tistory.com/171" rel="external nofollow noopener noreferrer" target="_blank">Spring AOP 스프링이 해줄건데 너가 왜 어려워 해? Spring boot에서 aop logging 사용법 제일 쉽게 알려드립니다!</a></p>
+<p>참고: <a href="https://blog.azulpintor.io/entry/spring4-aop-usage-example-simply" rel="external nofollow noopener noreferrer" target="_blank">Spring4 AOP 간단한 사용예제</a></p>
+<p>참고: <a href="https://aljjabaegi.tistory.com/278" rel="external nofollow noopener noreferrer" target="_blank">AOP 설정을 활용한 세션체크 AOP Session Check</a></p>
+<p>참고: <a href="https://makeinjava.com/logging-aspect-restful-web-service-spring-aop-request-response/" rel="external nofollow noopener noreferrer" target="_blank">Logging aspect in RESTful web service – spring aop (log requests/responses)</a></p>
+</blockquote>
+<h3 id="10-Mybatis-연관-관계-매핑-사용"><a href="#10-Mybatis-연관-관계-매핑-사용" class="headerlink" title="10. Mybatis 연관 관계 매핑 사용"></a>10. Mybatis 연관 관계 매핑 사용</h3><p>제가 맡은 프로젝트가 JPA를 사용하지 않는 환경이라 아쉬움이 많았습니다. Mybatis는 SQL의 결과를 객체에 할당해주기는 하지만 JPA의 Entity 개념이 아니기 때문에 객체들과의 연관관계나 객체의 동일성 등을 표현하는 데 어려움이 있었기 때문입니다. 그래도 저는 기존 환경에서 최대한 개선을 해보고자 JPA와 비슷하게 매핑하려고 노력하였습니다. 특히, 기존 코드는 연관 관계 매핑을 활용하고 있지 않았습니다. 저는 Mybatis에서 제공하는 연관 관계 매핑을 적극적으로 사용하여 객체지향 적으로 코드를 작성하기 위해 노력했습니다. 물론, JPA에서 제공하는 것처럼 객체 그래프가 완벽하진 않지만 나름대로 만족하며 사용하고 있습니다. JPA보다 개발 공수가 더 든다는 것이 굉장히 아쉽습니다.</p>
+<blockquote>
+<p>참고: <a href="https://mybatis.org/mybatis-3/ko/sqlmap-xml.html" rel="external nofollow noopener noreferrer" target="_blank">Mapper XML 파일</a></p>
+<p>참고: <a href="http://vincent4chen.com/mybatis/install/MyBatis-One-to-One-Mapping/" rel="external nofollow noopener noreferrer" target="_blank">MyBatis One to One Mapping</a></p>
+</blockquote>
+<p>연관 관계 매핑을 적용하던 중 Enum 매핑을 할 때 애를 먹었습니다. 예를 들면 DB에 0이 저장되어 있을 때 ‘ProductType’의 ‘Phone’이 매핑되고 1이 저장되어 있을 때 ‘ProductType’의 ‘Pad’가 저장되는 식의 구현이죠. Type Handler를 구현하여 문제를 해결했는데 그 과정에서 다음의 글이 큰 도움을 주었습니다.</p>
+<blockquote>
+<p>참고: <a href="https://github.com/mybatis/mybatis-3/issues/42" rel="external nofollow noopener noreferrer" target="_blank">Proposal for an enum type handler which persists specified value rather than ordinal or name.</a></p>
+</blockquote>
+<p>연관 매핑을 사용하기 위해서 Mybatis 공식 문서를 자세히 읽게 되었는데요. 이때 Mybatis 번역과 관련되어 이슈를 제기하기도 하였네요. 어쩌다 보니 오픈 소스 프로젝트에 첫 이슈를 제기해보는 경험도 하게 되었습니다.</p>
+<blockquote>
+<p><a href="https://github.com/mybatis/mybatis-3/issues/1602" rel="external nofollow noopener noreferrer" target="_blank">The contents of the ‘caption’ tag are garbled In the Korean translation document</a></p>
+</blockquote>
+<h3 id="11-비동기-로직-활용"><a href="#11-비동기-로직-활용" class="headerlink" title="11. 비동기 로직 활용"></a>11. 비동기 로직 활용</h3><p>제가 작성한 글 ‘<a href="https://sogoagain.github.io/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>‘에서도 간단히 언급한 적이 있지만, 기존 코드에서는 외부 API를 호출하고 수행하는 로직들이 동기 방식으로 구현되어 있어 처리 속도 면에서 불리한 점들이 있었습니다. 외부 API를 호출하는 로직 중 비동기로 전환할 수 있는 것들에 대해서 적극적으로 비동기로 전환하였습니다. 이렇게 개선하는 중에 @Async와 @Transactional을 동시에 사용할 수 없다는 것도 알게 되었죠. 그래서 API 호출하는 Service와 DB 작업을 하는 Service를 분리하였습니다. API 호출하는 서비스에서 DB 작업을 하는 서비스를 호출하여 로직을 처리하도록 구현했습니다.</p>
+<blockquote>
+<p>참고: <a href="https://www.slipp.net/questions/123" rel="external nofollow noopener noreferrer" target="_blank">spring transaction을 활용해 async로 데이터를 처리할 때의 이슈</a></p>
+</blockquote>
+<h3 id="12-정적-소스-코드-분석-툴-도입"><a href="#12-정적-소스-코드-분석-툴-도입" class="headerlink" title="12. 정적 소스 코드 분석 툴 도입"></a>12. 정적 소스 코드 분석 툴 도입</h3><p>제 나름대로 제가 갖고 있던 지식과 인터넷에서 얻은 지식 그리고 주변 사람들로부터 얻은 지식을 종합해 프로젝트를 개선하고 있었습니다. 그런데, 정말로 제가 가는 길이 올바른 길인지 의문점이 들었습니다. 그때 소스코드를 정적으로 분석해주는 툴을 알게 되었고 그러한 프로그램 중 하나인 SonarQube를 docker를 활용해 제 로컬 환경에 구축하였습니다. IDE인 IntelliJ와 연동하여 실시간으로 제가 작성한 코드에 문제가 없는지 확인하고 있으며 개발이 끝나면 코드 분석을 돌려 코드 품질이 어떤지 확인하며 피드백을 받고 있습니다.</p>
+<blockquote>
+<p>참고: <a href="https://daddyprogrammer.org/post/817/sonarqube-analysis-intergrated-intellij/" rel="external nofollow noopener noreferrer" target="_blank">소나큐브(Sonarqube)를 통한 코드 분석 및 코드 품질 향상</a></p>
+<p>참고: <a href="http://www.chidoo.me/index.php/2016/03/21/sonarqube-for-ci/" rel="external nofollow noopener noreferrer" target="_blank">SonarQube 이용해서 만드는 CI</a></p>
+<p>참고: <a href="https://github.com/screwdriver-cd-test/sonar-coverage-example-java" rel="external nofollow noopener noreferrer" target="_blank">sonar-coverage-example-java</a></p>
+</blockquote>
+<h3 id="13-도메인-기반-패키지-구조"><a href="#13-도메인-기반-패키지-구조" class="headerlink" title="13. 도메인 기반 패키지 구조"></a>13. 도메인 기반 패키지 구조</h3><p>기존 코드는 기능 중심의 계층형 패키지 구조로 되어 있었습니다. Controller들은 controller 패키지에, Service들은 service 패키지에 위치한 모습이었죠. 처음에는 큰 문제가 없었으나 프로젝트의 크기가 커지고 각각의 요소들이 많아지게 되자 문제가 발생했습니다. 저는 특정 도메인과 관련된 코드를 수정하고 싶을 뿐인데 도메인과 관련된 클래스 파일들이 흩어져있어기에 관련된 클래스들만 찾는데도 큰 노력이 들었습니다. 또한, 이전 코드는 하나의 Controller에서 여러 도메인에 대해 처리를 하기도 하였습니다. 이대로 가면 안 되겠다 싶어 개선을 진행했습니다.</p>
+<p>일단, 여러 도메인이 섞여 있는 Controller와 같은 클래스들에 대해서 도메인 별로 분리하였습니다. 그리고 전체 디렉터리 구조를 도메인 기반으로 변경하였죠. 이렇게 구조를 변경하니 개발뿐만 아니라 차후 유지보수를 하는 데도 편하였습니다. 기능 하나를 수정하기 위해 여러 클래스를 찾아다니는 노력이 많이 줄었죠.</p>
+<blockquote>
+<p>참고: <a href="https://cheese10yun.github.io/spring-guide-directory/" rel="external nofollow noopener noreferrer" target="_blank">Spring Guide - Directory</a></p>
+<p>참고: <a href="https://github.com/spring-projects/spring-petclinic" rel="external nofollow noopener noreferrer" target="_blank">spring-petclinic</a></p>
+</blockquote>
+<h2 id="회고"><a href="#회고" class="headerlink" title="회고"></a>회고</h2><p>긴 글이 될 것이라 예상은 했기에 감안하고 최대한 축약하여 표현하였습니다. 그런데도 예상을 뛰어넘는 긴 글이 되어 버렸네요. 글에서는 각각의 항목을 몇 줄로 표현하였지만, 당시 저는 각각의 항목을 개선하기 위해 고민과 노력을 굉장히 많이 하였습니다. 생각보다 쉽지 않더라고요. 솔직히 고통스러웠습니다. 중간에 ‘포기하고 기존 코드들을 유지한 채로 개발을 진행할까?’라는 고민을 수도 없이 했습니다.</p>
+<p>하지만 개발자라면 해야 하는 일이라고 생각하여 참고 진행했습니다. 모두가 언제나 완벽히 클린한 코드를 원하지만, 현실은 누군가 ‘처음’ 작성한 코드를 이어받고 서비스를 운영하는 입장에 놓이게 되니까요. 이번에 제가 제 나름대로 개선했다고 생각하는 코드도 누군가에게는 레거시 코드로 느껴지리라 생각합니다. 어쩌면 이번 경험을 평생 해나가야 하는 게 개발자가 아닌가 생각도 해봅니다. 고통스러운 과정이었지만 개선된 모습을 보고 나니 너무나 뿌듯하네요. 특히 SonarQube를 통해 확연히 변한 결과를 보니 더욱더 뿌듯했습니다. 개선하면서 배운 것도 참 많았다는 생각도 합니다. 위 개선 사항 중 하나만 꼽으라면 저는 ‘테스트 코드 작성’을 꼽겠습니다. 아직 테스트 코드를 작성해보지 않으신 다른 개발자분들도 시도해 보셨으면 합니다. 피드백을 필요할 때 빠르게 받으니 장점이 많았습니다.</p>
+<p>물론, 아직 가야 할 길이 많습니다. 개선하고 싶은 부분도 많고요.  개선을 진행할 때마다 제가 수정하는 방향이 옳은 것인지 확신을 가지려고 자료 참고도 많이 하였습니다. 그런데도 부족한 점이나 잘못된 부분들이 있을 것입니다. 혹시나 다른 생각을 하고 계신 분들은 의견 공유해주시면 그것을 피드백 삼아 더 나은 코드를 작성하는 데 노력하겠습니다. 긴 글인데 여기까지 읽어주셔서 감사합니다.</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://sogoagain.github.io">sogoagain</a>
+            </p><p>Link：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/</a>
+            </p><p>Publish date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">March 8th 2020, 2:00:00 am</a>
+            </p><p>Update date：<a href="https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">March 8th 2020, 2:25:45 am</a>
+            </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2020/01/12/삶에-애자일-도입하기/" title="삶에 애자일 도입하기">
+                    <div class="prevTitle">삶에 애자일 도입하기</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "https://sogoagain.github.io/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "레거시 코드를 클린 코드로 점진적으로 개선한 경험"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://sogoagain.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:imyong0@gmail.com" class="iconfont-archer email" title="email" rel="external nofollow noopener noreferrer" target="_blank"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/sogoagain" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank" rel="external nofollow noopener noreferrer">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style="top:50vh;">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#프로젝트를-이어받다"><span class="toc-number">1.</span> <span class="toc-text">프로젝트를 이어받다.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#레거시-코드란"><span class="toc-number">2.</span> <span class="toc-text">레거시 코드란?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#클린코드를-향해-가다"><span class="toc-number">3.</span> <span class="toc-text">클린코드를 향해 가다.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#스프링-레거시-코드를-개선하는데-실천한-13가지-방법"><span class="toc-number">4.</span> <span class="toc-text">스프링 레거시 코드를 개선하는데 실천한 13가지 방법</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-테스트-코드-작성"><span class="toc-number">4.1.</span> <span class="toc-text">1. 테스트 코드 작성</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-단순히-값을-나타내는-객체가-아닌-역할을-갖는-객체로-변경"><span class="toc-number">4.2.</span> <span class="toc-text">2. 단순히 값을 나타내는 객체가 아닌 역할을 갖는 객체로 변경</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-static-클래스를-Bean과-Component로-변경"><span class="toc-number">4.3.</span> <span class="toc-text">3. static 클래스를 Bean과 Component로 변경</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Controller-Service-Model의-계층-구조를-명확히"><span class="toc-number">4.4.</span> <span class="toc-text">4. Controller, Service, Model의 계층 구조를 명확히</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Java의-Best-Practice-적용"><span class="toc-number">4.5.</span> <span class="toc-text">5. Java의 Best Practice 적용</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Spring의-Best-Practice-적용"><span class="toc-number">4.6.</span> <span class="toc-text">6. Spring의 Best Practice 적용</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Annotation-전략"><span class="toc-number">4.7.</span> <span class="toc-text">7. Annotation 전략</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Exception-전략"><span class="toc-number">4.8.</span> <span class="toc-text">8. Exception 전략</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Logging-정책"><span class="toc-number">4.9.</span> <span class="toc-text">9. Logging 정책</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Mybatis-연관-관계-매핑-사용"><span class="toc-number">4.10.</span> <span class="toc-text">10. Mybatis 연관 관계 매핑 사용</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-비동기-로직-활용"><span class="toc-number">4.11.</span> <span class="toc-text">11. 비동기 로직 활용</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-정적-소스-코드-분석-툴-도입"><span class="toc-number">4.12.</span> <span class="toc-text">12. 정적 소스 코드 분석 툴 도입</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-도메인-기반-패키지-구조"><span class="toc-number">4.13.</span> <span class="toc-text">13. 도메인 기반 패키지 구조</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#회고"><span class="toc-number">5.</span> <span class="toc-text">회고</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 24
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/레거시-코드를-클린-코드로-점진적으로-개선한-경험/">레거시 코드를 클린 코드로 점진적으로 개선한 경험</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2020/01/12/삶에-애자일-도입하기/">삶에 애자일 도입하기</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href="/2020/01/11/2019년-회고/">2019년 회고</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href="/2019/12/06/실수노트-캐싱된-메서드는-변경-불가능한-Immutable-객체를-반환토록-하자/">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">코틀린(Kotlin)에서의 null 안전 처리</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">JUnit5, @ParameterizedTest 사용 예</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/가볍게-정리하는-git-기본/">가볍게 정리하는 git 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/문화와-기술/">문화와 기술</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">IntelliJ에서 Docker로 Web App 배포하기</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-오류-해결/">ORA-12505 오류 해결</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D에서-Observer패턴을-이용한-연산량-감소/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/가볍게-정리하는-DB-기본-내용/">가볍게 정리하는 DB 기본</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/가볍게-구분하는-개체-객체-인스턴스/">가볍게 구분하는 개체, 객체, 인스턴스</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">SourceTree 'Permission denied (publickey)' 에러</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar를-이용한-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/나의-vimrc/">나의 vimrc</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-에서-대입-연산자를-오버로딩-하는-괜찮은-방법/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/르블랑의-법칙/">르블랑의 법칙</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/가상함수와-가상상속/">가상함수와 가상상속</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/애자일-소프트웨어-개발/">애자일 소프트웨어 개발</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="회고"><span class="iconfont-archer">&#xe606;</span>회고</span>
+    
+        <span class="sidebar-tag-name" data-tags="생각"><span class="iconfont-archer">&#xe606;</span>생각</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="OOP"><span class="iconfont-archer">&#xe606;</span>OOP</span>
+    
+        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
+        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer architecture"><span class="iconfont-archer">&#xe606;</span>Computer architecture</span>
+    
+        <span class="sidebar-tag-name" data-tags="SimpleScalar"><span class="iconfont-archer">&#xe606;</span>SimpleScalar</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache memory"><span class="iconfont-archer">&#xe606;</span>Cache memory</span>
+    
+        <span class="sidebar-tag-name" data-tags="SourceTree"><span class="iconfont-archer">&#xe606;</span>SourceTree</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSH"><span class="iconfont-archer">&#xe606;</span>SSH</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Unity3D"><span class="iconfont-archer">&#xe606;</span>Unity3D</span>
+    
+        <span class="sidebar-tag-name" data-tags="Design Pattern"><span class="iconfont-archer">&#xe606;</span>Design Pattern</span>
+    
+        <span class="sidebar-tag-name" data-tags="C#"><span class="iconfont-archer">&#xe606;</span>C#</span>
+    
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="Software engineering"><span class="iconfont-archer">&#xe606;</span>Software engineering</span>
+    
+        <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
+    
+        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spring"><span class="iconfont-archer">&#xe606;</span>Spring</span>
+    
+        <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
+    
+        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
+    
+        <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
+    
+        <span class="sidebar-tag-name" data-tags="실수노트"><span class="iconfont-archer">&#xe606;</span>실수노트</span>
+    
+        <span class="sidebar-tag-name" data-tags="Immutable"><span class="iconfont-archer">&#xe606;</span>Immutable</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
+    
+        <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
+    
+        <span class="sidebar-tag-name" data-tags="애자일"><span class="iconfont-archer">&#xe606;</span>애자일</span>
+    
+        <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
+    
+        <span class="sidebar-tag-name" data-tags="null처리"><span class="iconfont-archer">&#xe606;</span>null처리</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="생각"><span class="iconfont-archer">&#xe60a;</span>생각</span>
+    
+        <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
+    
+        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
+    
+        <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
+    
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
+        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
+    
+        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+    
+        <span class="sidebar-category-name" data-categories="독서"><span class="iconfont-archer">&#xe60a;</span>독서</span>
+    
+        <span class="sidebar-category-name" data-categories="실수노트"><span class="iconfont-archer">&#xe60a;</span>실수노트</span>
+    
+        <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
+    
+        <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "sogoagain"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <!-- CNZZ  -->
+    
+    
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
