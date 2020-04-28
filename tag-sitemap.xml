@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://sogoagain.github.io/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/</loc>
+        <lastmod>2020-04-28T15:40:31.724Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/%EC%9D%B5%EB%AA%85-%ED%95%A8%EC%88%98/</loc>
+        <lastmod>2020-04-28T15:40:31.724Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/JavaScript/</loc>
+        <lastmod>2020-04-28T15:40:31.724Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/tags/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8/</loc>
+        <lastmod>2020-04-28T15:40:31.724Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://sogoagain.github.io/tags/Spring/</loc>
         <lastmod>2020-03-07T17:44:13.245Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -10,14 +38,14 @@
     </url>
 
     <url>
-        <loc>https://sogoagain.github.io/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/</loc>
+        <loc>https://sogoagain.github.io/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5/</loc>
         <lastmod>2020-03-07T17:44:13.245Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://sogoagain.github.io/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5/</loc>
+        <loc>https://sogoagain.github.io/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/</loc>
         <lastmod>2020-03-07T17:44:13.245Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -95,13 +123,6 @@
 
     <url>
         <loc>https://sogoagain.github.io/tags/Immutable/</loc>
-        <lastmod>2019-12-05T15:57:03.145Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/tags/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8/</loc>
         <lastmod>2019-12-05T15:57:03.145Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
