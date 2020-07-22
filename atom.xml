@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
-  <updated>2020-04-30T14:02:02.603Z</updated>
+  <updated>2020-07-22T16:14:51.346Z</updated>
   <id>https://sogoagain.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>개발자의 아침</title>
+    <link href="https://sogoagain.github.io/2020/07/23/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%95%84%EC%B9%A8/"/>
+    <id>https://sogoagain.github.io/2020/07/23/개발자의-아침/</id>
+    <published>2020-07-22T15:46:38.000Z</published>
+    <updated>2020-07-22T16:14:51.346Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&apos;따르릉, 따르릉&apos; 알람 소리다;</span><br><span class="line">아침 알람은 오전 6시에 시작되어 15분 간격으로 총 세 번 울린다;</span><br><span class="line"></span><br><span class="line">아침에 알람이 세 번 울리는 동안 아래를 반복한다;</span><br><span class="line">    첫 번재 알람이라면:</span><br><span class="line">        알람을 끄고 눈을 감는다;</span><br><span class="line">        나에게 첫 번째 알람은 아침이 되었다는 것을 인지시켜주는 역할을 할 뿐이다;</span><br><span class="line">        이 알람에 바로 일어나면 좋겠지만 꽤 오랜 기간 연습했음에도 도통 쉽지 않았다;</span><br><span class="line">        그래서 첫 번째 알람에 일어날 수 없다는 것을 받아들이기로 했다;</span><br><span class="line">        대신, 다시 자는 것이 아닌 눈을 감는다;</span><br><span class="line">        잠이 들 듯 말 듯 다음 알람이 울리길 기다린다;</span><br><span class="line">        반복 계속;</span><br><span class="line"></span><br><span class="line">    두 번째 알람이라면:</span><br><span class="line">        일어난다면:</span><br><span class="line">            물을 마신다;</span><br><span class="line">            꽤 오랜 습관이다;</span><br><span class="line">            일어나자마자 물을 마시면 소화 기능이 활성화되어 훨씬 상쾌한 아침을 보낼 수 있다고 한다;</span><br><span class="line">            이를 실천해 보았는데, 실제 효과가 있는 듯하다;</span><br><span class="line">            반복 종료;</span><br><span class="line">        일어나지 못한다면:</span><br><span class="line">            첫 알람을 듣고 눈을 감고 있다가 다시 잠이 들어 버린 것이다;</span><br><span class="line">            다음 알람 때 일어나야 한다;</span><br><span class="line">            반복 계속;</span><br><span class="line"></span><br><span class="line">    세 번째 알람이라면:</span><br><span class="line">        마지막 알람이다;</span><br><span class="line">        이때 제대로 일어나지 못하면 지각이다;</span><br><span class="line">        제발 부디 그런 일은 없어야 한다;</span><br><span class="line">        일어나!;</span><br><span class="line">        반복 계속;</span><br><span class="line"></span><br><span class="line">이제 일어났으니 간단히 아침 식사를 해보자;</span><br><span class="line">아침을 거르면 힘이 생기지 않아 오전 업무 시간에 제대로 집중할 수가 없다;</span><br><span class="line">그럼 일이 밀리게 되고 퇴근 시간이 다가올 수록 힘들어지기 때문에 아침 식사를 소홀히 할 수 없다;</span><br><span class="line"></span><br><span class="line">냉장고를 열고 훑어보자;</span><br><span class="line">    과일이 있다면 ? 그릇에 담는다;</span><br><span class="line">    우유가 있다면 ? 컵에 우유를 따른다 : 그렇지 않다면 물을 따른다;</span><br><span class="line">    계란이 있다면 ? 프라이팬에 기름을 두르고 계란을 깐다;</span><br><span class="line">    식빵이 있다면 ? 토스트기에 식빵을 올린다 : 그렇지 않다면 컵에 따른 우유를 그릇으로 옮기고 시리얼을 붇는다;</span><br><span class="line">    냉장고에 아무 것도 없다면 ? 일단 물로 배를 채운 뒤 회사 근처에서 먹도록 하자;</span><br><span class="line">    냉장고 문을 닫는다;</span><br><span class="line"></span><br><span class="line">오늘은 다행히 먹을 것이 있다;</span><br><span class="line">아침 식사로 계란 프라이, 식빵 토스트, 오렌지, 우유를 준비했다;</span><br><span class="line">풍족하다;</span><br><span class="line">밥을 먹으며 간단히 기술 공부를 하자;</span><br><span class="line"></span><br><span class="line">아침 식사를 하며 다음을 반복한다;</span><br><span class="line">    공부할 주제가 정해질 때까지 다음을 반복한다;</span><br><span class="line">        책장을 살펴보거나 인터넷 서핑을 통해 공부할 주제를 선정한다;</span><br><span class="line">        </span><br><span class="line">        선정한 주제가 깊은 이해를 요구한다면:</span><br><span class="line">            아침은 상쾌해야 한다;</span><br><span class="line">            너무 방대한 내용을 다루는 것보다는 가볍게 읽을 거리를 다시 찾아보자;</span><br><span class="line">            그렇지 않으면 아침밥 먹다가 체할 수도 있다;</span><br><span class="line">            반복 계속;</span><br><span class="line">        </span><br><span class="line">        깊은 이해를 요구하는 것이 아니라면:</span><br><span class="line">            아침 공부에는 짧은 호흡으로 구성된 책이나 강의를 선호한다;</span><br><span class="line">            책장에서 프로그램을 작성할 때 도움이 되는 간단한 내용이 담긴 책을 발견했다;</span><br><span class="line">            남은 시간 동안 이 책에서 약 3개의 팁을 읽을 수 있을 것 같다;</span><br><span class="line">            이 책으로 오늘 아침 공부를 해보자;</span><br><span class="line">            반복 종료;</span><br><span class="line">    </span><br><span class="line">    오전 7시 30분이 될 때까지 공부한다;</span><br><span class="line"></span><br><span class="line">어느덧 씻고 나갈 준비를 해야 할 시간이다;</span><br><span class="line">8시에 집에서 나서야 하니 30분의 시간 동안 출근 준비를 마쳐야 한다;</span><br><span class="line">이때 시간을 맞추기 위해 타이머를 설정하는데, 나는 타이머로 시리를 이용한다;</span><br><span class="line"></span><br><span class="line">시리야, 30분 뒤에 출근하라고 알려줘;</span><br><span class="line">    30분 뒤에 해야 할 행동은 다음과 같다:</span><br><span class="line">        핸드폰, 지갑, 가방, 손소독제를 챙긴다;</span><br><span class="line">        마스크를 쓴다;</span><br><span class="line">        신발을 신고 밖으로 나간다;</span><br><span class="line"></span><br><span class="line">타이머를 맞춰놓으니 안심이 된다;</span><br><span class="line">이제 남은 시간 동안 샤워를 한 뒤 옷을 입고 간단히 집 정리를 한다;</span><br><span class="line">그리고 시리가 30분이 지났다는 것을 알려줄 때까지 기다린다;</span><br><span class="line"></span><br><span class="line">개발자의 아침 종료;</span><br><span class="line"></span><br><span class="line">평일 오전 6시 마다 &apos;개발자의 아침&apos; 프로그램을 실행한다;</span><br></pre></td></tr></table></figure><p>이런, 오늘 또 프로그램이 제대로 동작하지 못했다.<br>최근 들어 오류가 잦아졌는데, 얼른 고쳐서 정상으로 만들자.<br>인생은 디버깅의 연속이구나.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="생각" scheme="https://sogoagain.github.io/categories/%EC%83%9D%EA%B0%81/"/>
+    
+    
+      <category term="생각" scheme="https://sogoagain.github.io/tags/%EC%83%9D%EA%B0%81/"/>
+    
+      <category term="에세이" scheme="https://sogoagain.github.io/tags/%EC%97%90%EC%84%B8%EC%9D%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>삶에 적용해야 할 견습 과정 패턴</title>
@@ -388,9 +415,9 @@
     
       <category term="독서" scheme="https://sogoagain.github.io/tags/%EB%8F%85%EC%84%9C/"/>
     
-      <category term="etc" scheme="https://sogoagain.github.io/tags/etc/"/>
-    
       <category term="개발문화" scheme="https://sogoagain.github.io/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/"/>
+    
+      <category term="etc" scheme="https://sogoagain.github.io/tags/etc/"/>
     
   </entry>
   
@@ -555,35 +582,6 @@
     
     
       <category term="OOP" scheme="https://sogoagain.github.io/tags/OOP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SourceTree &#39;Permission denied (publickey)&#39; 에러</title>
-    <link href="https://sogoagain.github.io/2019/01/08/SourceTree-Permission-denied-publickey-%EC%97%90%EB%9F%AC/"/>
-    <id>https://sogoagain.github.io/2019/01/08/SourceTree-Permission-denied-publickey-에러/</id>
-    <published>2019-01-07T17:49:48.000Z</published>
-    <updated>2019-07-26T17:54:56.851Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="상황"><a href="#상황" class="headerlink" title="상황"></a>상황</h2><p>SourceTree에서 원격저장소에 접근(푸쉬/풀/클론 등)을 할 때 ‘ ‘Permission denied (publickey)’ 에러 발생</p><h2 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h2><p>PC SSH Agent에 key가 등록되어 있지 않았을 때 발생</p><h2 id="확인-방법"><a href="#확인-방법" class="headerlink" title="확인 방법"></a>확인 방법</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>Putty실행 후 등록된 key 리스트 확인</p><h3 id="On-GitBash-OSX-or-Linux"><a href="#On-GitBash-OSX-or-Linux" class="headerlink" title="On GitBash, OSX or Linux"></a>On GitBash, OSX or Linux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -l</span><br></pre></td></tr></table></figure><h2 id="등록된-key가-없을-때-해결법"><a href="#등록된-key가-없을-때-해결법" class="headerlink" title="등록된 key가 없을 때 해결법"></a>등록된 key가 없을 때 해결법</h2><h3 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h3><p>Putty실행 후 ‘Add Key’ 버튼을 이용해 키 추가</p><h3 id="On-GitBash-OSX-or-Linux-1"><a href="#On-GitBash-OSX-or-Linux-1" class="headerlink" title="On GitBash, OSX or Linux"></a>On GitBash, OSX or Linux</h3><p>아래의 명령어를 통해 키 추가<br>(identity는 자신의 키 파일명으로 대체)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/identity</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;상황&quot;&gt;&lt;a href=&quot;#상황&quot; class=&quot;headerlink&quot; title=&quot;상황&quot;&gt;&lt;/a&gt;상황&lt;/h2&gt;&lt;p&gt;SourceTree에서 원격저장소에 접근(푸쉬/풀/클론 등)을 할 때 ‘ ‘Permission denied (publickey
-      
-    
-    </summary>
-    
-      <category term="도구Tip" scheme="https://sogoagain.github.io/categories/%EB%8F%84%EA%B5%ACTip/"/>
-    
-    
-      <category term="SourceTree" scheme="https://sogoagain.github.io/tags/SourceTree/"/>
-    
-      <category term="SSH" scheme="https://sogoagain.github.io/tags/SSH/"/>
-    
-      <category term="git" scheme="https://sogoagain.github.io/tags/git/"/>
     
   </entry>
   
