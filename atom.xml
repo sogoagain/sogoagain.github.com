@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
-  <updated>2020-08-24T10:40:07.152Z</updated>
+  <updated>2020-10-25T06:50:37.439Z</updated>
   <id>https://sogoagain.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Spring] Controller에서 URI 작업을 할 때 UriComponentsBuilder를 사용하자</title>
+    <link href="https://sogoagain.github.io/2020/10/25/Spring-Controller%EC%97%90%EC%84%9C-URI-%EC%9E%91%EC%97%85%EC%9D%84-%ED%95%A0-%EB%95%8C-UriComponentsBuilder%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%9E%90/"/>
+    <id>https://sogoagain.github.io/2020/10/25/Spring-Controller에서-URI-작업을-할-때-UriComponentsBuilder를-사용하자/</id>
+    <published>2020-10-25T06:46:59.000Z</published>
+    <updated>2020-10-25T06:50:37.439Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Controller에서-URI을-불러와-작업하는-경우"><a href="#Controller에서-URI을-불러와-작업하는-경우" class="headerlink" title="Controller에서 URI을 불러와 작업하는 경우"></a>Controller에서 URI을 불러와 작업하는 경우</h1><p>Controller에서 결과를 반환할 때 URI와 관련된 작업이 필요할 때가 있다. 대표적인 예로 POST 요청에서 Resource를 새로 생성한 경우를 들 수 있겠다. 이 경우 반환할 때 Header의 Location에 새로 생성한 Resource의 URI를 포함시켜 결과를 반환해야 한다.</p><h2 id="기존에-사용하던-방법"><a href="#기존에-사용하던-방법" class="headerlink" title="기존에 사용하던 방법"></a>기존에 사용하던 방법</h2><p>기존에는 ‘java.net.URI’ 클래스를 이용해 URI 객체를 생성한 뒤 이 객체를 Header에 포함시키는 방법을 사용했다. 이 방법에 큰 문제가 있는 것은 아니지만, URISyntaxException을 직접 처리해주어야 하는 번거로움이 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/items"</span>)</span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;?&gt; create(<span class="meta">@RequestBody</span> Item resource) <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">    <span class="keyword">final</span> Item item = itemService.addItem(resource.getName());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> String url = <span class="string">"/items/"</span> + item.getId();</span><br><span class="line">    <span class="keyword">return</span> ResponseEntity.created(<span class="keyword">new</span> URI(url)).body(<span class="string">"&#123;&#125;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="UriComponentsBuilder를-활용하는-방법"><a href="#UriComponentsBuilder를-활용하는-방법" class="headerlink" title="UriComponentsBuilder를 활용하는 방법"></a>UriComponentsBuilder를 활용하는 방법</h2><p>최근 업무로 인해 오픈소스 프로젝트를 분석할 일이 생겼다. 분석을 하던 중 위의 방법들을 대체할 좋은 방법을 찾았다. Controller 함수에 UriComponentsBuilder를 주입(Inject) 받아 사용하는 것이다. UriComponentsBuilder는 Spring에서 URI와 관련된 작업을 조금 더 쉽게 할 수 있도록 도와주는 클래스다. 무엇보다 기존 방법에서 처리해주어야 했던 URISyntaxException를 직접처리해주지 않아도 되고, URI 생성 작업이 전보다 쉽고 간결해진다. 예를들어 특정 path에 resource id를 덧붙일 때 UriComponentsBuilder에서 제공하는 buildAndExpand 메서드로 String 템플릿을 이용해 구현할 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/items"</span>)</span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;?&gt; create(<span class="meta">@RequestBody</span> Item resource, UriComponentsBuilder ucBuilder) &#123;</span><br><span class="line">    <span class="keyword">final</span> Item item = itemService.addItem(resource.getName());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> URI uri = ucBuilder.path(<span class="string">"/items/&#123;id&#125;"</span>).buildAndExpand(item.getId()).toUri();</span><br><span class="line">    <span class="keyword">return</span> ResponseEntity.created(uri).body(<span class="string">"&#123;&#125;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Controller에서-URI을-불러와-작업하는-경우&quot;&gt;&lt;a href=&quot;#Controller에서-URI을-불러와-작업하는-경우&quot; class=&quot;headerlink&quot; title=&quot;Controller에서 URI을 불러와 작업하는 경우&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="https://sogoagain.github.io/categories/Spring/"/>
+    
+    
+      <category term="java" scheme="https://sogoagain.github.io/tags/java/"/>
+    
+      <category term="Spring" scheme="https://sogoagain.github.io/tags/Spring/"/>
+    
+      <category term="URI" scheme="https://sogoagain.github.io/tags/URI/"/>
+    
+      <category term="UriComponentsBuilder" scheme="https://sogoagain.github.io/tags/UriComponentsBuilder/"/>
+    
+  </entry>
   
   <entry>
     <title>극단(extreme)으로 가기 위한 철학</title>
@@ -165,11 +196,11 @@
     
       <category term="TDD" scheme="https://sogoagain.github.io/tags/TDD/"/>
     
+      <category term="Spring" scheme="https://sogoagain.github.io/tags/Spring/"/>
+    
       <category term="객체지향" scheme="https://sogoagain.github.io/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5/"/>
     
       <category term="클린코드" scheme="https://sogoagain.github.io/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/"/>
-    
-      <category term="Spring" scheme="https://sogoagain.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -562,33 +593,6 @@
       <category term="Design Pattern" scheme="https://sogoagain.github.io/tags/Design-Pattern/"/>
     
       <category term="C#" scheme="https://sogoagain.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>가볍게 정리하는 DB 기본</title>
-    <link href="https://sogoagain.github.io/2019/01/22/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-DB-%EA%B8%B0%EB%B3%B8-%EB%82%B4%EC%9A%A9/"/>
-    <id>https://sogoagain.github.io/2019/01/22/가볍게-정리하는-DB-기본-내용/</id>
-    <published>2019-01-21T17:59:35.000Z</published>
-    <updated>2019-07-26T18:02:19.047Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h2><ul><li>여러 사용자에 의해 공유되어 사용될 목적으로 통합 관리되는 구조화된 데이터의 집합체</li><li>대표적인 데이터베이스<blockquote><ul><li>관계형 데이터베이스</li><li>개체 지향형 데이터베이스</li><li>개체 관계형 데이터베이스</li></ul></blockquote></li></ul><h3 id="데이터베이스-관리-시스템-DBMS"><a href="#데이터베이스-관리-시스템-DBMS" class="headerlink" title="데이터베이스 관리 시스템 (DBMS)"></a>데이터베이스 관리 시스템 (DBMS)</h3><ul><li>데이터베이스를 쉽고 빠르게 관리(입력, 조회, 수정 및 삭제 등)할 수 있도록 도와주는 소프트웨어(응용 프로그램)</li><li>대표적인 RDBMS<blockquote><ul><li>SQL Server</li><li>Oracle</li><li>Sybase</li><li>Informix</li><li>DB2</li></ul></blockquote></li></ul><h3 id="DB-클라이언트-도구"><a href="#DB-클라이언트-도구" class="headerlink" title="DB 클라이언트 도구"></a>DB 클라이언트 도구</h3><ul><li>DBMS는 기본적으로 서버 프로그램이며, DBMS에 접속하여 데이터 관련 작업을 하는 클라이언트 프로그램이 필요<blockquote><ul><li>MS의 SQL Server Management Studio</li></ul></blockquote></li></ul><hr><h2 id="RDB-관계"><a href="#RDB-관계" class="headerlink" title="RDB 관계"></a>RDB 관계</h2><ul><li>테이블은 다음의 세 가지 방식으로 관계를 맺음<ol><li>1:1</li><li>1:N</li><li>N:N<blockquote><p>1:N(일대다) 관계가 가장 많이 사용됨<br>1:N 관계는 부모:자식 관계 특성을 가짐</p></blockquote></li></ol></li></ul><hr><h2 id="용어-및-TIP"><a href="#용어-및-TIP" class="headerlink" title="용어 및 TIP"></a>용어 및 TIP</h2><ol><li>선택한 영역 주석 처리 / 해제: Ctrl + K, C / Ctrl + K, U</li><li>*는 애스터리스크 또는 별표라고 읽는다.</li><li>레코드(record): RDB에서 하나의 정보는 하나의 행으로 저장되는 데 이 행을 레코드라고 함.</li><li>ERD: Entity Relationship Diagram, 테이블(개체) 간의 관계를 나타낸 다이어그램</li></ol><hr><h2 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL (Structured Query Language)"></a>SQL (Structured Query Language)</h2><blockquote><p> 발음: 시퀄 또는 에스큐엘</p><ul><li>사용자가 DBMS와 의사소통 할 때 사용하는 프로그래밍 언어</li></ul></blockquote><h3 id="INSERT-문"><a href="#INSERT-문" class="headerlink" title="INSERT 문"></a>INSERT 문</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 테이블(열<span class="number">1</span>, 열<span class="number">2</span>, ..., 열n)</span><br><span class="line"><span class="keyword">VALUES</span> (값<span class="number">1</span>, 값<span class="number">2</span>, ..., 값n)</span><br></pre></td></tr></table></figure><h3 id="SELECT-문"><a href="#SELECT-문" class="headerlink" title="SELECT 문"></a>SELECT 문</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 열<span class="number">1</span>, 열<span class="number">2</span>, ..., 열n</span><br><span class="line"><span class="keyword">FROM</span> 테이블</span><br><span class="line">[<span class="keyword">WHERE</span> 조건]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span> 정렬기준_열 [<span class="keyword">ASC</span>|<span class="keyword">DESC</span>]]</span><br></pre></td></tr></table></figure><h3 id="UPDATE-문"><a href="#UPDATE-문" class="headerlink" title="UPDATE 문"></a>UPDATE 문</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 테이블</span><br><span class="line"><span class="keyword">SET</span> 열<span class="number">1</span> = <span class="string">'값1'</span>, 열<span class="number">2</span> = <span class="string">'값2'</span>, ..., 열n = <span class="string">'값n'</span></span><br><span class="line">[<span class="keyword">WHERE</span> 조건]</span><br></pre></td></tr></table></figure><h3 id="DELETE-문"><a href="#DELETE-문" class="headerlink" title="DELETE 문"></a>DELETE 문</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 테이블</span><br><span class="line">[<span class="keyword">WHERE</span> 조건]</span><br></pre></td></tr></table></figure><h3 id="JOIN-문"><a href="#JOIN-문" class="headerlink" title="JOIN 문"></a>JOIN 문</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.열<span class="number">1</span>, a.열<span class="number">2</span>, ..., a.열n, b.열<span class="number">1</span>, b.열<span class="number">2</span>, ..., b.열<span class="number">3</span></span><br><span class="line"><span class="keyword">FROM</span> A a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> B b</span><br><span class="line"><span class="keyword">ON</span> a.열x = b.열x</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.열<span class="number">1</span>, a.열<span class="number">2</span>, ..., a.열n, b.열<span class="number">1</span>, b.열<span class="number">2</span>, ..., b.열<span class="number">3</span></span><br><span class="line"><span class="keyword">FROM</span> A a <span class="keyword">LEFT</span>[<span class="keyword">RIGHT</span>] <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> B b</span><br><span class="line"><span class="keyword">ON</span> a.열x = b.열x</span><br></pre></td></tr></table></figure><hr><h2 id="저장-프로시저-Stored-Procedure"><a href="#저장-프로시저-Stored-Procedure" class="headerlink" title="저장 프로시저 (Stored Procedure)"></a>저장 프로시저 (Stored Procedure)</h2><ul><li>일련의 SQL 구문을 마치 하나의 함수처럼 실행하기 위해 만들어 둔 SQL 구문의 집합</li><li>장점<ol><li>성능 향상: 캐시 메모리에 저장된 결과를 사용 -&gt; 실행 속도 향상</li><li>보안 강화: 저장 프로시저 실행 권한만 부여하는 등 권한 제어 가능</li><li>네트워크 전송량 감소: SQL문 전체를 전송하지 않고 필요한 매개변수만 전달</li><li>모듈식 프로그래밍: 재사용 용이</li></ol></li></ul><hr><h2 id="트랜잭션-Transaction"><a href="#트랜잭션-Transaction" class="headerlink" title="트랜잭션 (Transaction)"></a>트랜잭션 (Transaction)</h2><ul><li>DB에서 더 이상 쪼갤 수 없는 하나로 묶여진 프로세스 처리(조회, 입력, 수정, 삭제) 단위<blockquote><ul><li>트랜잭션 시작:  BEGIN TRANSACTION</li><li>트랜잭션 적용: COMMIT</li><li>트랜잭션 취소: ROLLBACK</li><li>트랜잭션 예외 처리: TRY…CATCH (SQL Server 2005 이후)</li></ul></blockquote></li></ul><h3 id="저장-프로시저-생성-및-트랜잭션-처리"><a href="#저장-프로시저-생성-및-트랜잭션-처리" class="headerlink" title="저장 프로시저 생성 및 트랜잭션 처리"></a>저장 프로시저 생성 및 트랜잭션 처리</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> 프로시저명</span><br><span class="line">    @매개변수 데이터형식</span><br><span class="line"><span class="keyword">AS</span>  <span class="comment">-- 매개변수와 실제 실행될 SQL 구문 구분</span></span><br><span class="line"><span class="keyword">BEGIN</span> TRY</span><br><span class="line">    <span class="keyword">BEGIN</span> <span class="keyword">TRANSACTION</span>   <span class="comment">-- 트랜잭션 시작</span></span><br><span class="line"></span><br><span class="line">    (처리 내용)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">COMMIT</span>  <span class="comment">-- 트랜잭션에 존재하는 프로세스의 처리 결과 적용</span></span><br><span class="line"><span class="keyword">END</span> TRY</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span> CATCH <span class="comment">-- TRY 블럭의 오류 캐치</span></span><br><span class="line">    <span class="keyword">IF</span>(@@TRANCOUNT &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">ROLLBACK</span>    <span class="comment">--  트랜잭션 처리 내용 취소 (이전 상태로 복원)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- TRY 블럭에서 발생한 오류 로깅</span></span><br><span class="line">    <span class="keyword">DECLARE</span> @ErrorMsg <span class="keyword">nvarchar</span>(<span class="number">4000</span>)    <span class="comment">-- 오류 메시지</span></span><br><span class="line">            , @ErrorSeverity <span class="built_in">int</span>        <span class="comment">-- 오류의 심각도</span></span><br><span class="line">    <span class="keyword">SELECT</span> @ErrorMsg = ERROR_MESSAGE(), @ErrorSeverity = ERROR_SEVERITY()</span><br><span class="line">    RAISERROR(@ErrorMsg, @ErrorSeverity, <span class="number">1</span>) <span class="comment">-- 오류 정보 등록</span></span><br><span class="line"><span class="keyword">END</span> CATCH</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;DB&quot;&gt;&lt;a href=&quot;#DB&quot; class=&quot;headerlink&quot; title=&quot;DB&quot;&gt;&lt;/a&gt;DB&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;여러 사용자에 의해 공유되어 사용될 목적으로 통합 관리되는 구조화된 데이터의 집합체&lt;/li&gt;
-&lt;li&gt;대표적인 데이터
-      
-    
-    </summary>
-    
-      <category term="데이터베이스" scheme="https://sogoagain.github.io/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/"/>
-    
-    
-      <category term="DB" scheme="https://sogoagain.github.io/tags/DB/"/>
     
   </entry>
   
