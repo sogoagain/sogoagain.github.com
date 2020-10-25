@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sogoagain.github.io/"/>
-  <updated>2020-10-25T06:55:41.605Z</updated>
+  <updated>2020-10-25T12:25:11.654Z</updated>
   <id>https://sogoagain.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[Spring] Controller에서 URI 작업을 할 때 UriComponentsBuilder를 사용하자</title>
+    <title>UriComponentsBuilder로 URI 생성하는 방법</title>
     <link href="https://sogoagain.github.io/2020/10/25/Spring-Controller%EC%97%90%EC%84%9C-URI-%EC%9E%91%EC%97%85%EC%9D%84-%ED%95%A0-%EB%95%8C-UriComponentsBuilder%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%9E%90/"/>
     <id>https://sogoagain.github.io/2020/10/25/Spring-Controller에서-URI-작업을-할-때-UriComponentsBuilder를-사용하자/</id>
     <published>2020-10-25T06:46:59.000Z</published>
-    <updated>2020-10-25T06:55:41.605Z</updated>
+    <updated>2020-10-25T12:25:11.654Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Controller에서-URI을-불러와-작업하는-경우"><a href="#Controller에서-URI을-불러와-작업하는-경우" class="headerlink" title="Controller에서 URI을 불러와 작업하는 경우"></a>Controller에서 URI을 불러와 작업하는 경우</h1><p>Controller에서 결과를 반환할 때 URI와 관련된 작업이 필요할 때가 있다. 대표적인 예로 POST 요청에서 Resource를 새로 생성한 경우를 들 수 있겠다. 이 경우 반환할 때 Header의 Location에 새로 생성한 Resource의 URI를 포함시켜 결과를 반환해야 한다.</p><h2 id="기존에-사용하던-방법"><a href="#기존에-사용하던-방법" class="headerlink" title="기존에 사용하던 방법"></a>기존에 사용하던 방법</h2><p>기존에는 ‘java.net.URI’ 클래스를 이용해 URI 객체를 생성한 뒤 이 객체를 Header에 포함시키는 방법을 사용했다. 이 방법에 큰 문제가 있는 것은 아니지만, URISyntaxException을 직접 처리해주어야 하는 번거로움이 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/items"</span>)</span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;?&gt; create(<span class="meta">@RequestBody</span> Item resource) <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">    <span class="keyword">final</span> Item item = itemService.addItem(resource.getName());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> String url = <span class="string">"/items/"</span> + item.getId();</span><br><span class="line">    <span class="keyword">return</span> ResponseEntity.created(<span class="keyword">new</span> URI(url)).body(<span class="string">"&#123;&#125;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="UriComponentsBuilder를-활용하는-방법"><a href="#UriComponentsBuilder를-활용하는-방법" class="headerlink" title="UriComponentsBuilder를 활용하는 방법"></a>UriComponentsBuilder를 활용하는 방법</h2><p>최근 업무로 인해 오픈소스 프로젝트를 분석할 일이 생겼다. 분석을 하던 중 위의 방법들을 대체할 좋은 방법을 찾았다. Controller 함수에 UriComponentsBuilder를 주입(Inject) 받아 사용하는 것이다. UriComponentsBuilder는 Spring에서 URI와 관련된 작업을 조금 더 쉽게 할 수 있도록 도와주는 클래스다. 무엇보다 기존 방법에서 처리해주어야 했던 URISyntaxException를 직접처리해주지 않아도 되고, URI 생성 작업이 전보다 쉽고 간결해진다. 예를들어 특정 path에 resource id를 덧붙일 때 UriComponentsBuilder에서 제공하는 buildAndExpand 메서드로 String 템플릿을 이용해 구현할 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/items"</span>)</span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;?&gt; create(<span class="meta">@RequestBody</span> Item resource, UriComponentsBuilder ucBuilder) &#123;</span><br><span class="line">    <span class="keyword">final</span> Item item = itemService.addItem(resource.getName());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> URI uri = ucBuilder.path(<span class="string">"/items/&#123;id&#125;"</span>).buildAndExpand(item.getId()).toUri();</span><br><span class="line">    <span class="keyword">return</span> ResponseEntity.created(uri).body(<span class="string">"&#123;&#125;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
