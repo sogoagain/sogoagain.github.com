@@ -8,15 +8,22 @@
     </url>
 
     <url>
-        <loc>https://sogoagain.github.io/categories/%ED%9A%8C%EA%B3%A0%EB%A1%9D/</loc>
-        <lastmod>2020-12-10T17:39:01.388Z</lastmod>
+        <loc>https://sogoagain.github.io/categories/%EB%8F%84%EA%B5%ACTip/</loc>
+        <lastmod>2020-12-31T16:47:58.315Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://sogoagain.github.io/categories/%EB%8F%84%EA%B5%ACTip/</loc>
-        <lastmod>2020-12-04T14:36:31.642Z</lastmod>
+        <loc>https://sogoagain.github.io/categories/%EC%83%9D%EA%B0%81/</loc>
+        <lastmod>2020-12-31T16:46:36.548Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sogoagain.github.io/categories/%ED%9A%8C%EA%B3%A0%EB%A1%9D/</loc>
+        <lastmod>2020-12-10T17:39:01.388Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -31,13 +38,6 @@
     <url>
         <loc>https://sogoagain.github.io/categories/%EB%8F%85%EC%84%9C/</loc>
         <lastmod>2020-08-24T10:40:07.152Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sogoagain.github.io/categories/%EC%83%9D%EA%B0%81/</loc>
-        <lastmod>2020-07-22T16:33:51.287Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
