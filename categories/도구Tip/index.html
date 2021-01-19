@@ -10,7 +10,7 @@
 
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="sogoagain">
@@ -212,6 +212,11 @@
         ga('send', 'pageview');
     </script>
     
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="기술을 기술하다" type="application/atom+xml">
 </head>
 
     
@@ -358,7 +363,7 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2020/12/04/mkcert를-이용한-localhost-HTTPS-TLS-설정/">
+        <a class="abstract-title" href="/2020/12/04/mkcert%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-localhost-HTTPS-TLS-%EC%84%A4%EC%A0%95/">
             
                 <span>mkcert를 이용한 localhost HTTPS(TLS) 설정</span>
         </a>
@@ -366,8 +371,7 @@
             최근 인증 관련 API를 개발하고 있는데, 해당 인증 Spec이 Https 프로토콜 위에서 작동되어야 한다.따라서, 개발을 하려면 localhost 도메인으로 https 통신을 할 수 있어야 한다. 이 말은 로컬 환경에 TLS 구성을 해야 한다는 뜻이다. 얼핏 생각하기에 많은 작업이 필요할 것 같지만 mkcert라는 도구를 활용하면 그리 어렵진 않다.
 mkcert 설치 및 인증서 발급Mac OS 기준으로 작성하였다. 다른 OS는 공식 문서를 참고하면 된다.
 1. 설치1$ brew install mkcert
-
-2. Local 환...
+2. Local 환경...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -405,7 +409,7 @@ mkcert 설치 및 인증서 발급Mac OS 기준으로 작성하였다. 다른 OS
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/12/가볍게-정리하는-git-기본/">
+        <a class="abstract-title" href="/2019/06/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-git-%EA%B8%B0%EB%B3%B8/">
             
                 <span>가볍게 정리하는 git 기본</span>
         </a>
@@ -435,7 +439,7 @@ mkcert 설치 및 인증서 발급Mac OS 기준으로 작성하였다. 다른 OS
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">
+        <a class="abstract-title" href="/2019/03/08/IntelliJ%EC%97%90%EC%84%9C-Docker%EB%A1%9C-Web-App-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">
             
                 <span>IntelliJ에서 Docker로 Web App 배포하기</span>
         </a>
@@ -473,7 +477,7 @@ Output Layout에서 ‘.war’ 파일의 파일명이 Context Root 명이 되므
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">
+        <a class="abstract-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-%EC%97%90%EB%9F%AC/">
             
                 <span>SourceTree &#39;Permission denied (publickey)&#39; 에러</span>
         </a>
@@ -482,9 +486,8 @@ Output Layout에서 ‘.war’ 파일의 파일명이 Context Root 명이 되므
 원인PC SSH Agent에 key가 등록되어 있지 않았을 때 발생
 확인 방법WindowsPutty실행 후 등록된 key 리스트 확인
 On GitBash, OSX or Linux1$ ssh-add -l
-
 등록된 key가 없을 때 해결법WindowsPutty실행 후 ‘Add Key’ 버튼을 이용해 키 추가
-On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
+On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(ident...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -512,12 +515,12 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2017/01/29/나의-vimrc/">
+        <a class="abstract-title" href="/2017/01/29/%EB%82%98%EC%9D%98-vimrc/">
             
                 <span>나의 vimrc</span>
         </a>
         <div class="abstract-content">
-            나의 Vimrc 설정1234567891011121314151617181920212223242526272829303132333435363738set nocompatiblefiletype offset rtp+=~/.vim/bundle/Vundle.vimcall vundle#begin()Plugin 'VundleVim/Vundle.vim'Plugin 'tpope/vim-fugitive'Plugin 'tpope/vim-sensible'			         " vim 세팅을 표준으로 설정하는 플러그인Plugin 'scrooloose/n...
+            나의 Vimrc 설정1234567891011121314151617181920212223242526272829303132333435363738set nocompatiblefiletype offset rtp+=~/.vim/bundle/Vundle.vimcall vundle#begin()Plugin &#x27;VundleVim/Vundle.vim&#x27;Plugin &#x27;tpope/vim-fugitive&#x27;Plugin &#x27;tpope/vim-sensible&#x27;			         &quot; vim 세팅을...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1030,9 +1033,20 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 32
+        Total : 33
         </div>
         <!-- search  -->
         
@@ -1043,62 +1057,76 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
     
     
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href="/2021/01/18/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%B3%B5%EC%9E%A1%EB%8F%84%EB%A5%BC-%EC%8B%A4%ED%97%98%EC%9C%BC%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%8D%94%EB%B8%94%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8/">더블링 테스트, 알고리즘 복잡도를 실험으로 예측하는 방법</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2020/12/31/2020년-회고/">2020년 회고</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2020/12/31/2020%EB%85%84-%ED%9A%8C%EA%B3%A0/">2020년 회고</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/11</span><a class="archive-post-title" href="/2020/12/11/백엔드-개발자가-회사에서-리액트-세미나를-진행하기까지/">백엔드 개발자가 회사에서 리액트 세미나를 진행하기까지</a>
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href="/2020/12/11/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%ED%9A%8C%EC%82%AC%EC%97%90%EC%84%9C-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%84%B8%EB%AF%B8%EB%82%98%EB%A5%BC-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0%EA%B9%8C%EC%A7%80/">백엔드 개발자가 회사에서 리액트 세미나를 진행하기까지</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href="/2020/12/04/mkcert를-이용한-localhost-HTTPS-TLS-설정/">mkcert를 이용한 localhost HTTPS(TLS) 설정</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href="/2020/12/04/mkcert%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-localhost-HTTPS-TLS-%EC%84%A4%EC%A0%95/">mkcert를 이용한 localhost HTTPS(TLS) 설정</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/25</span><a class="archive-post-title" href="/2020/10/25/Spring-Controller에서-URI-작업을-할-때-UriComponentsBuilder를-사용하자/">UriComponentsBuilder로 URI 생성하는 방법</a>
+            <span class="archive-post-date">10/25</span><a class="archive-post-title" href="/2020/10/25/Spring-Controller%EC%97%90%EC%84%9C-URI-%EC%9E%91%EC%97%85%EC%9D%84-%ED%95%A0-%EB%95%8C-UriComponentsBuilder%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%9E%90/">UriComponentsBuilder로 URI 생성하는 방법</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/12</span><a class="archive-post-title" href="/2020/08/12/극단-extream-으로-가기-위한-철학/">극단(extreme)으로 가기 위한 철학</a>
+            <span class="archive-post-date">08/12</span><a class="archive-post-title" href="/2020/08/12/%EA%B7%B9%EB%8B%A8-extream-%EC%9C%BC%EB%A1%9C-%EA%B0%80%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%B2%A0%ED%95%99/">극단(extreme)으로 가기 위한 철학</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2020/07/23/개발자의-아침/">개발자의 아침</a>
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2020/07/23/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%95%84%EC%B9%A8/">개발자의 아침</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2020/04/30/삶에-적용해야-할-견습-과정-패턴/">삶에 적용해야 할 견습 과정 패턴</a>
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2020/04/30/%EC%82%B6%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%A0-%EA%B2%AC%EC%8A%B5-%EA%B3%BC%EC%A0%95-%ED%8C%A8%ED%84%B4/">삶에 적용해야 할 견습 과정 패턴</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/29</span><a class="archive-post-title" href="/2020/04/29/실수노트-JavaScript에서-동일한-이벤트-리스너는-단-한-번만-등록하자/">[실수노트] JavaScript에서 동일한 이벤트 리스너는 단 한 번만 등록하자</a>
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href="/2020/04/29/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-JavaScript%EC%97%90%EC%84%9C-%EB%8F%99%EC%9D%BC%ED%95%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A6%AC%EC%8A%A4%EB%84%88%EB%8A%94-%EB%8B%A8-%ED%95%9C-%EB%B2%88%EB%A7%8C-%EB%93%B1%EB%A1%9D%ED%95%98%EC%9E%90/">[실수노트] JavaScript에서 동일한 이벤트 리스너는 단 한 번만 등록하자</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">레거시 코드를 점진적으로 개선한 경험</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%ED%95%9C-%EA%B2%BD%ED%97%98/">레거시 코드를 점진적으로 개선한 경험</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2020/01/12/삶에-애자일-도입하기/">삶에 애자일 도입하기</a>
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2020/01/12/%EC%82%B6%EC%97%90-%EC%95%A0%EC%9E%90%EC%9D%BC-%EB%8F%84%EC%9E%85%ED%95%98%EA%B8%B0/">삶에 애자일 도입하기</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/11</span><a class="archive-post-title" href="/2020/01/11/2019년-회고/">2019년 회고</a>
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href="/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/">2019년 회고</a>
         </li>
     
     
@@ -1112,77 +1140,77 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/06</span><a class="archive-post-title" href="/2019/12/06/실수노트-캐싱된-메서드는-변경-불가능한-Immutable-객체를-반환토록-하자/">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</a>
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href="/2019/12/06/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-%EC%BA%90%EC%8B%B1%EB%90%9C-%EB%A9%94%EC%84%9C%EB%93%9C%EB%8A%94-%EB%B3%80%EA%B2%BD-%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C-Immutable-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EB%B0%98%ED%99%98%ED%86%A0%EB%A1%9D-%ED%95%98%EC%9E%90/">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/%EC%9D%98%EC%8B%9D%EC%A0%81%EC%9D%B8-%EC%97%B0%EC%8A%B5%EC%97%90-%EA%B8%B0%EB%B0%98%ED%95%9C-%EB%82%98%EC%9D%98-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%95%99%EC%8A%B5/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS%EB%8F%84-Setter%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4/">AWS도 Setter를 사용하지 않는다</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">코틀린(Kotlin)에서의 null 안전 처리</a>
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/%EC%BD%94%ED%8B%80%EB%A6%B0-Kotlin-%EC%97%90%EC%84%9C%EC%9D%98-null-%EC%95%88%EC%A0%84-%EC%B2%98%EB%A6%AC/">코틀린(Kotlin)에서의 null 안전 처리</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-%EB%A9%94%EC%8B%9C%EC%A7%80-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">JUnit5, @ParameterizedTest 사용 예</a>
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-%EC%82%AC%EC%9A%A9-%EC%98%88/">JUnit5, @ParameterizedTest 사용 예</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/가볍게-정리하는-git-기본/">가볍게 정리하는 git 기본</a>
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-git-%EA%B8%B0%EB%B3%B8/">가볍게 정리하는 git 기본</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/문화와-기술/">문화와 기술</a>
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/%EB%AC%B8%ED%99%94%EC%99%80-%EA%B8%B0%EC%88%A0/">문화와 기술</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-%EB%AC%B8%EC%A0%9C%EC%97%90%EC%84%9C-%EB%82%B4%EA%B0%80-%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">IntelliJ에서 Docker로 Web App 배포하기</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ%EC%97%90%EC%84%9C-Docker%EB%A1%9C-Web-App-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">IntelliJ에서 Docker로 Web App 배포하기</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-오류-해결/">ORA-12505 오류 해결</a>
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0/">ORA-12505 오류 해결</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D에서-Observer패턴을-이용한-연산량-감소/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D%EC%97%90%EC%84%9C-Observer%ED%8C%A8%ED%84%B4%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%97%B0%EC%82%B0%EB%9F%89-%EA%B0%90%EC%86%8C/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/가볍게-정리하는-DB-기본-내용/">가볍게 정리하는 DB 기본</a>
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-DB-%EA%B8%B0%EB%B3%B8-%EB%82%B4%EC%9A%A9/">가볍게 정리하는 DB 기본</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/가볍게-구분하는-개체-객체-인스턴스/">가볍게 구분하는 개체, 객체, 인스턴스</a>
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EA%B5%AC%EB%B6%84%ED%95%98%EB%8A%94-%EA%B0%9C%EC%B2%B4-%EA%B0%9D%EC%B2%B4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4/">가볍게 구분하는 개체, 객체, 인스턴스</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">SourceTree 'Permission denied (publickey)' 에러</a>
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-%EC%97%90%EB%9F%AC/">SourceTree 'Permission denied (publickey)' 에러</a>
         </li>
     
     
@@ -1196,32 +1224,32 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar를-이용한-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
+            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/나의-vimrc/">나의 vimrc</a>
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/%EB%82%98%EC%9D%98-vimrc/">나의 vimrc</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-에서-대입-연산자를-오버로딩-하는-괜찮은-방법/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-%EC%97%90%EC%84%9C-%EB%8C%80%EC%9E%85-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9-%ED%95%98%EB%8A%94-%EA%B4%9C%EC%B0%AE%EC%9D%80-%EB%B0%A9%EB%B2%95/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/르블랑의-법칙/">르블랑의 법칙</a>
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/%EB%A5%B4%EB%B8%94%EB%9E%91%EC%9D%98-%EB%B2%95%EC%B9%99/">르블랑의 법칙</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/가상함수와-가상상속/">가상함수와 가상상속</a>
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/%EA%B0%80%EC%83%81%ED%95%A8%EC%88%98%EC%99%80-%EA%B0%80%EC%83%81%EC%83%81%EC%86%8D/">가상함수와 가상상속</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/애자일-소프트웨어-개발/">애자일 소프트웨어 개발</a>
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/%EC%95%A0%EC%9E%90%EC%9D%BC-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C/">애자일 소프트웨어 개발</a>
         </li>
     
     </ul></div>
@@ -1239,9 +1267,21 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
         <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
+    
+        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
     
         <span class="sidebar-tag-name" data-tags="SourceTree"><span class="iconfont-archer">&#xe606;</span>SourceTree</span>
     
@@ -1254,18 +1294,6 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
         <span class="sidebar-tag-name" data-tags="SimpleScalar"><span class="iconfont-archer">&#xe606;</span>SimpleScalar</span>
     
         <span class="sidebar-tag-name" data-tags="Cache memory"><span class="iconfont-archer">&#xe606;</span>Cache memory</span>
-    
-        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
-    
-        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
-    
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
-    
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
-    
-        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
-    
-        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
     
         <span class="sidebar-tag-name" data-tags="Spring"><span class="iconfont-archer">&#xe606;</span>Spring</span>
     
@@ -1299,25 +1327,19 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
         <span class="sidebar-tag-name" data-tags="에세이"><span class="iconfont-archer">&#xe606;</span>에세이</span>
     
-        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
-    
-        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
-    
         <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
-    
-        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
     
         <span class="sidebar-tag-name" data-tags="애자일"><span class="iconfont-archer">&#xe606;</span>애자일</span>
     
         <span class="sidebar-tag-name" data-tags="익스트림 프로그래밍"><span class="iconfont-archer">&#xe606;</span>익스트림 프로그래밍</span>
     
-        <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
+    
+        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
     
         <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
-    
-        <span class="sidebar-tag-name" data-tags="소프트웨어 장인정신"><span class="iconfont-archer">&#xe606;</span>소프트웨어 장인정신</span>
-    
-        <span class="sidebar-tag-name" data-tags="견습 과정 패턴"><span class="iconfont-archer">&#xe606;</span>견습 과정 패턴</span>
     
         <span class="sidebar-tag-name" data-tags="ReactJS"><span class="iconfont-archer">&#xe606;</span>ReactJS</span>
     
@@ -1325,11 +1347,11 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
         <span class="sidebar-tag-name" data-tags="세미나"><span class="iconfont-archer">&#xe606;</span>세미나</span>
     
+        <span class="sidebar-tag-name" data-tags="소프트웨어 장인정신"><span class="iconfont-archer">&#xe606;</span>소프트웨어 장인정신</span>
+    
+        <span class="sidebar-tag-name" data-tags="견습 과정 패턴"><span class="iconfont-archer">&#xe606;</span>견습 과정 패턴</span>
+    
         <span class="sidebar-tag-name" data-tags="실수노트"><span class="iconfont-archer">&#xe606;</span>실수노트</span>
-    
-        <span class="sidebar-tag-name" data-tags="Immutable"><span class="iconfont-archer">&#xe606;</span>Immutable</span>
-    
-        <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
@@ -1337,9 +1359,23 @@ On GitBash, OSX or Linux아래의 명령어를 통해 키 추가(iden...
     
         <span class="sidebar-tag-name" data-tags="이벤트"><span class="iconfont-archer">&#xe606;</span>이벤트</span>
     
+        <span class="sidebar-tag-name" data-tags="Immutable"><span class="iconfont-archer">&#xe606;</span>Immutable</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
+    
+        <span class="sidebar-tag-name" data-tags="알고리즘"><span class="iconfont-archer">&#xe606;</span>알고리즘</span>
+    
+        <span class="sidebar-tag-name" data-tags="더블링 테스트"><span class="iconfont-archer">&#xe606;</span>더블링 테스트</span>
+    
+        <span class="sidebar-tag-name" data-tags="복잡도"><span class="iconfont-archer">&#xe606;</span>복잡도</span>
+    
+        <span class="sidebar-tag-name" data-tags="성능"><span class="iconfont-archer">&#xe606;</span>성능</span>
+    
         <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
     
         <span class="sidebar-tag-name" data-tags="null처리"><span class="iconfont-archer">&#xe606;</span>null처리</span>
+    
+        <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
     
         <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
     
@@ -1378,21 +1414,21 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="생각"><span class="iconfont-archer">&#xe60a;</span>생각</span>
     
-        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
-    
         <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
+    
+        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
     
         <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
     
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
         <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
     
-        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
     
         <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
     
-        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
-    
-        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
+        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
     
         <span class="sidebar-category-name" data-categories="Spring"><span class="iconfont-archer">&#xe60a;</span>Spring</span>
     
@@ -1403,6 +1439,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="실수노트"><span class="iconfont-archer">&#xe60a;</span>실수노트</span>
     
         <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
+    
+        <span class="sidebar-category-name" data-categories="알고리즘"><span class="iconfont-archer">&#xe60a;</span>알고리즘</span>
     
         <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
     

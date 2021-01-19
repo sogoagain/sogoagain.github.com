@@ -10,7 +10,7 @@
 
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="sogoagain">
@@ -212,6 +212,11 @@
         ga('send', 'pageview');
     </script>
     
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="기술을 기술하다" type="application/atom+xml">
 </head>
 
     
@@ -417,12 +422,12 @@ height:50vh;
 <h2 id="2019년-전체적인-소감"><a href="#2019년-전체적인-소감" class="headerlink" title="2019년 전체적인 소감"></a>2019년 전체적인 소감</h2><p>2019년은 제게 있어 큰 성장이 되었던 한 해였습니다. 눈으로 보이는 결과물로는 이직이 대표적이겠지만 그 이면에 있는 많은 것들이 저를  성장시켜주었습니다. 개발자의 길을 가야겠다고 다짐하게 되었던 TDD 스터디, 원하는 개발을 할 수 있는 회사로 이직, 개발자로 어떤 삶을 살아가야 행복할 것인지 생각하는 계기가 되었던 박재성 교수님의 ‘NEXTSTEP TDD, Refactoring, Clean Code 5기’ 강의 수강, 소소한 기여를 통한 오픈소스 세계로의 발돋움, 제가 성장하는 데 큰 도움이 되었던 좋은 강의와 책 그리고 사람들, 나와는 거리가 멀다고 생각했지만, 지금은 서서히 재미를 알아가고 있는 운동, 마지막으로 성장하는 활동을 꾸준히 실천하려고 노력했던 저의 모습들이 모두 2019년을 보람차게 만들어 주었습니다.</p>
 <p>물론 모든 것이 완벽하지는 않았습니다. 아쉬웠던 부분들도 있었는데요. 매일매일 학습을 실천하기는 했지만, 그 절대적인 양이 많이 부족 했다는 생각이 듭니다. 완전한 개인 프로젝트를 진행하지 못한 것, 읽고 싶어 사다 놓은 책은 많았지만 읽지 않은 책이 많은 것, 블로그에 작성할 글들을 머릿속에서만 생각하고 실천으로 옮기지 못한 것, 원하던 분야의 공부를 완수하지 못한 것 등이 대표적으로 아쉬웠습니다. 2020년에는 이러한 아쉬움이 덜 하도록 목표를 세우고 실천하고자 합니다.</p>
 <h2 id="TDD-스터디-2019-01-2019-06"><a href="#TDD-스터디-2019-01-2019-06" class="headerlink" title="TDD 스터디 (2019.01 ~ 2019.06)"></a>TDD 스터디 (2019.01 ~ 2019.06)</h2><blockquote>
-<p>스터디 프로젝트 저장소: <a href="https://github.com/sogoagain/tdd-exercises" rel="external nofollow noopener noreferrer" target="_blank">테스트 주도 개발 (Test-driven development) 실천 연습 저장소</a></p>
+<p>스터디 프로젝트 저장소: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/sogoagain/tdd-exercises">테스트 주도 개발 (Test-driven development) 실천 연습 저장소</a></p>
 </blockquote>
 <p>TDD 스터디는 2019년에 제가 했던 활동 중에 가장 잘한 것이고 가장 제게 영향을 많이 주었던 것이 아닌가 싶습니다. 스터디하게 된 계기부터 말씀드리면 좋을 것 같습니다. 저는 2018년 대학 졸업과 동시에 나름 대기업군으로 분류되는 기업 공채에 합격하여 취업하였습니다. 당시에 저는 회사 생활을 하다 보면 자연스레 SW 개발 분야의 전문가가 되어 있을 것이라는 막연한 생각을 하고 있었습니다. 그렇게 부푼 기대를 안고 첫 사회생활을 시작하였습니다. 열심히 회사에서 업무를 수행하였고 회사 생활이 1년 정도 되었을 때 저를 돌아보는 시간을 가졌습니다. SW 개발 분야 외의 다른 쪽으로는 많이 배우고 성장했지만, SW 개발 분야에서는 오히려 취업 전보다 퇴보한 것 같다는 느낌을 받았습니다. 제가 하던 업무가 개발보다는 관리에 초점이 맞춰져 있었기에 더욱 위기감을 느낀 것도 있습니다. 이유야 어찌 되었든 전문가가 되기 위해서는 회사에서 주어진 업무만 하는 것이 아니라 스스로 자신을 발전시키기 위해 노력해야 한다는 것을 깨닫게 되었습니다. 더는 누군가가 나를 가르쳐주는 학교에 있는 것이 아니라 내가 나를 성장시켜야 하는 사회에 있다는 것을 몸소 느끼게 된 것입니다.</p>
 <p>내가 나를 성장시켜야 한다고 생각하게 되었을 때 어떤 것을 시도해볼지 고민을 하였습니다. 그렇게 개발자 커뮤니티를 기웃거리다가 우연히 OKKY에서 주최하는 컨퍼런스를 통해 TDD를 접하게 되었습니다. 평소 객체지향 설계와 디자인 패턴에 관심이 많았는데 컨퍼런스 영상을 보는 순간 더 나은 설계를 위해서 TDD에 도전해보자는 생각을 하였습니다. 이제 TDD에 어떻게 도전하면 좋을 지 고민하던 중 우연히 TDD 스터디원을 모집하는 글을 보게 되었고 지원한 뒤 참여하게 되었습니다.</p>
 <blockquote>
-<p><a href="https://www.youtube.com/playlist?list=PLhSAACiXcoKK318PRta9AmxgdkPB9q9Sm" rel="external nofollow noopener noreferrer" target="_blank">OKKYCON: 2018 (The Real <strong>TDD</strong>) 발표 영상</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.youtube.com/playlist?list=PLhSAACiXcoKK318PRta9AmxgdkPB9q9Sm">OKKYCON: 2018 (The Real <strong>TDD</strong>) 발표 영상</a></p>
 </blockquote>
 <p>TDD 스터디를 통해 정말 많은 것을 배우고 나누고 소통할 수 있었습니다. 스터디를 통해 코드리뷰를 처음 접해보았으며 객체지향의 개념을 이론에서 꺼내와 현실에서 이야기도 처음 해보았습니다. 그뿐만 아니라 테스트 코드를 어떻게 하면 더 잘 작성할 수 있을까? TDD를 어떻게 실천할 수 있을까? 객체지향 설계는 어떻게 해야 하는 것일까? 등 많은 고민과 생각을 하게 된 계기가 되었습니다. 좋은 사람들이 있었기에 좋은 생각과 고민을 많이 할 수 있었고 많이 배웠습니다. 정말 값진 경험이었습니다.</p>
 <h2 id="새로운-직장-2019-06"><a href="#새로운-직장-2019-06" class="headerlink" title="새로운 직장 (2019.06)"></a>새로운 직장 (2019.06)</h2><p>TDD 스터디를 참여하고 개인적으로 공부도 하면서 개발을 주 업무로 할 수 있는 회사로 가고 싶은 마음이 컸습니다. 첫 회사는 개발의 비중이 극히 작았고 대부분은 관리 업무를 하며 시간을 보냈기 때문에 더욱 개발에 대한 갈증이 컸던 것 같습니다. 그래서 이직을 결심하게 되었습니다. 그리고 첫 취업과 달리 회사를 선택하는 기준을 하나 더 정하였습니다. 제가 하는 업무가 단순히 이해관계 속에서 일어나고 큰 의미 없이 사라지는 것이 아닌 누군가에게 가치가 되었으면 좋겠다는 생각이 들었습니다. 그래서 회사가 사회에 가치를 전달하고 있는지를 기준으로 잡았습니다. 회사가 사회에 진실로 가치를 전하고 있다면 저의 업무가 누군가에게 가치 있게 다가가고 있다는 것이니까요. 이후 여러 절차를 거쳐 현재의 회사로 이직을 하게 되었습니다.</p>
@@ -431,14 +436,14 @@ height:50vh;
 <h2 id="오픈소스-세계로의-발돋움"><a href="#오픈소스-세계로의-발돋움" class="headerlink" title="오픈소스 세계로의 발돋움"></a>오픈소스 세계로의 발돋움</h2><p>오픈소스 프로젝트에 참여하고 싶었지만, 그 방법을 경험하지 못하여 막막하던 때에 마침 OSS개발자포럼에서 컨퍼런스(2019 오픈소스개발자이야기)를 연다는 소식을 듣고 참가하였습니다. 본업을 하면서 오픈소스에 기여하는 개발자들, 본업이 오픈소스 프로젝트인 개발자분들의 발표를 들으며 언젠가 오픈소스에 기여하겠다는 마음을 먹었습니다. 그리고 현재까지 회사생활을 하며 작은 기여 2번을 하였습니다. mybatis 프로젝트에 번역 이슈 등록과 웹 에디터 오픈소스인 ‘summernote’ 플러그인 중 하나에 한국어 번역 기여를 하였습니다. 이슈 등록과 번역이라는 자그마한 기여지만, 오픈소스 세계로 첫발을 내디뎠다는 사실 자체가 너무 행복했습니다. 특히, mybatis에 번역 이슈를 등록했을 때는 설레는 마음에 잠을 설치기도 하였습니다. 또한 오픈소스로 전 세계의 개발자들과 소통할 수 있다는 것을 현실로 느끼게 되었습니다. 2019년의 작은 발돋움을 계기로 2020년에는 제대로 된 코드로 기여를 해보고 싶습니다.</p>
 <blockquote>
 <ol>
-<li><a href="https://github.com/mybatis/mybatis-3/issues/1602" rel="external nofollow noopener noreferrer" target="_blank">The contents of the ‘caption’ tag are garbled In the Korean translation document</a></li>
-<li><a href="https://github.com/DiemenDesign/summernote-image-attributes/pull/57" rel="external nofollow noopener noreferrer" target="_blank">Korean translation</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/mybatis/mybatis-3/issues/1602">The contents of the ‘caption’ tag are garbled In the Korean translation document</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/DiemenDesign/summernote-image-attributes/pull/57">Korean translation</a></li>
 </ol>
 </blockquote>
 <h2 id="운동-2019-07"><a href="#운동-2019-07" class="headerlink" title="운동 (2019.07 -)"></a>운동 (2019.07 -)</h2><p>회사생활, 스터디, 강의, 개인 학습 등의 일정을 소화하다 보니 체력적인 한계를 느끼게 되었습니다. 이대로는 안 되겠다 싶어 7월에 헬스장 PT를 끊었습니다. 이전까지는 운동과 거리가 먼 삶을 살아오다 보니 혼자서 운동하는 방법 자체를 몰라 무턱대고 퇴근길에 보이는 헬스장에 들어가 PT 상담을 받고 결제까지 하였습니다. 사실 결제 직전 금액이 너무 커서 망설였지만 눈 딱 감고 질렀습니다. 이때의 결정은 정말로 잘한 결정인 것 같습니다. 무언가를 얻기 위해 고통이 수반된다는 것을 운동을 통해 절실히 느끼고 있습니다. 이런 부분에서 운동을 통해 많은 영감을 받고 있습니다. 또한 체력이 많이 증가한 것이 느껴지며 이전보다 활기찬 하루를 보내고 있습니다.</p>
 <h2 id="독서"><a href="#독서" class="headerlink" title="독서"></a>독서</h2><p>2020년에는 2019년에 아쉬웠던 부분들을 보완하여 더욱더 알찬 한 해를 보내도록 할 것입니다. 그중 하나가 독후감입니다. 2019년에 좋은 책들을 읽었지만, 기록으로 남기지 못해 아쉬움이 많이 남았습니다. 그래서 2020년에는 책을 읽고 블로그에 독후감을 남기려고 합니다. 이를 위해서 Github에 Bookshelf라는 저장소를 만들어 독서 목록을 관리하고 있습니다.</p>
 <blockquote>
-<p><a href="https://github.com/sogoagain/bookshelf" rel="external nofollow noopener noreferrer" target="_blank">Bookshelf 저장소</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/sogoagain/bookshelf">Bookshelf 저장소</a></p>
 </blockquote>
 <h2 id="꾸준한-실천"><a href="#꾸준한-실천" class="headerlink" title="꾸준한 실천"></a>꾸준한 실천</h2><p>2019년 새해 목표로 ‘매일 5분 학습하기’가 있었습니다. 5분이라고는 했지만, 이는 지속을 위한 상징적인 시간이었습니다. 5분을 위해 책상에 앉으면 5분을 넘겨 30분, 한 시간 공부하던 날이 많았습니다. 이전까지 새해 목표는 작심삼일이었던 경우가 많았습니다. 그런데, 올해는 달랐습니다. 돌이켜보면 2018년 첫 취업 후 1년이 지난 시점에서 느낀 위기감이 저를 움직이게 하였고 꾸준한 실천이라는 목표를 완수할 수 있지 않았나 싶습니다. 아래는 저의 Github 잔디밭입니다. 중간에 개인적인 사정과 저장소 삭제 등의 이유로 11번 잔디를 심지 못하였습니다. 11일을 제외한 354일은 꾸준히 학습을 실천하였습니다.</p>
 <p><img src="/images/2019-%ED%9A%8C%EA%B3%A0/2019-jandi.png" alt="2019-jandi"></p>
@@ -448,10 +453,10 @@ height:50vh;
     
         <div class="license-wrapper">
             <p>Author：<a href="https://sogoagain.github.io">sogoagain</a>
-            </p><p>Link：<a href="https://sogoagain.github.io/2020/01/11/2019년-회고/">https://sogoagain.github.io/2020/01/11/2019년-회고/</a>
-            </p><p>Publish date：<a href="https://sogoagain.github.io/2020/01/11/2019년-회고/">January 11th 2020, 10:50:57 pm</a>
-            </p><p>Update date：<a href="https://sogoagain.github.io/2020/01/11/2019년-회고/">January 12th 2020, 11:32:04 pm</a>
-            </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+            </p><p>Link：<a href="https://sogoagain.github.io/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/">https://sogoagain.github.io/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/</a>
+            </p><p>Publish date：<a href="https://sogoagain.github.io/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/">January 11th 2020, 10:50:57 pm</a>
+            </p><p>Update date：<a href="https://sogoagain.github.io/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/">January 12th 2020, 11:32:04 pm</a>
+            </p><p>License：This work is licensed under a <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
         </div>
     
     <!-- paginator  -->
@@ -459,7 +464,7 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2020/01/12/삶에-애자일-도입하기/" title="삶에 애자일 도입하기">
+                <a href="/2020/01/12/%EC%82%B6%EC%97%90-%EC%95%A0%EC%9E%90%EC%9D%BC-%EB%8F%84%EC%9E%85%ED%95%98%EA%B8%B0/" title="삶에 애자일 도입하기">
                     <div class="nextTitle">삶에 애자일 도입하기</div>
                 </a>
             
@@ -467,7 +472,7 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/12/06/실수노트-캐싱된-메서드는-변경-불가능한-Immutable-객체를-반환토록-하자/" title="[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자">
+                <a href="/2019/12/06/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-%EC%BA%90%EC%8B%B1%EB%90%9C-%EB%A9%94%EC%84%9C%EB%93%9C%EB%8A%94-%EB%B3%80%EA%B2%BD-%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C-Immutable-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EB%B0%98%ED%99%98%ED%86%A0%EB%A1%9D-%ED%95%98%EC%9E%90/" title="[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자">
                     <div class="prevTitle">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</div>
                 </a>
             
@@ -485,7 +490,7 @@ height:50vh;
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
         
         var disqus_config = function () {
-        this.page.url = "https://sogoagain.github.io/2020/01/11/2019년-회고/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = "https://sogoagain.github.io/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/";  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = "2019년 회고"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
@@ -497,7 +502,7 @@ height:50vh;
         })();
 
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="external nofollow noopener noreferrer" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     
     <!-- partial('_partial/comment/changyan') -->
@@ -595,7 +600,7 @@ height:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#조금-늦어진-회고"><span class="toc-number">1.</span> <span class="toc-text">조금 늦어진 회고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2019년-전체적인-소감"><span class="toc-number">2.</span> <span class="toc-text">2019년 전체적인 소감</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TDD-스터디-2019-01-2019-06"><span class="toc-number">3.</span> <span class="toc-text">TDD 스터디 (2019.01 ~ 2019.06)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#새로운-직장-2019-06"><span class="toc-number">4.</span> <span class="toc-text">새로운 직장 (2019.06)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NEXTSTEP-TDD-Refactoring-Clean-Code-5기-2019-06-2019-07"><span class="toc-number">5.</span> <span class="toc-text">NEXTSTEP TDD, Refactoring, Clean Code 5기 (2019.06 - 2019.07)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#오픈소스-세계로의-발돋움"><span class="toc-number">6.</span> <span class="toc-text">오픈소스 세계로의 발돋움</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#운동-2019-07"><span class="toc-number">7.</span> <span class="toc-text">운동 (2019.07 -)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#독서"><span class="toc-number">8.</span> <span class="toc-text">독서</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#꾸준한-실천"><span class="toc-number">9.</span> <span class="toc-text">꾸준한 실천</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%A1%B0%EA%B8%88-%EB%8A%A6%EC%96%B4%EC%A7%84-%ED%9A%8C%EA%B3%A0"><span class="toc-number">1.</span> <span class="toc-text">조금 늦어진 회고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2019%EB%85%84-%EC%A0%84%EC%B2%B4%EC%A0%81%EC%9D%B8-%EC%86%8C%EA%B0%90"><span class="toc-number">2.</span> <span class="toc-text">2019년 전체적인 소감</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TDD-%EC%8A%A4%ED%84%B0%EB%94%94-2019-01-2019-06"><span class="toc-number">3.</span> <span class="toc-text">TDD 스터디 (2019.01 ~ 2019.06)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%A7%81%EC%9E%A5-2019-06"><span class="toc-number">4.</span> <span class="toc-text">새로운 직장 (2019.06)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NEXTSTEP-TDD-Refactoring-Clean-Code-5%EA%B8%B0-2019-06-2019-07"><span class="toc-number">5.</span> <span class="toc-text">NEXTSTEP TDD, Refactoring, Clean Code 5기 (2019.06 - 2019.07)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%84%B8%EA%B3%84%EB%A1%9C%EC%9D%98-%EB%B0%9C%EB%8F%8B%EC%9B%80"><span class="toc-number">6.</span> <span class="toc-text">오픈소스 세계로의 발돋움</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%9A%B4%EB%8F%99-2019-07"><span class="toc-number">7.</span> <span class="toc-text">운동 (2019.07 -)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%8F%85%EC%84%9C"><span class="toc-number">8.</span> <span class="toc-text">독서</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EA%BE%B8%EC%A4%80%ED%95%9C-%EC%8B%A4%EC%B2%9C"><span class="toc-number">9.</span> <span class="toc-text">꾸준한 실천</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1008,9 +1013,20 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 32
+        Total : 33
         </div>
         <!-- search  -->
         
@@ -1021,62 +1037,76 @@ height:50vh;
     
     
     
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href="/2021/01/18/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%B3%B5%EC%9E%A1%EB%8F%84%EB%A5%BC-%EC%8B%A4%ED%97%98%EC%9C%BC%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%8D%94%EB%B8%94%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8/">더블링 테스트, 알고리즘 복잡도를 실험으로 예측하는 방법</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2020/12/31/2020년-회고/">2020년 회고</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2020/12/31/2020%EB%85%84-%ED%9A%8C%EA%B3%A0/">2020년 회고</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/11</span><a class="archive-post-title" href="/2020/12/11/백엔드-개발자가-회사에서-리액트-세미나를-진행하기까지/">백엔드 개발자가 회사에서 리액트 세미나를 진행하기까지</a>
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href="/2020/12/11/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%ED%9A%8C%EC%82%AC%EC%97%90%EC%84%9C-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%84%B8%EB%AF%B8%EB%82%98%EB%A5%BC-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0%EA%B9%8C%EC%A7%80/">백엔드 개발자가 회사에서 리액트 세미나를 진행하기까지</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span><a class="archive-post-title" href="/2020/12/04/mkcert를-이용한-localhost-HTTPS-TLS-설정/">mkcert를 이용한 localhost HTTPS(TLS) 설정</a>
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href="/2020/12/04/mkcert%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-localhost-HTTPS-TLS-%EC%84%A4%EC%A0%95/">mkcert를 이용한 localhost HTTPS(TLS) 설정</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/25</span><a class="archive-post-title" href="/2020/10/25/Spring-Controller에서-URI-작업을-할-때-UriComponentsBuilder를-사용하자/">UriComponentsBuilder로 URI 생성하는 방법</a>
+            <span class="archive-post-date">10/25</span><a class="archive-post-title" href="/2020/10/25/Spring-Controller%EC%97%90%EC%84%9C-URI-%EC%9E%91%EC%97%85%EC%9D%84-%ED%95%A0-%EB%95%8C-UriComponentsBuilder%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%9E%90/">UriComponentsBuilder로 URI 생성하는 방법</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/12</span><a class="archive-post-title" href="/2020/08/12/극단-extream-으로-가기-위한-철학/">극단(extreme)으로 가기 위한 철학</a>
+            <span class="archive-post-date">08/12</span><a class="archive-post-title" href="/2020/08/12/%EA%B7%B9%EB%8B%A8-extream-%EC%9C%BC%EB%A1%9C-%EA%B0%80%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%B2%A0%ED%95%99/">극단(extreme)으로 가기 위한 철학</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2020/07/23/개발자의-아침/">개발자의 아침</a>
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2020/07/23/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%95%84%EC%B9%A8/">개발자의 아침</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2020/04/30/삶에-적용해야-할-견습-과정-패턴/">삶에 적용해야 할 견습 과정 패턴</a>
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2020/04/30/%EC%82%B6%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%A0-%EA%B2%AC%EC%8A%B5-%EA%B3%BC%EC%A0%95-%ED%8C%A8%ED%84%B4/">삶에 적용해야 할 견습 과정 패턴</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/29</span><a class="archive-post-title" href="/2020/04/29/실수노트-JavaScript에서-동일한-이벤트-리스너는-단-한-번만-등록하자/">[실수노트] JavaScript에서 동일한 이벤트 리스너는 단 한 번만 등록하자</a>
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href="/2020/04/29/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-JavaScript%EC%97%90%EC%84%9C-%EB%8F%99%EC%9D%BC%ED%95%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A6%AC%EC%8A%A4%EB%84%88%EB%8A%94-%EB%8B%A8-%ED%95%9C-%EB%B2%88%EB%A7%8C-%EB%93%B1%EB%A1%9D%ED%95%98%EC%9E%90/">[실수노트] JavaScript에서 동일한 이벤트 리스너는 단 한 번만 등록하자</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/레거시-코드를-점진적으로-개선한-경험/">레거시 코드를 점진적으로 개선한 경험</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2020/03/08/%EB%A0%88%EA%B1%B0%EC%8B%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%A0%90%EC%A7%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EC%84%A0%ED%95%9C-%EA%B2%BD%ED%97%98/">레거시 코드를 점진적으로 개선한 경험</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2020/01/12/삶에-애자일-도입하기/">삶에 애자일 도입하기</a>
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2020/01/12/%EC%82%B6%EC%97%90-%EC%95%A0%EC%9E%90%EC%9D%BC-%EB%8F%84%EC%9E%85%ED%95%98%EA%B8%B0/">삶에 애자일 도입하기</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/11</span><a class="archive-post-title" href="/2020/01/11/2019년-회고/">2019년 회고</a>
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href="/2020/01/11/2019%EB%85%84-%ED%9A%8C%EA%B3%A0/">2019년 회고</a>
         </li>
     
     
@@ -1090,77 +1120,77 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/06</span><a class="archive-post-title" href="/2019/12/06/실수노트-캐싱된-메서드는-변경-불가능한-Immutable-객체를-반환토록-하자/">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</a>
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href="/2019/12/06/%EC%8B%A4%EC%88%98%EB%85%B8%ED%8A%B8-%EC%BA%90%EC%8B%B1%EB%90%9C-%EB%A9%94%EC%84%9C%EB%93%9C%EB%8A%94-%EB%B3%80%EA%B2%BD-%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C-Immutable-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EB%B0%98%ED%99%98%ED%86%A0%EB%A1%9D-%ED%95%98%EC%9E%90/">[실수노트] 캐싱된 메서드는 변경 불가능한(Immutable) 객체를 반환토록 하자</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/의식적인-연습에-기반한-나의-앞으로의-학습/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href="/2019/10/22/%EC%9D%98%EC%8B%9D%EC%A0%81%EC%9D%B8-%EC%97%B0%EC%8A%B5%EC%97%90-%EA%B8%B0%EB%B0%98%ED%95%9C-%EB%82%98%EC%9D%98-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%95%99%EC%8A%B5/">의식적인 연습에 기반한 나의 앞으로의 학습</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS도-Setter를-사용하지-않는다/">AWS도 Setter를 사용하지 않는다</a>
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/AWS%EB%8F%84-Setter%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4/">AWS도 Setter를 사용하지 않는다</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/코틀린-Kotlin-에서의-null-안전-처리/">코틀린(Kotlin)에서의 null 안전 처리</a>
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2019/08/20/%EC%BD%94%ED%8B%80%EB%A6%B0-Kotlin-%EC%97%90%EC%84%9C%EC%9D%98-null-%EC%95%88%EC%A0%84-%EC%B2%98%EB%A6%AC/">코틀린(Kotlin)에서의 null 안전 처리</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-메시지-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2019/08/03/HTTP-%EB%A9%94%EC%8B%9C%EC%A7%80-HTTP-Requests/">HTTP 메시지 - HTTP Requests</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-사용-예/">JUnit5, @ParameterizedTest 사용 예</a>
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/JUnit5-ParameterizedTest-%EC%82%AC%EC%9A%A9-%EC%98%88/">JUnit5, @ParameterizedTest 사용 예</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/가볍게-정리하는-git-기본/">가볍게 정리하는 git 기본</a>
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href="/2019/06/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-git-%EA%B8%B0%EB%B3%B8/">가볍게 정리하는 git 기본</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/문화와-기술/">문화와 기술</a>
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href="/2019/06/07/%EB%AC%B8%ED%99%94%EC%99%80-%EA%B8%B0%EC%88%A0/">문화와 기술</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-문제에서-내가-자주-사용하는-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href="/2019/05/01/Algorithm-%EB%AC%B8%EC%A0%9C%EC%97%90%EC%84%9C-%EB%82%B4%EA%B0%80-%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-Java-Code-Snippet/">Algorithm 문제 Java Code Snippet</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ에서-Docker로-Web-App-배포하기/">IntelliJ에서 Docker로 Web App 배포하기</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/IntelliJ%EC%97%90%EC%84%9C-Docker%EB%A1%9C-Web-App-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">IntelliJ에서 Docker로 Web App 배포하기</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-오류-해결/">ORA-12505 오류 해결</a>
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href="/2019/02/22/ORA-12505-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0/">ORA-12505 오류 해결</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D에서-Observer패턴을-이용한-연산량-감소/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href="/2019/02/06/Unity3D%EC%97%90%EC%84%9C-Observer%ED%8C%A8%ED%84%B4%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%97%B0%EC%82%B0%EB%9F%89-%EA%B0%90%EC%86%8C/">Unity3D에서 Observer패턴을 이용한 연산량 감소</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/가볍게-정리하는-DB-기본-내용/">가볍게 정리하는 DB 기본</a>
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href="/2019/01/22/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-DB-%EA%B8%B0%EB%B3%B8-%EB%82%B4%EC%9A%A9/">가볍게 정리하는 DB 기본</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/가볍게-구분하는-개체-객체-인스턴스/">가볍게 구분하는 개체, 객체, 인스턴스</a>
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href="/2019/01/12/%EA%B0%80%EB%B3%8D%EA%B2%8C-%EA%B5%AC%EB%B6%84%ED%95%98%EB%8A%94-%EA%B0%9C%EC%B2%B4-%EA%B0%9D%EC%B2%B4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4/">가볍게 구분하는 개체, 객체, 인스턴스</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-에러/">SourceTree 'Permission denied (publickey)' 에러</a>
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/SourceTree-Permission-denied-publickey-%EC%97%90%EB%9F%AC/">SourceTree 'Permission denied (publickey)' 에러</a>
         </li>
     
     
@@ -1174,32 +1204,32 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar를-이용한-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
+            <span class="archive-post-date">06/27</span><a class="archive-post-title" href="/2017/06/27/SimpleScalar%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Cache-Simulation/">SimpleScalar를 이용한 Cache Simulation</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/나의-vimrc/">나의 vimrc</a>
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2017/01/29/%EB%82%98%EC%9D%98-vimrc/">나의 vimrc</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-에서-대입-연산자를-오버로딩-하는-괜찮은-방법/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2017/01/14/C-%EC%97%90%EC%84%9C-%EB%8C%80%EC%9E%85-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9-%ED%95%98%EB%8A%94-%EA%B4%9C%EC%B0%AE%EC%9D%80-%EB%B0%A9%EB%B2%95/">C++에서 대입 연산자를 오버로딩 하는 괜찮은 방법</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/르블랑의-법칙/">르블랑의 법칙</a>
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href="/2017/01/06/%EB%A5%B4%EB%B8%94%EB%9E%91%EC%9D%98-%EB%B2%95%EC%B9%99/">르블랑의 법칙</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/가상함수와-가상상속/">가상함수와 가상상속</a>
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/%EA%B0%80%EC%83%81%ED%95%A8%EC%88%98%EC%99%80-%EA%B0%80%EC%83%81%EC%83%81%EC%86%8D/">가상함수와 가상상속</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/애자일-소프트웨어-개발/">애자일 소프트웨어 개발</a>
+            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2017/01/05/%EC%95%A0%EC%9E%90%EC%9D%BC-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C/">애자일 소프트웨어 개발</a>
         </li>
     
     </ul></div>
@@ -1217,9 +1247,21 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
+    
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
         <span class="sidebar-tag-name" data-tags="IntelliJ"><span class="iconfont-archer">&#xe606;</span>IntelliJ</span>
+    
+        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
+    
+        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
     
         <span class="sidebar-tag-name" data-tags="SourceTree"><span class="iconfont-archer">&#xe606;</span>SourceTree</span>
     
@@ -1232,18 +1274,6 @@ height:50vh;
         <span class="sidebar-tag-name" data-tags="SimpleScalar"><span class="iconfont-archer">&#xe606;</span>SimpleScalar</span>
     
         <span class="sidebar-tag-name" data-tags="Cache memory"><span class="iconfont-archer">&#xe606;</span>Cache memory</span>
-    
-        <span class="sidebar-tag-name" data-tags="DB"><span class="iconfont-archer">&#xe606;</span>DB</span>
-    
-        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
-    
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
-    
-        <span class="sidebar-tag-name" data-tags="HTTP"><span class="iconfont-archer">&#xe606;</span>HTTP</span>
-    
-        <span class="sidebar-tag-name" data-tags="junit"><span class="iconfont-archer">&#xe606;</span>junit</span>
-    
-        <span class="sidebar-tag-name" data-tags="TDD"><span class="iconfont-archer">&#xe606;</span>TDD</span>
     
         <span class="sidebar-tag-name" data-tags="Spring"><span class="iconfont-archer">&#xe606;</span>Spring</span>
     
@@ -1277,25 +1307,19 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="에세이"><span class="iconfont-archer">&#xe606;</span>에세이</span>
     
-        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
-    
-        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
-    
         <span class="sidebar-tag-name" data-tags="독서"><span class="iconfont-archer">&#xe606;</span>독서</span>
-    
-        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
     
         <span class="sidebar-tag-name" data-tags="애자일"><span class="iconfont-archer">&#xe606;</span>애자일</span>
     
         <span class="sidebar-tag-name" data-tags="익스트림 프로그래밍"><span class="iconfont-archer">&#xe606;</span>익스트림 프로그래밍</span>
     
-        <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
+        <span class="sidebar-tag-name" data-tags="vim"><span class="iconfont-archer">&#xe606;</span>vim</span>
+    
+        <span class="sidebar-tag-name" data-tags="클린코드"><span class="iconfont-archer">&#xe606;</span>클린코드</span>
+    
+        <span class="sidebar-tag-name" data-tags="etc"><span class="iconfont-archer">&#xe606;</span>etc</span>
     
         <span class="sidebar-tag-name" data-tags="개발문화"><span class="iconfont-archer">&#xe606;</span>개발문화</span>
-    
-        <span class="sidebar-tag-name" data-tags="소프트웨어 장인정신"><span class="iconfont-archer">&#xe606;</span>소프트웨어 장인정신</span>
-    
-        <span class="sidebar-tag-name" data-tags="견습 과정 패턴"><span class="iconfont-archer">&#xe606;</span>견습 과정 패턴</span>
     
         <span class="sidebar-tag-name" data-tags="ReactJS"><span class="iconfont-archer">&#xe606;</span>ReactJS</span>
     
@@ -1303,11 +1327,11 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="세미나"><span class="iconfont-archer">&#xe606;</span>세미나</span>
     
+        <span class="sidebar-tag-name" data-tags="소프트웨어 장인정신"><span class="iconfont-archer">&#xe606;</span>소프트웨어 장인정신</span>
+    
+        <span class="sidebar-tag-name" data-tags="견습 과정 패턴"><span class="iconfont-archer">&#xe606;</span>견습 과정 패턴</span>
+    
         <span class="sidebar-tag-name" data-tags="실수노트"><span class="iconfont-archer">&#xe606;</span>실수노트</span>
-    
-        <span class="sidebar-tag-name" data-tags="Immutable"><span class="iconfont-archer">&#xe606;</span>Immutable</span>
-    
-        <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
@@ -1315,9 +1339,23 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="이벤트"><span class="iconfont-archer">&#xe606;</span>이벤트</span>
     
+        <span class="sidebar-tag-name" data-tags="Immutable"><span class="iconfont-archer">&#xe606;</span>Immutable</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cache"><span class="iconfont-archer">&#xe606;</span>Cache</span>
+    
+        <span class="sidebar-tag-name" data-tags="알고리즘"><span class="iconfont-archer">&#xe606;</span>알고리즘</span>
+    
+        <span class="sidebar-tag-name" data-tags="더블링 테스트"><span class="iconfont-archer">&#xe606;</span>더블링 테스트</span>
+    
+        <span class="sidebar-tag-name" data-tags="복잡도"><span class="iconfont-archer">&#xe606;</span>복잡도</span>
+    
+        <span class="sidebar-tag-name" data-tags="성능"><span class="iconfont-archer">&#xe606;</span>성능</span>
+    
         <span class="sidebar-tag-name" data-tags="Kotlin"><span class="iconfont-archer">&#xe606;</span>Kotlin</span>
     
         <span class="sidebar-tag-name" data-tags="null처리"><span class="iconfont-archer">&#xe606;</span>null처리</span>
+    
+        <span class="sidebar-tag-name" data-tags="객체지향"><span class="iconfont-archer">&#xe606;</span>객체지향</span>
     
         <span class="sidebar-tag-name" data-tags="학습"><span class="iconfont-archer">&#xe606;</span>학습</span>
     
@@ -1356,21 +1394,21 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="생각"><span class="iconfont-archer">&#xe60a;</span>생각</span>
     
-        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
-    
         <span class="sidebar-category-name" data-categories="객체지향"><span class="iconfont-archer">&#xe60a;</span>객체지향</span>
+    
+        <span class="sidebar-category-name" data-categories="개발Tip"><span class="iconfont-archer">&#xe60a;</span>개발Tip</span>
     
         <span class="sidebar-category-name" data-categories="코드Tip"><span class="iconfont-archer">&#xe60a;</span>코드Tip</span>
     
+        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
+    
         <span class="sidebar-category-name" data-categories="도구Tip"><span class="iconfont-archer">&#xe60a;</span>도구Tip</span>
     
-        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
+        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
     
         <span class="sidebar-category-name" data-categories="데이터베이스"><span class="iconfont-archer">&#xe60a;</span>데이터베이스</span>
     
-        <span class="sidebar-category-name" data-categories="WEB"><span class="iconfont-archer">&#xe60a;</span>WEB</span>
-    
-        <span class="sidebar-category-name" data-categories="테스트주도개발"><span class="iconfont-archer">&#xe60a;</span>테스트주도개발</span>
+        <span class="sidebar-category-name" data-categories="컴퓨터구조"><span class="iconfont-archer">&#xe60a;</span>컴퓨터구조</span>
     
         <span class="sidebar-category-name" data-categories="Spring"><span class="iconfont-archer">&#xe60a;</span>Spring</span>
     
@@ -1381,6 +1419,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="실수노트"><span class="iconfont-archer">&#xe60a;</span>실수노트</span>
     
         <span class="sidebar-category-name" data-categories="소프트웨어공학"><span class="iconfont-archer">&#xe60a;</span>소프트웨어공학</span>
+    
+        <span class="sidebar-category-name" data-categories="알고리즘"><span class="iconfont-archer">&#xe60a;</span>알고리즘</span>
     
         <span class="sidebar-category-name" data-categories="Kotlin"><span class="iconfont-archer">&#xe60a;</span>Kotlin</span>
     
